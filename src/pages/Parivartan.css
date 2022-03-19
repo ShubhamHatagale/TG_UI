@@ -1,0 +1,198 @@
+/* .btnGroups{
+    margin-top: 5rem;
+
+} */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); */
+body{ font-family: 'Roboto', sans-serif;
+} /*only a sliver under the header turns yellow.*/
+
+.savebtn{
+    background-color:#5CC6D1;
+    height:50px;
+    width:100px;
+    margin-right: 2rem;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 3rem;
+
+}
+.viewbtn{
+    background-color:#B75EA8;
+    height:50px;
+    width:100px;
+    margin-right: 2rem;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 3rem;
+
+
+}
+.downloadbtn{
+    background-color:#F1DFEE;
+    height:50px;
+    width:180px;
+    color:#B75EA8;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 3rem;
+
+}
+.addbtn{
+    background-color:#5CC6D1;
+    height:35px;
+    width:90px;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.addbtndark{
+    background-color:#B75EA8;
+    height:35px;
+    width:90px;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.editbtn{
+    background-color:#5CC6D1;
+    font-weight: bold;
+    font-size: 12px;
+}
+.rembtn{
+    background-color:#B75EA8;
+    height:35px;
+    width:90px;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.finalizebtn{
+    background-color:#5CC6D1;
+    height:50px;
+    width:180px;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 3rem;
+
+}
+.actvl{
+    font-size: 17px;
+    margin: 2px;
+    font-weight: 600;
+}
+
+.sideselect{
+    background-color:#a1b7ce;
+    height:50px;
+    width:180px;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+
+}
+.statusform{
+    border-radius: 9px;
+    background-color:#5CC6D1;
+    color: white;
+    font-weight: bold;
+}
+.loginbtn{
+    background-color:#5CC6D1;
+    height:50px;
+    width:310px;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+
+}
+
+.pdfBody{
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    margin-bottom:15px;
+}
+
+.pdfHeader{
+    align-self: center; 
+    align-content: center; 
+    text-align: center; 
+    font-weight: bold; 
+    width: 150; 
+    border-radius:6px; 
+    margin-left: 0; 
+    padding:10px; 
+    margin: 16px; 
+    margin-top: 30px; 
+    text-decoration:underline; 
+    font-size:20px;
+}
+
+.headText{
+    align-self: left; 
+    align-content: left; 
+    text-align: left; 
+    font-weight: bold; 
+    padding: 10px;
+    margin:10px;
+    margin-top: 10px;
+    margin-left: 0; 
+}
+
+.dynamicContent{
+    align-self: center; 
+    align-content: center; 
+    text-align: center; 
+    font-weight: bold; 
+    background-color: #ecdcdc;
+    width: 150; 
+    border-radius:6px; 
+    margin-left: 0; 
+    padding:50px; 
+    margin: 10px; 
+    margin-top: 6px; 
+    
+}
+
+.dynamicContentMain{
+    align-self: center; 
+    align-content: center; 
+    text-align: center; 
+    font-weight: bold; 
+    /* background-color: #ecdcdc; */
+    width: 160; 
+    /* border-radius:6px;  */
+    margin-left: 0; 
+    padding:50px; 
+    margin: 10px; 
+    margin-top: 6px; 
+}
+
+.pageHeading{
+    padding: 5px;
+    font-size: 22px;
+    align-self: right;
+    align-content: right;
+    text-align: right;
+    margin-top: 16px;
+    font-weight: bold;
+}
+
+
+.adminAddBtn{
+    background-color:#B75EA8;
+    height:50px;
+    width:100px;
+    margin-right: 2rem;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 12px;
+
+
+}
+

@@ -1,0 +1,16 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); */
+
+/* @media all and (min-width: 480px) { */
+   
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+      
+    }
+
+    
+  /* } */
+  .login_img{
+    margin-left: 100rem;
+}
