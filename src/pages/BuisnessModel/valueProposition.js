@@ -92,7 +92,7 @@ export default function Form(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/valueprop`,
+        `https://parivartan.transganization.com/nodejs/masters/valueprop`,
         requestOptionsrichtext
       )
         .then((response) => response.json())
@@ -127,7 +127,7 @@ export default function Form(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/valueprop/${Upid}`,
+        `https://parivartan.transganization.com/nodejs/masters/valueprop/${Upid}`,
         requestOptionsrichtext
       )
         .then((response) => response.json())
@@ -162,7 +162,7 @@ export default function Form(props) {
       headers: myGetHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/valueprop/user/` + `${s_id}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/valueprop/user/` + `${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
 
@@ -205,7 +205,7 @@ export default function Form(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/valueprop/${Upid}`,
+      `https://parivartan.transganization.com/nodejs/masters/valueprop/${Upid}`,
       requestOptions
     )
       .then((response) => response.json())

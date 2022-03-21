@@ -156,7 +156,7 @@ export default function Form(props) {
       headers: myGetHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/valueprop/user/` + `${s_id}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/valueprop/user/` + `${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
 
@@ -190,7 +190,7 @@ export default function Form(props) {
     };
 
     fetch(
-      `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -204,7 +204,7 @@ export default function Form(props) {
         }
       });
 
-    fetch(`http://localhost:9002/masters/valueprop/user/` + `${s_id}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/valueprop/user/` + `${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         let MyValues = resData.data;
@@ -229,7 +229,7 @@ export default function Form(props) {
         });
       });
 
-    fetch(`http://localhost:9002/masters/customerSegment/user/${s_id}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/customerSegment/user/${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         // setcompleteData(resData.data)
@@ -248,7 +248,7 @@ export default function Form(props) {
       });
 
     fetch(
-      `http://localhost:9002/masters/competionsheet/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/competionsheet/user/${s_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -362,7 +362,7 @@ export default function Form(props) {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/busiPlayground2`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/busiPlayground2`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData.data);
@@ -549,7 +549,7 @@ export default function Form(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/competionsheet/` + `${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/competionsheet/` + `${s_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -588,7 +588,7 @@ export default function Form(props) {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/competionsheet/verify/${Upid}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/competionsheet/verify/${Upid}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           // console.log(resData);
@@ -696,7 +696,7 @@ export default function Form(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())
@@ -777,7 +777,7 @@ export default function Form(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())

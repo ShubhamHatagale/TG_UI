@@ -37,7 +37,7 @@ export default function Login() {
         //     body: rawrich,
         //     redirect: "follow",
         // };
-        // fetch(`http://localhost:9002/masters/Admin/admin-login`, requestOptionsrichtext)
+        // fetch(`https://parivartan.transganization.com/nodejs/masters/Admin/admin-login`, requestOptionsrichtext)
         //     .then((response) => response.json())
         //     .then((resData) => {
         //         if (resData.message == "Result Fetched") {

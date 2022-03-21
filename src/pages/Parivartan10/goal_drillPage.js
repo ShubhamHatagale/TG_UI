@@ -103,7 +103,7 @@ export default function Vilakshan(props) {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/goal_drillerRaw/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/goal_drillerRaw/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);
@@ -142,7 +142,7 @@ export default function Vilakshan(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/goal_drillerRaw`,
+      `https://parivartan.transganization.com/nodejs/masters/goal_drillerRaw`,
       requestOptionsrichtext
     )
       .then((response) => response.json())

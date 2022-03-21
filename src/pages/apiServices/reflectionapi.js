@@ -5,7 +5,7 @@ export const getReflectionData = async () => {
   myGetHeaders.append("Content-Type", "application/json");
 
   let res = await fetch(
-    `http://localhost:9002/masters/reflection/user/${s_id}`,
+    `https://parivartan.transganization.com/nodejs/masters/reflection/user/${s_id}`,
     {
       method: "get",
       headers: myGetHeaders

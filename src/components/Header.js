@@ -25,7 +25,7 @@ function Header() {
             redirect: "follow",
         };
         fetch(
-            `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+            `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
             requestOptionsget
         )
             .then((response) => response.json())

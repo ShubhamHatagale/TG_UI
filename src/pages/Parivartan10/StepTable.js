@@ -29,7 +29,7 @@ const Table = (props) => {
       headers: myHeaders2,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/process/` + `${inner_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/process/` + `${inner_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((res) => {
         // console.log(res.data);

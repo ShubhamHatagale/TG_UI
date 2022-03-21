@@ -86,7 +86,7 @@ export default function Form(props) {
             headers: myGetHeaders,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/reflection/user/${s_id}`, requestOptions)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/reflection/user/${s_id}`, requestOptions)
             .then((response) => response.json())
             .then((resData) => {
                 if (resData.data.length > 0) {
@@ -125,7 +125,7 @@ export default function Form(props) {
                 body: raw,
                 redirect: "follow",
             };
-            fetch(`http://localhost:9002/masters/reflection/`, requestOptions)
+            fetch(`https://parivartan.transganization.com/nodejs/masters/reflection/`, requestOptions)
                 .then((response) => response.json())
                 .then((resData) => {
                     console.log(resData);
@@ -155,7 +155,7 @@ export default function Form(props) {
                 body: raw,
                 redirect: "follow",
             };
-            fetch(`http://localhost:9002/masters/reflection/${Upid}`, requestOptions)
+            fetch(`https://parivartan.transganization.com/nodejs/masters/reflection/${Upid}`, requestOptions)
                 .then((response) => response.json())
                 .then((resData) => {
                     console.log(resData);

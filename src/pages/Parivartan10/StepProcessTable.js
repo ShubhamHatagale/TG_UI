@@ -60,7 +60,7 @@ const Table = () => {
       body: rawrich,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/process`, requestOptionsrichtext)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/process`, requestOptionsrichtext)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData);
@@ -80,7 +80,7 @@ const Table = () => {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/vilakshanMap/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshanMap/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         setcompleteData(resData.data);

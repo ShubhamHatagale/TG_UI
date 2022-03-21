@@ -68,7 +68,7 @@ const Table = forwardRef((props, ref) => {
       //   body: raw,
       //   redirect: "follow",
       // };
-      // fetch(`http://localhost:9002/masters/process/1`, requestOptions)
+      // fetch(`https://parivartan.transganization.com/nodejs/masters/process/1`, requestOptions)
       //   .then((response) => response.json())
       //   .then((resData) => {
       //     console.log(resData);
@@ -153,7 +153,7 @@ const Table = forwardRef((props, ref) => {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/process/${edId}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/process/${edId}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData);
@@ -184,7 +184,7 @@ const Table = forwardRef((props, ref) => {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/process/${delId}`,
+      `https://parivartan.transganization.com/nodejs/masters/process/${delId}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -217,7 +217,7 @@ const Table = forwardRef((props, ref) => {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/processprocessId/${edit_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/processprocessId/${edit_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -263,7 +263,7 @@ const Table = forwardRef((props, ref) => {
     //     headers: myHeaders2,
     //     redirect: "follow",
     //   };
-    //   fetch(`http://localhost:9002/masters/process/` + `${inner_id}`, requestOptionsget)
+    //   fetch(`https://parivartan.transganization.com/nodejs/masters/process/` + `${inner_id}`, requestOptionsget)
     //     .then((response) => response.json())
     //     .then((res) => {
     //       // console.log(res.data);
@@ -283,7 +283,7 @@ const Table = forwardRef((props, ref) => {
       headers: myHeaders2,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/process/user/` + `${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/process/user/` + `${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((res) => {
         // console.log(res.data);

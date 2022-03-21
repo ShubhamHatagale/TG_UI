@@ -47,7 +47,7 @@ const Table = props => {
             headers: myHeaders,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/customerTab2/${s_id}`, requestOptionsget)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/customerTab2/${s_id}`, requestOptionsget)
             .then((response) => response.json())
             .then((resData) => {
                 console.log(resData.data);
@@ -111,7 +111,7 @@ const Table = props => {
             redirect: "follow",
         };
         fetch(
-            `http://localhost:9002/masters/customerTab2/${s_id}`,
+            `https://parivartan.transganization.com/nodejs/masters/customerTab2/${s_id}`,
             requestOptions
         )
             .then((response) => response.json())
@@ -272,7 +272,7 @@ const Table = props => {
                 redirect: "follow",
             };
             fetch(
-                `http://localhost:9002/masters/customerTab2`,
+                `https://parivartan.transganization.com/nodejs/masters/customerTab2`,
                 requestOptions
             )
                 .then((response) => response.json())
@@ -308,7 +308,7 @@ const Table = props => {
                 redirect: "follow",
             };
             fetch(
-                `http://localhost:9002/masters/customerTab2/${s_id}`,
+                `https://parivartan.transganization.com/nodejs/masters/customerTab2/${s_id}`,
                 requestOptions
             )
                 .then((response) => response.json())

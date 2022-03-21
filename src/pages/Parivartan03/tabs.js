@@ -99,7 +99,7 @@ export default function ScrollableTabsButtonAuto() {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/customerTab2/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/customerTab2/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);
@@ -107,7 +107,7 @@ export default function ScrollableTabsButtonAuto() {
         console.log(response)
         setcompleteData(response);
         // response.map((item, key) => {
-        //   fetch(`http://localhost:9002/masters/CMMT3/` + `${item.id}`, requestOptionsget)
+        //   fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${item.id}`, requestOptionsget)
         //     .then((response) => response.json())
         //     .then((resData) => {
         //       console.log(resData.data);
@@ -127,7 +127,7 @@ export default function ScrollableTabsButtonAuto() {
 
 
     fetch(
-      `http://localhost:9002/masters/parivartan_user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())

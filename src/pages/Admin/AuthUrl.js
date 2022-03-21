@@ -52,9 +52,9 @@ export default function Form() {
             redirect: "follow",
         };
         // for server--->
-        // `http://localhost:9002/masters/parivartan_user/checkemail/email=${fname}`,
+        // `https://parivartan.transganization.com/nodejs/masters/parivartan_user/checkemail/email=${fname}`,
         fetch(
-            `http://localhost:9002/masters/parivartan_user/checkemail/email=${fname}`,
+            `https://parivartan.transganization.com/nodejs/masters/parivartan_user/checkemail/email=${fname}`,
             requestOptions
         )
             .then((response) => response.json())

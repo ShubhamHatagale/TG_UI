@@ -152,7 +152,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConcepts/`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConcepts/`,
         requestOptions
       )
         .then((response) => response.json())
@@ -186,7 +186,7 @@ export default function Form() {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/beliverConcepts/${Upid}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/beliverConcepts/${Upid}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData);
@@ -214,7 +214,7 @@ export default function Form() {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/beliverConcepts/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/beliverConcepts/user/${s_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -246,7 +246,7 @@ export default function Form() {
       });
 
     fetch(
-      `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -301,7 +301,7 @@ export default function Form() {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/beliverConcepts/verify/${Upid}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/beliverConcepts/verify/${Upid}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           // console.log(resData);
@@ -409,7 +409,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())
@@ -490,7 +490,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())

@@ -106,7 +106,7 @@ function UrjaChar() {
             headers: myHeaders,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/urjaChar/user/${s_id}`, requestOptionsget)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/urjaChar/user/${s_id}`, requestOptionsget)
             .then((response) => response.json())
             .then((resData) => {
                 setcompleteData(resData.data);
@@ -173,7 +173,7 @@ function UrjaChar() {
             .catch((error) => console.log("error", error));
 
         fetch(
-            `http://localhost:9002/masters/parivartan_user/${s_id}`,
+            `https://parivartan.transganization.com/nodejs/masters/parivartan_user/${s_id}`,
             requestOptionsget
         )
             .then((response) => response.json())
@@ -715,7 +715,7 @@ function UrjaChar() {
                 body: rawrich,
                 redirect: "follow",
             };
-            fetch(`http://localhost:9002/masters/urjaChar`, requestOptionsrichtext)
+            fetch(`https://parivartan.transganization.com/nodejs/masters/urjaChar`, requestOptionsrichtext)
                 .then((response) => response.json())
                 .then((resData) => {
                     // console.log(resData);
@@ -825,7 +825,7 @@ function UrjaChar() {
                 body: rawrich,
                 redirect: "follow",
             };
-            fetch(`http://localhost:9002/masters/urjaChar/${Upid}`, requestOptionsrichtext)
+            fetch(`https://parivartan.transganization.com/nodejs/masters/urjaChar/${Upid}`, requestOptionsrichtext)
                 .then((response) => response.json())
                 .then((resData) => {
                     // console.log(resData);

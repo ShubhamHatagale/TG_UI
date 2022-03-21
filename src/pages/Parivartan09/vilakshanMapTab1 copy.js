@@ -112,7 +112,7 @@ export default function Vilakshan(props) {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/vilakshanMapTab1/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);
@@ -124,7 +124,7 @@ export default function Vilakshan(props) {
       .catch((error) => console.log("error", error));
 
     fetch(
-      `http://localhost:9002/masters/parivartan_user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -157,7 +157,7 @@ export default function Vilakshan(props) {
       body: rawrich,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/vilakshanMapTab1`, requestOptionsrichtext)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1`, requestOptionsrichtext)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData);
@@ -242,7 +242,7 @@ export default function Vilakshan(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/vilakshanMapTab1/${delId}`,
+      `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1/${delId}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -285,7 +285,7 @@ export default function Vilakshan(props) {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/vilakshanMapTab1/${edId}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1/${edId}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData);
@@ -318,7 +318,7 @@ export default function Vilakshan(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/vilakshanMapTab1/${edit_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1/${edit_id}`,
       requestOptionsget
     )
       .then((response) => response.json())

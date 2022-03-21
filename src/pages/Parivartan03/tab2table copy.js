@@ -32,7 +32,7 @@ const Table = props => {
             headers: myHeaders,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/customerTab2/user/${s_id}`, requestOptionsget)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/customerTab2/user/${s_id}`, requestOptionsget)
             .then((response) => response.json())
             .then((resData) => {
                 console.log(resData.data);
@@ -61,7 +61,7 @@ const Table = props => {
                     headers: myHeaders,
                     redirect: "follow",
                 };
-                fetch(`http://localhost:9002/masters/customerTab2/` + `${item.id}`, requestOptionsget)
+                fetch(`https://parivartan.transganization.com/nodejs/masters/customerTab2/` + `${item.id}`, requestOptionsget)
                     .then((response) => response.json())
                     .then((resData) => {
                         console.log("I am here in api", resData)
@@ -84,7 +84,7 @@ const Table = props => {
                                 body: rawrich,
                                 redirect: "follow",
                             };
-                            fetch(`http://localhost:9002/masters/customerTab2/` + `${item.id}`, requestOptionsrichtext)
+                            fetch(`https://parivartan.transganization.com/nodejs/masters/customerTab2/` + `${item.id}`, requestOptionsrichtext)
                                 .then((response) => response.json())
                                 .then((resData) => {
                                     if (resData.status == 200) {

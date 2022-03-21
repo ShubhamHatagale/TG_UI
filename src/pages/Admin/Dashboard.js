@@ -100,7 +100,7 @@ export default function Vilakshan(props) {
             body: raw,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/parivartan_user/checked/${uid}`, requestOptions)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/parivartan_user/checked/${uid}`, requestOptions)
             .then((response) => response.json())
             .then((resData) => {
                 // console.log(resData);
@@ -149,7 +149,7 @@ export default function Vilakshan(props) {
             headers: myHeaders,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/parivartan_user/${delId}`, requestOptionsget)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/parivartan_user/${delId}`, requestOptionsget)
             .then((response) => response.json())
             .then((resData) => {
                 // seteditId(resData.data[0].id);
@@ -190,7 +190,7 @@ export default function Vilakshan(props) {
             body: raw,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/parivartan_user/${edId}`, requestOptions)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/parivartan_user/${edId}`, requestOptions)
             .then((response) => response.json())
             .then((resData) => {
                 console.log(resData);
@@ -222,7 +222,7 @@ export default function Vilakshan(props) {
             redirect: "follow",
         };
         fetch(
-            `http://localhost:9002/masters/parivartan_user/${edit_id}`,
+            `https://parivartan.transganization.com/nodejs/masters/parivartan_user/${edit_id}`,
             requestOptionsget
         )
             .then((response) => response.json())
@@ -253,7 +253,7 @@ export default function Vilakshan(props) {
             redirect: "follow",
         };
         fetch(
-            `http://localhost:9002/masters/parivartan_user/${edit_id}`,
+            `https://parivartan.transganization.com/nodejs/masters/parivartan_user/${edit_id}`,
             requestOptionsget
         )
             .then((response) => response.json())
@@ -299,7 +299,7 @@ export default function Vilakshan(props) {
             headers: myHeaders,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/parivartan_user`, requestOptionsget)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/parivartan_user`, requestOptionsget)
             .then((response) => response.json())
             .then((resData) => {
                 console.log(resData.data);
@@ -361,7 +361,7 @@ export default function Vilakshan(props) {
             body: rawrich,
             redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/parivartan_user`, requestOptionsrichtext)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/parivartan_user`, requestOptionsrichtext)
             .then((response) => response.json())
             .then((resData) => {
                 console.log(resData);

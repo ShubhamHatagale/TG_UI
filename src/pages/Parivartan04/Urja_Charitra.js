@@ -54,7 +54,7 @@ export default function Form() {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);

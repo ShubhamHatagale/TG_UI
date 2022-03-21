@@ -119,7 +119,7 @@ export default function NaisthyaPrayaan() {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/prayaan/${delId}`,
+      `https://parivartan.transganization.com/nodejs/masters/prayaan/${delId}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -159,7 +159,7 @@ export default function NaisthyaPrayaan() {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/prayaan/${edId}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/prayaan/${edId}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData);
@@ -191,7 +191,7 @@ export default function NaisthyaPrayaan() {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/prayaan/${edit_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/prayaan/${edit_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -233,7 +233,7 @@ export default function NaisthyaPrayaan() {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/prayaan`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/prayaan`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData);
@@ -266,7 +266,7 @@ export default function NaisthyaPrayaan() {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -280,7 +280,7 @@ export default function NaisthyaPrayaan() {
         }
       });
 
-    fetch(`http://localhost:9002/masters/prayaan/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/prayaan/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData.data);
@@ -318,7 +318,7 @@ export default function NaisthyaPrayaan() {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/prayaan/verify/${Upid}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/prayaan/verify/${Upid}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           // console.log(resData);
@@ -426,7 +426,7 @@ export default function NaisthyaPrayaan() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())
@@ -507,7 +507,7 @@ export default function NaisthyaPrayaan() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())

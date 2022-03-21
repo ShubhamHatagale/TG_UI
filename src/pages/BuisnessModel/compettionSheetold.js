@@ -24,7 +24,7 @@ export default function Form(props) {
       headers: myGetHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/valueprop/` + `${s_id}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/valueprop/` + `${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         let MyValues = resData.data;
@@ -47,7 +47,7 @@ export default function Form(props) {
         });
       });
     fetch(
-      `http://localhost:9002/masters/competionsheet/` + `${4}`,
+      `https://parivartan.transganization.com/nodejs/masters/competionsheet/` + `${4}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -149,7 +149,7 @@ export default function Form(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/competionsheet/` + `${4}`,
+      `https://parivartan.transganization.com/nodejs/masters/competionsheet/` + `${4}`,
       requestOptions
     )
       .then((response) => response.json())

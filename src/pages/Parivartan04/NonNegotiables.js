@@ -289,7 +289,7 @@ export default function Form() {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/non_negotiable/verify/${s_id}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/non_negotiable/verify/${s_id}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           // console.log(resData);
@@ -397,7 +397,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())
@@ -478,7 +478,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())
@@ -540,7 +540,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/non_negotiable`,
+        `https://parivartan.transganization.com/nodejs/masters/non_negotiable`,
         requestOptionsrichtext
       )
         .then((response) => response.json())
@@ -591,7 +591,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/non_negotiable/` + `${Upid}`, requestOptionsrichtext)
+        `https://parivartan.transganization.com/nodejs/masters/non_negotiable/` + `${Upid}`, requestOptionsrichtext)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData);
@@ -619,7 +619,7 @@ export default function Form() {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -633,7 +633,7 @@ export default function Form() {
         }
       });
 
-    fetch(`http://localhost:9002/masters/non_negotiable/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/non_negotiable/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);
@@ -666,7 +666,7 @@ export default function Form() {
         setnon_negoData(resData.data);
       })
 
-    fetch(`http://localhost:9002/masters/urjaChar/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/urjaChar/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         setcompleteData(resData.data);
@@ -742,7 +742,7 @@ export default function Form() {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/busiPlayground2/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/busiPlayground2/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);

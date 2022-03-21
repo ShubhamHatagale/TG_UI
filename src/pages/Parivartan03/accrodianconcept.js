@@ -90,7 +90,7 @@ const AccrodionTabs = (props) => {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/CMMT3/` + `${id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         setCMMid(id)
@@ -149,7 +149,7 @@ const AccrodionTabs = (props) => {
     //   headers: myHeaders,
     //   redirect: "follow",
     // };
-    // fetch(`http://localhost:9002/masters/CMMT3/` + `${Accrodianid}`, requestOptionsget)
+    // fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${Accrodianid}`, requestOptionsget)
     //   .then((response) => response.json())
     //   .then((resData) => {
     //     console.log("all Get fetched ", resData.data)
@@ -162,7 +162,7 @@ const AccrodionTabs = (props) => {
         body: rawrich,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/CMMT3`, requestOptionsget)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3`, requestOptionsget)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData.data);
@@ -182,7 +182,7 @@ const AccrodionTabs = (props) => {
         body: rawrich,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/CMMT3/` + `${Accrodianid}`, requestOptionsget)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${Accrodianid}`, requestOptionsget)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData.data);

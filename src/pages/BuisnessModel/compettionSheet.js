@@ -43,8 +43,8 @@ export default function Form(props) {
       headers: myGetHeaders,
       redirect: "follow",
     };
-    // fetch(`http://localhost:9002/masters/valueprop/` + `${1}`, requestOptions)
-    fetch(`http://localhost:9002/masters/valueprop/user/` + `${s_id}`, requestOptions)
+    // fetch(`https://parivartan.transganization.com/nodejs/masters/valueprop/` + `${1}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/valueprop/user/` + `${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         let MyValues = resData.data;
@@ -75,7 +75,7 @@ export default function Form(props) {
         });
       });
     fetch(
-      `http://localhost:9002/masters/competionsheet/user/` + `${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/competionsheet/user/` + `${s_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -124,7 +124,7 @@ export default function Form(props) {
         // });
       });
 
-    fetch(`http://localhost:9002/masters/customerSegment/user/${s_id}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/customerSegment/user/${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         // setcompleteData(resData.data)
@@ -258,7 +258,7 @@ export default function Form(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/competionsheet/`,
+        `https://parivartan.transganization.com/nodejs/masters/competionsheet/`,
         requestOptions
       )
         .then((response) => response.json())
@@ -292,7 +292,7 @@ export default function Form(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/competionsheet/${Upid}`,
+        `https://parivartan.transganization.com/nodejs/masters/competionsheet/${Upid}`,
         requestOptions
       )
         .then((response) => response.json())

@@ -115,7 +115,7 @@ export default function Vilakshan(props) {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/vilakshanMapTab1/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);
@@ -156,7 +156,7 @@ export default function Vilakshan(props) {
       .catch((error) => console.log("error", error));
 
     fetch(
-      `http://localhost:9002/masters/parivartan_user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -194,7 +194,7 @@ export default function Vilakshan(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/vilakshanMapTab1/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1/${s_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -302,7 +302,7 @@ export default function Vilakshan(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/vilakshanMapTab1`,
+        `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1`,
         requestOptions
       )
         .then((response) => response.json())
@@ -340,7 +340,7 @@ export default function Vilakshan(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/vilakshanMapTab1/${s_id}`,
+        `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1/${s_id}`,
         requestOptions
       )
         .then((response) => response.json())

@@ -123,7 +123,7 @@ const Table = (props) => {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/goal_drillerRaw/${edId}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/goal_drillerRaw/${edId}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData);
@@ -150,7 +150,7 @@ const Table = (props) => {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/goal_drillerRaw/${delId}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/goal_drillerRaw/${delId}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         // seteditId(resData.data[0].id);
@@ -173,7 +173,7 @@ const Table = (props) => {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/goal_drillerRaw/${edit_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/goal_drillerRaw/${edit_id}`,
       requestOptionsget
     )
       .then((response) => response.json())

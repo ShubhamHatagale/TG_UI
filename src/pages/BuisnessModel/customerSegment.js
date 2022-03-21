@@ -97,7 +97,7 @@ export default function Form(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/customerSegment/`,
+        `https://parivartan.transganization.com/nodejs/masters/customerSegment/`,
         requestOptions
       )
         .then((response) => response.json())
@@ -131,7 +131,7 @@ export default function Form(props) {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/customerSegment/` + `${Upid}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/customerSegment/` + `${Upid}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData);
@@ -159,7 +159,7 @@ export default function Form(props) {
       headers: myGetHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/customerSegment/user/${s_id}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/customerSegment/user/${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         setcompleteData(resData.data)
@@ -212,7 +212,7 @@ export default function Form(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/customerSegment/` + `${Upid}`,
+      `https://parivartan.transganization.com/nodejs/masters/customerSegment/` + `${Upid}`,
       requestOptions
     )
       .then((response) => response.json())

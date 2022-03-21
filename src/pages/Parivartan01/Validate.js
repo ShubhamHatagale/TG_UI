@@ -110,7 +110,7 @@ export default function Validate() {
             redirect: "follow",
         };
         fetch(
-            `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+            `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
             requestOptions
         )
             .then((response) => response.json())
@@ -134,7 +134,7 @@ export default function Validate() {
             redirect: "follow",
         };
         fetch(
-            `http://localhost:9002/masters/parivartan_user/${s_id}`,
+            `https://parivartan.transganization.com/nodejs/masters/parivartan_user/${s_id}`,
             requestOptionsrichtext
         )
             .then((response) => response.json())
@@ -150,7 +150,7 @@ export default function Validate() {
 
 
             });
-        fetch(`http://localhost:9002/masters/validate/user/${s_id}`, requestOptionsrichtext)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/validate/user/${s_id}`, requestOptionsrichtext)
             .then((response) => response.json())
             .then((resData) => {
                 console.log(resData.data);
@@ -341,7 +341,7 @@ export default function Validate() {
                 body: raw,
                 redirect: "follow",
             };
-            fetch(`http://localhost:9002/masters/validate/verify/${Upid}`, requestOptions)
+            fetch(`https://parivartan.transganization.com/nodejs/masters/validate/verify/${Upid}`, requestOptions)
                 .then((response) => response.json())
                 .then((resData) => {
                     // console.log(resData);
@@ -448,7 +448,7 @@ export default function Validate() {
                 redirect: "follow",
             };
             fetch(
-                `http://localhost:9002/masters/beliverConceptsSend`,
+                `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
                 requestOptions
             )
                 .then((response) => response.json())
@@ -528,7 +528,7 @@ export default function Validate() {
                 redirect: "follow",
             };
             fetch(
-                `http://localhost:9002/masters/beliverConceptsSend`,
+                `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
                 requestOptions
             )
                 .then((response) => response.json())
@@ -585,7 +585,7 @@ export default function Validate() {
                 body: rawrich,
                 redirect: "follow",
             };
-            fetch(`http://localhost:9002/masters/validate/`, requestOptionsrichtext)
+            fetch(`https://parivartan.transganization.com/nodejs/masters/validate/`, requestOptionsrichtext)
                 .then((response) => response.json())
                 .then((resData) => {
                     console.log(resData);
@@ -628,7 +628,7 @@ export default function Validate() {
                 body: rawrich,
                 redirect: "follow",
             };
-            fetch(`http://localhost:9002/masters/validate/${Upid}`, requestOptionsrichtext)
+            fetch(`https://parivartan.transganization.com/nodejs/masters/validate/${Upid}`, requestOptionsrichtext)
                 .then((response) => response.json())
                 .then((resData) => {
                     console.log(resData);

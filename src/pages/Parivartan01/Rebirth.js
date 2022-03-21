@@ -88,7 +88,7 @@ export default function Form(props) {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/rebirth/`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/rebirth/`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData);
@@ -121,7 +121,7 @@ export default function Form(props) {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/rebirth/${Upid}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/rebirth/${Upid}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData);
@@ -148,7 +148,7 @@ export default function Form(props) {
       headers: myGetHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/rebirth/user/${s_id}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/rebirth/user/${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         if (resData.data.length > 0) {

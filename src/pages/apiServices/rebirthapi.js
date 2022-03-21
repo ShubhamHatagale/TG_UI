@@ -4,7 +4,7 @@ export const getRebirthData = async () => {
   var s_id = localStorage.getItem('tr_id')
 
   let res = await fetch(
-    `http://localhost:9002/masters/rebirth/user/${s_id}`,
+    `https://parivartan.transganization.com/nodejs/masters/rebirth/user/${s_id}`,
     {
       method: "get",
       headers: myGetHeaders

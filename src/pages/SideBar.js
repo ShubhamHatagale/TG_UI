@@ -20,7 +20,7 @@ export const Home = (props) => {
             method: "GET",
             headers: myHeaders,
         };
-        fetch(`http://localhost:9002/masters/validate/` + `${s_id}`, requestOptions)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/validate/` + `${s_id}`, requestOptions)
             .then((response) => response.json())
             .then((resData) => {
                 let MyValues = resData.data;

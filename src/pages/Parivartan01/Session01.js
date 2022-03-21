@@ -71,7 +71,7 @@ export default function SimpleTabs() {
   //                   headers:myGetHeaders,           
   //                   redirect: "follow",
   //               };
-  //               fetch(`http://localhost:9002/masters/rebirth/`+`${1}`, requestOptions)
+  //               fetch(`https://parivartan.transganization.com/nodejs/masters/rebirth/`+`${1}`, requestOptions)
   //                   .then((response) => response.json())
   //                   .then((resData) => {                       
   //                       let MyValues=resData.data;

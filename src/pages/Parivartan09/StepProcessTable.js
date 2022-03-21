@@ -6,7 +6,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Modal from "react-bootstrap/Modal";
 import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-
+// sss
 const Table = (props) => {
   const ChildRef = useRef();
 
@@ -18,7 +18,7 @@ const Table = (props) => {
   var s_id = parseInt(localStorage.getItem('tr_id'));
   // var tt_id=parseInt
   const pdfExportComponent = React.useRef(null);
-  let [completeData, setcompleteData] = useState("");
+  const [completeData, setcompleteData] = useState("");
   let [ProcessData, setProcessData] = useState("");
 
   const [loading, setloading] = useState(false);
@@ -110,7 +110,7 @@ const Table = (props) => {
       body: rawrich,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/process`, requestOptionsrichtext)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/process`, requestOptionsrichtext)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData);
@@ -155,7 +155,7 @@ const Table = (props) => {
       redirect: "follow",
     };
 
-    fetch(`http://localhost:9002/masters/process/user/` + `${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/process/user/` + `${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((res) => {
         // console.log(res.data);
@@ -168,7 +168,7 @@ const Table = (props) => {
       .catch((error) => console.log("error", error));
 
 
-    fetch(`http://localhost:9002/masters/vilakshanMapTab2/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab2/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         setcompleteData(resData.data[0].features);
@@ -183,7 +183,7 @@ const Table = (props) => {
 
 
     fetch(
-      `http://localhost:9002/masters/parivartan_user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -199,7 +199,7 @@ const Table = (props) => {
 
     for (var i = 0; i < 2; i++) {
       fetch(
-        `http://localhost:9002/masters/process/${i}`,
+        `https://parivartan.transganization.com/nodejs/masters/process/${i}`,
         requestOptionsget
       )
         .then((response) => response.json())
@@ -244,7 +244,7 @@ const Table = (props) => {
     //   headers: myHeaders2,
     //   redirect: "follow",
     // };
-    // fetch(`http://localhost:9002/masters/process/` + `${parent_process_id}`, requestOptionsget)
+    // fetch(`https://parivartan.transganization.com/nodejs/masters/process/` + `${parent_process_id}`, requestOptionsget)
     //   .then((response) => response.json())
     //   .then((res) => {
     //     console.log(res.data,"resData");
@@ -277,7 +277,7 @@ const Table = (props) => {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/processprocessId/${edit_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/processprocessId/${edit_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -363,7 +363,7 @@ const Table = (props) => {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/process/${edId}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/process/${edId}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData);
@@ -394,7 +394,7 @@ const Table = (props) => {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/process/${delId}`,
+      `https://parivartan.transganization.com/nodejs/masters/process/${delId}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -622,7 +622,7 @@ const Table = (props) => {
                           <th>
                             <tr align="center">
                               <div style={{ marginLeft: "28rem" }}>
-                                {item.parent_process_name}
+                                {item.value0}
 
                               </div>
                             </tr>
@@ -631,13 +631,12 @@ const Table = (props) => {
                         </tr>
                       </thead>
                       <tbody>
-                        <td>{item.parent_process_input}</td>
+                        <td>{item.value1}</td>
 
                         <td>
                           {ProcessData.length > 0 ? (
                             <>
                               <div class="table-responsive" id="Table">
-
                                 <table class="table table-bordered">
                                   <thead>
                                     {/* Child Component {childName} */}
@@ -685,52 +684,16 @@ const Table = (props) => {
                                       ))
                                   }
                                 </table>
-
-
-
-
                               </div>
 
                             </>
                           ) : (null)
                           }
-                          {/* {renderTable(item.id)} */}
 
-                          {/* <div class="table-responsive" id="Table">
-                            <table class="table table-bordered">
-                              <thead>
-                                <tr>
-                                  <th>Sr. No.{console.log(DataA[item.id])}</th>
-                                  <th>Step Description</th>
-                                  <th>Transaction Time (Days / Hours)</th>
-                                  <th>Resource Allocated (Departments)</th>
-                                  <th>Name of Resources (Individuals)</th>
-                                  <th style={{ textAlign: "center" }}>Action</th>
-                                </tr>
-                              </thead>
-                              {rd}
-                            </table>
-                          </div> */}
-                          {/* <button onClick={() => ChildRef.current.callChildFunction()}>Update state</button> */}
-                          {/* {console.log(item.value0)} */}
-                          {/* <StepTable AllData={item.vslue0} ref={ChildRef} /> */}
-                          {/* <h1>`${item.value0}`</h1> */}
                         </td>
-                        {/* <td>{item.id}</td> */}
-                        {/* var optionVal = completeData.filter(({ parent_process_id, created_by }) => parent_process_id === "test3" && created_by === 1 ) */}
 
-                        {/* {ProcessData.map((item, key) => {
-                          { console.log(item) }
-                        }).map(function (option) {
-                          return (option);
-                        })}
 
-                        {options.reduce((a, o) => {
-                          o.assigned && a.push({ name: o.name, newProperty: 'Foo' });
-                          return a;
-                        }, [])} */}
-
-                        <td>{item.parent_process_output}</td>
+                        <td>{item.value2}</td>
                       </tbody>
                     </table>
 
@@ -752,39 +715,100 @@ const Table = (props) => {
   if (completeData) {
     completeData.map((item, key) => {
       pdfdata.push(
-        <>
-          <div class="card">
-            <h2 className="card-inside-title">
-              <strong>Process Name : {item.parent_process_name}</strong>
-            </h2>
+        <div class="card" >
+          <h2 className="card-inside-title">
+            <strong>Process Name : {item.value0}</strong>
+          </h2>
+          <div className="container-fluid" style={{ backgroundColor: "#F3F6F9" }}>
+            <div className="row clearfix">
 
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th style={{ width: "15%" }}>Input</th>
-                  <th>
-                    <tr style={{ width: "70%" }}>
-                      <div style={{ marginLeft: "28rem" }}>
-                        {item.parent_process_name}
-                      </div>
+              <div className="body ">
+
+
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Input</th>
+                      <th>
+                        <tr align="center">
+                          <div style={{ marginLeft: "28rem" }}>
+                            {item.value0}
+
+                          </div>
+                        </tr>
+                      </th>
+                      <th>Output</th>
                     </tr>
-                  </th>
-                  <th style={{ width: "15%" }}>Output</th>
-                </tr>
-              </thead>
-              <tbody>
-                <td>{item.parent_process_input}</td>
-                <td>
-                  {renderPDFTable(item.id)}
-                </td>
-                <td>{item.parent_process_output}</td>
-              </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                    <td>{item.value1}</td>
+
+                    <td>
+                      {ProcessData.length > 0 ? (
+                        <>
+                          <div class="table-responsive" id="Table">
+
+                            <table class="table table-bordered">
+                              <thead>
+                                {/* Child Component {childName} */}
+
+                                <tr>
+                                  <th>Sr. No.</th>
+                                  <th>Step Description</th>
+                                  <th>Transaction Time (Days / Hours)</th>
+                                  <th>Resource Allocated (Departments)</th>
+                                  <th>Name of Resources (Individuals)</th>
+                                </tr>
+                              </thead>
+                              {
+                                ProcessData.filter(({ parent_process_id, created_by }) => parent_process_id === item.value0 && created_by === s_id)
+                                  .map((itm, keys) => (
+                                    <>
+                                      {/* // console.log(itm) */}
+                                      <tbody>
+                                        <td>{itm.sr_no}</td>
+                                        <td>{itm.step_decription}</td>
+                                        <td>{itm.trasaction_time}</td>
+                                        <td>{itm.resource_allocated}</td>
+                                        <td>{itm.resource_name}</td>
+
+                                      </tbody>
+                                    </>
+
+                                  ))
+                              }
+                            </table>
+
+
+
+
+                          </div>
+
+                        </>
+                      ) : (null)
+                      }
+
+                    </td>
+
+
+                    <td>{item.value2}</td>
+                  </tbody>
+                </table>
+
+
+              </div>
+
+            </div>
           </div>
-        </>
+        </div>
       );
+
     });
   }
+
+
+
+
   return loading ? (
     <div sytle={{ display: "flex", justifyContent: "center" }}>
       <CircularProgress />
@@ -845,8 +869,8 @@ const Table = (props) => {
                             <thead>
                               <tr>
                                 <th>Vilakshan Journey</th>
-                                <th>Vilakshan Form</th>
-                                <th>VCCs (Cost Centres)</th>
+                                {/* <th>Vilakshan Form</th> */}
+                                {/* <th>VCCs (Cost Centres)</th> */}
                                 <th>Parent Process Name</th>
                                 <th>Parent Process Input</th>
                                 <th>Parent Process Output</th>
@@ -859,16 +883,16 @@ const Table = (props) => {
                             <tbody>
                               {completeData.map((item, key) => (
                                 <tr>
-                                  <td>{item.vilakshan_journey}</td>
-                                  <td>{item.vilakshan_form}</td>
-                                  <td>{item.vccs}</td>
-                                  <td>{item.parent_process_name}</td>
-                                  <td>{item.parent_process_input}</td>
-                                  <td>{item.parent_process_output}</td>
-                                  <td>{item.parent_process_owner}</td>
-                                  <td>{item.strategic_support_process}</td>
-                                  <td>{item.strategic_support_input}</td>
-                                  <td>{item.strategic_support_output}</td>
+                                  <td>{item.tag}</td>
+                                  {/* <td>{item.vilakshan_journey}</td> */}
+                                  <td>{item.value0}</td>
+                                  <td>{item.value1}</td>
+                                  <td>{item.value2}</td>
+                                  <td>{item.value3}</td>
+                                  <td>{item.value4}</td>
+                                  <td>{item.value5}</td>
+                                  <td>{item.value6}</td>
+                                  <td>{item.value7}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -899,111 +923,290 @@ const Table = (props) => {
 
 
           {/* <PDFExport paperSize="A2" margin="1cm" ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`} forcePageBreak=".page-break"> */}
-          {pdfShowDes > 0 ? (
-            <PDFExport
-              paperSize="A3"
-              margin="1cm"
-              ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
-              forcePageBreak=".page-break"
-            >
-              {/* <Modal.Header style={{ padding: "10px" }}>
-              <div className="col-md-12 row" >
-                <div className="col-md-6">
-                  <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
-                </div>
-                <div className="col-md-6 pageHeading" >
-                  System & Process
-                </div>
-              </div>
-              <Modal.Title id="example-modal-sizes-title-lg">
+          {completeData.length > 0 ? (
+            <>
+              {/* For Pdf -----------------------> */}
+              <div
+                style={{
+                  position: "absolute",
+                  left: "-3000px",
+                  top: 0,
+                }}
+              >
 
-              </Modal.Title>
-            </Modal.Header> */}
+                <PDFExport
+                  paperSize="A3"
+                  margin="1cm"
+                  ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
+                  forcePageBreak=".page-break"
+                >
+                  <Modal.Header style={{ padding: "10px" }}>
+                    <div className="col-md-12 row" >
+                      <div className="col-md-6">
+                        <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
+                      </div>
+                      <div className="col-md-6 pageHeading" >
+                        Financial Model
+                      </div>
+                    </div>
+                    <Modal.Title id="example-modal-sizes-title-lg">
 
-              <Modal.Header style={{ padding: "10px" }}>
-                <div className="col-md-12 row" >
-                  <div className="col-md-6">
-                    <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
-                  </div>
-                  <div className="col-md-6 pageHeading" >
-                    Business Model
-                  </div>
-                </div>
-                <Modal.Title id="example-modal-sizes-title-lg">
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
 
-                </Modal.Title>
-              </Modal.Header>
-
-
-              <Modal.Body>
-                {/* step process model */}
-                <div >
-                  <div id="divToPrint" className="mt4 pdfBody" >
-
-                    <div className="row clearfix">
-                      <div className="col-md-12">
-                        <div className="pdfHeader">Vilakshan Map</div>
-                        <div style={{ marginTop: 30 }}>
-                          <div class="table-responsive" id="Table">
-                            <table class="table table-bordered">
-                              <thead>
-                                <tr>
-                                  <th>Vilakshan Journey</th>
-                                  <th>Vilakshan Form</th>
-                                  <th>VCCs (Cost Centres)</th>
-                                  <th>Parent Process Name</th>
-                                  <th>Parent Process Input</th>
-                                  <th>Parent Process Output</th>
-                                  <th>Parent Process Owner</th>
-                                  <th>Strategic Support Process</th>
-                                  <th>Strategic Support Input</th>
-                                  <th>Strategic Support Output</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {completeData.map((item, key) => (
-                                  <tr>
-                                    <td>{item.vilakshan_journey}</td>
-                                    <td>{item.vilakshan_form}</td>
-                                    <td>{item.vccs}</td>
-                                    <td>{item.parent_process_name}</td>
-                                    <td>{item.parent_process_input}</td>
-                                    <td>{item.parent_process_output}</td>
-                                    <td>{item.parent_process_owner}</td>
-                                    <td>{item.strategic_support_process}</td>
-                                    <td>{item.strategic_support_input}</td>
-                                    <td>{item.strategic_support_output}</td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
+                    <div >
+                      <div id="divToPrint" className="mt4 pdfBody" >
+                        <div className="row clearfix">
+                          <div className="col-md-12">
+                            <div className="pdfHeader">Vilakshan Map</div>
+                            <div style={{ marginTop: 30 }}>
+                              <div class="table-responsive" id="Table">
+                                <table class="table-responsive table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>Vilakshan Journey</th>
+                                      {/* <th>Vilakshan Form</th> */}
+                                      {/* <th>VCCs (Cost Centres)</th> */}
+                                      <th>Parent Process Name</th>
+                                      <th>Parent Process Input</th>
+                                      <th>Parent Process Output</th>
+                                      <th>Parent Process Owner</th>
+                                      <th>Strategic Support Process</th>
+                                      <th>Strategic Support Input</th>
+                                      <th>Strategic Support Output</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {completeData.map((item, key) => (
+                                      <tr>
+                                        <td>{item.tag}</td>
+                                        {/* <td>{item.vilakshan_journey}</td> */}
+                                        <td>{item.value0}</td>
+                                        <td>{item.value1}</td>
+                                        <td>{item.value2}</td>
+                                        <td>{item.value3}</td>
+                                        <td>{item.value4}</td>
+                                        <td>{item.value5}</td>
+                                        <td>{item.value6}</td>
+                                        <td>{item.value7}</td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
                           </div>
+
+                          <div className="col-md-12">
+                            <div className="pdfHeader">Step By Step Process</div>
+                            <div style={{ marginTop: 30 }}>
+                              {completeData.map((item, key) => (
+                                <>
+                                  {/* <div className="pdfHeader">Step by Step Process</div> */}
+                                  <div style={{ marginTop: 30 }}>
+                                    <div class="table-responsive" id="Table">
+                                      <table class="table-responsive table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>Input</th>
+                                            <th>
+                                              <tr align="center">
+                                                <div style={{ marginLeft: "28rem" }}>
+                                                  {item.value0}
+                                                </div>
+                                              </tr>
+                                            </th>
+                                            <th>Output</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <td>{item.value1}</td>
+
+                                          <td>
+                                            {ProcessData.length > 0 ? (
+                                              <>
+                                                <div class="table-responsive" id="Table">
+                                                  <table class="table table-bordered">
+                                                    <thead>
+                                                      {/* Child Component {childName} */}
+
+                                                      <tr>
+                                                        <th>Sr. No.</th>
+                                                        <th>Step Description</th>
+                                                        <th>Transaction Time (Days / Hours)</th>
+                                                        <th>Resource Allocated (Departments)</th>
+                                                        <th>Name of Resources (Individuals)</th>
+                                                      </tr>
+                                                    </thead>
+                                                    {
+                                                      ProcessData.filter(({ parent_process_id, created_by }) => parent_process_id === item.value0 && created_by === s_id)
+                                                        .map((itm, keys) => (
+                                                          <>
+                                                            {/* // console.log(itm) */}
+                                                            <tbody>
+                                                              <td>{itm.sr_no}</td>
+                                                              <td>{itm.step_decription}</td>
+                                                              <td>{itm.trasaction_time}</td>
+                                                              <td>{itm.resource_allocated}</td>
+                                                              <td>{itm.resource_name}</td>
+
+                                                            </tbody>
+                                                          </>
+
+                                                        ))
+                                                    }
+                                                  </table>
+                                                </div>
+
+                                              </>
+                                            ) : (null)
+                                            }
+
+                                          </td>
+
+
+                                          <td>{item.value2}</td>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+
+                                </>
+                              ))}
+                            </div>
+                          </div>
+
+
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                <div >
-                  <div id="divToPrint" className="mt4 pdfBody" >
 
-                    <div className="row clearfix">
-                      <div className="col-md-12">
-                        <div className="pdfHeader">Step by Step Process</div>
-                        <div className="p-5">
-                          {pdfdata}
+
+
+                  </Modal.Body>
+
+                </PDFExport>
+              </div>
+
+
+
+
+              <div style={{ marginTop: 30 }}></div>
+              {/* {renderTable()} */}
+
+              {/* <div className="row clearfix">
+                              <div className="col-md-12">
+                                <div class="table-responsive" id="Table">
+                                  <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>Vilakshan and Associated Parameters</th>
+                                        <th>FY 2021-22</th>
+                                        <th>FY 2022-23</th>
+                                        <th>FY 2023-24</th>
+                                        <th>FY 2024-25</th>
+                                        <th>FY 2025-26</th>
+                                        <th>Action</th>
+
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {completeData.map((item, key) => (
+                                        <tr>
+                                          <td>{item.drishti_parameter}</td>
+                                          <td>{item.year_1}</td>
+                                          <td>{item.year_2}</td>
+                                          <td>{item.year_3}</td>
+                                          <td>{item.year_4}</td>
+                                          <td>{item.year_5}</td>
+                                          <td colspan="8">
+                                            <div class="btn-group">
+                                              <button
+                                                type="submit"
+                                                title="edit"
+                                                class="btn btn-success zmdi zmdi-edit waves-effect pull-left"
+                                                style={{ float: "left" }}
+                                                onClick={() => editfn(item.id)}
+                                              ></button>
+                                              <button
+                                                type="submit"
+                                                title="delete"
+                                                class="btn btn-danger zmdi zmdi-delete waves-effect"
+                                                onClick={() => deletefn(item.id)}
+                                              ></button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div> */}
+
+
+
+              <Modal
+                size="sm"
+                show={Mupdate}
+                onHide={() => setMupdate(false)}
+                aria-labelledby="example-modal-sizes-title-sm"
+              >
+                <Modal.Body >Form Update Successful</Modal.Body>
+              </Modal>
+              <div class="table-responsive" id="Table">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Vilakshan and Associated Parameters</th>
+                      <th>FYE 2021-22</th>
+                      <th>FYE 2022-23 </th>
+                      <th>FYE 2023-24 </th>
+                      <th>FYE 2024-25 </th>
+                      <th>FYE 2025-26 </th>
+                      <th style={{ textAlign: "center" }}>Action</th>
+                    </tr>
+                  </thead>
+                  {completeData.map((item, key) => (
+                    <tr>
+                      <td>{item.drishti_parameter}</td>
+                      <td>{item.year_1}</td>
+                      <td>{item.year_2}</td>
+                      <td>{item.year_3}</td>
+                      <td>{item.year_4}</td>
+                      <td>{item.year_5}</td>
+                      <td colspan="8">
+                        <div class="btn-group">
+                          <button
+                            type="submit"
+                            title="edit"
+                            class="btn zmdi zmdi-edit waves-effect pull-left"
+                            style={{ float: "left" }}
+                            onClick={() => editfn(item.id)}
+                          ></button>
+                          <button
+                            type="submit"
+                            title="delete"
+                            class="btn btn-danger zmdi zmdi-delete waves-effect"
+                            onClick={() => deletefn(item.id)}
+                          ></button>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Modal.Body>
-            </PDFExport>
-          ) : (null)}
+                      </td>
+                    </tr>
+                  ))}
+                </table>
+              </div>
+
+            </>
+          ) : (null)
+          }
 
         </div>
 
-      ) : (null)}
+      ) : (null)
+      }
       <div class="table-responsive" id="Table">
         {rows}
         <button

@@ -99,7 +99,7 @@ export default function Dashboard(props) {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/dashboard/${edId}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/dashboard/${edId}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData);
@@ -127,7 +127,7 @@ export default function Dashboard(props) {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/dashboard/${delId}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/dashboard/${delId}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         // seteditId(resData.data[0].id);
@@ -154,7 +154,7 @@ export default function Dashboard(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/dashboard/${edit_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/dashboard/${edit_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -217,7 +217,7 @@ export default function Dashboard(props) {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -230,7 +230,7 @@ export default function Dashboard(props) {
 
         }
       });
-    fetch(`http://localhost:9002/masters/dashboard/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/dashboard/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData.data);
@@ -265,7 +265,7 @@ export default function Dashboard(props) {
       body: rawrich,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/dashboard`, requestOptionsrichtext)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/dashboard`, requestOptionsrichtext)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData);
@@ -310,7 +310,7 @@ export default function Dashboard(props) {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/dashboard/verify/${Upid}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/dashboard/verify/${Upid}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           // console.log(resData);
@@ -418,7 +418,7 @@ export default function Dashboard(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())
@@ -499,7 +499,7 @@ export default function Dashboard(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())

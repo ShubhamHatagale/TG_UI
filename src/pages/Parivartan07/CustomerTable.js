@@ -122,7 +122,7 @@ const Table = (props) => {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti/${delId}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/${delId}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         // seteditId(resData.data[0].id);
@@ -148,7 +148,7 @@ const Table = (props) => {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti/${edit_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/${edit_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         seteditId(resData.data[0].id);
@@ -183,7 +183,7 @@ const Table = (props) => {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti/${edId}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/${edId}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData);
@@ -218,7 +218,7 @@ const Table = (props) => {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);

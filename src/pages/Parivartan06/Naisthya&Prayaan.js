@@ -118,7 +118,7 @@ export default function NaisthyaPrayaan() {
         body: rawrich,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/naisthya`, requestOptionsrichtext)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/naisthya`, requestOptionsrichtext)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData);
@@ -155,7 +155,7 @@ export default function NaisthyaPrayaan() {
         body: rawrich,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/naisthya/` + `${Upid}`, requestOptionsrichtext)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/naisthya/` + `${Upid}`, requestOptionsrichtext)
         .then((response) => response.json())
         .then((resData) => {
           console.log(resData);
@@ -184,7 +184,7 @@ export default function NaisthyaPrayaan() {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -198,7 +198,7 @@ export default function NaisthyaPrayaan() {
         }
       });
 
-    fetch(`http://localhost:9002/masters/naisthya/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/naisthya/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
 
@@ -249,7 +249,7 @@ export default function NaisthyaPrayaan() {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/naisthya/verify/${s_id}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/naisthya/verify/${s_id}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           // console.log(resData);
@@ -357,7 +357,7 @@ export default function NaisthyaPrayaan() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())
@@ -438,7 +438,7 @@ export default function NaisthyaPrayaan() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())

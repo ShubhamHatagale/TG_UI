@@ -89,7 +89,7 @@ export default function NaisthyaPrayaan(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/busiPlayground2`,
+        `https://parivartan.transganization.com/nodejs/masters/busiPlayground2`,
         requestOptionsrichtext
       )
         .then((response) => response.json())
@@ -126,7 +126,7 @@ export default function NaisthyaPrayaan(props) {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/busiPlayground2/` + `${Upid}`,
+        `https://parivartan.transganization.com/nodejs/masters/busiPlayground2/` + `${Upid}`,
         requestOptionsrichtext
       )
         .then((response) => response.json())
@@ -167,7 +167,7 @@ export default function NaisthyaPrayaan(props) {
           body: raw,
           redirect: "follow",
         };
-        fetch(`http://localhost:9002/masters/busiPlayground2` + `${Upid}`, requestOptions)
+        fetch(`https://parivartan.transganization.com/nodejs/masters/busiPlayground2` + `${Upid}`, requestOptions)
           .then((response) => response.json())
           .then((resData) => {
             console.log(resData);
@@ -205,7 +205,7 @@ export default function NaisthyaPrayaan(props) {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/busiPlayground2/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/busiPlayground2/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);
@@ -232,7 +232,7 @@ export default function NaisthyaPrayaan(props) {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/prayaan/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/prayaan/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);

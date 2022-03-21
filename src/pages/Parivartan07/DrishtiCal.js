@@ -171,7 +171,7 @@ export default function Form() {
       body: raw,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti/${edId}`, requestOptions)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/${edId}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData);
@@ -247,7 +247,7 @@ export default function Form() {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti/${delId}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/${delId}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         // seteditId(resData.data[0].id);
@@ -273,7 +273,7 @@ export default function Form() {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti/${edit_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/${edit_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         seteditId(resData.data[0].id);
@@ -323,7 +323,7 @@ export default function Form() {
       body: rawrich,
       redirect: "follow",
     };
-    fetch(`http://localhost:9002/masters/drishti`, requestOptionsrichtext)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti`, requestOptionsrichtext)
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData);
@@ -358,7 +358,7 @@ export default function Form() {
       redirect: "follow",
     };
     fetch(
-      `http://localhost:9002/masters/parivartan_user/user/${s_id}`,
+      `https://parivartan.transganization.com/nodejs/masters/parivartan_user/user/${s_id}`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -373,7 +373,7 @@ export default function Form() {
       });
 
     fetch(
-      `http://localhost:9002/masters/drishti/user/1`,
+      `https://parivartan.transganization.com/nodejs/masters/drishti/user/1`,
       requestOptionsget
     )
       .then((response) => response.json())
@@ -385,7 +385,7 @@ export default function Form() {
 
       });
 
-    fetch(`http://localhost:9002/masters/drishti/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
         // console.log(resData.data);
@@ -422,7 +422,7 @@ export default function Form() {
         body: raw,
         redirect: "follow",
       };
-      fetch(`http://localhost:9002/masters/drishti/verify/${Upid}`, requestOptions)
+      fetch(`https://parivartan.transganization.com/nodejs/masters/drishti/verify/${Upid}`, requestOptions)
         .then((response) => response.json())
         .then((resData) => {
           // console.log(resData);
@@ -530,7 +530,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())
@@ -611,7 +611,7 @@ export default function Form() {
         redirect: "follow",
       };
       fetch(
-        `http://localhost:9002/masters/beliverConceptsSend`,
+        `https://parivartan.transganization.com/nodejs/masters/beliverConceptsSend`,
         requestOptions
       )
         .then((response) => response.json())

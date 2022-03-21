@@ -4,7 +4,7 @@ export const getDiscoveryData = async () => {
   var s_id = localStorage.getItem('tr_id')
 
   let res = await fetch(
-    `http://localhost:9002/masters/discovery/user/${s_id}`,
+    `https://parivartan.transganization.com/nodejs/masters/discovery/user/${s_id}`,
     {
       method: "get",
       headers: myGetHeaders
