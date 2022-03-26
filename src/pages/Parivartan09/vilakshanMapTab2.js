@@ -35,7 +35,7 @@ export default function Form(props) {
   const [Mupdate, setMupdate] = useState(false);
   const [errorshow, seterrorshow] = useState(false);
 
-  let [DrpValues, setDrpValues] = useState("");
+  const [DrpValues, setDrpValues] = useState("");
 
   let no = holdValue.length;
   const inputs = [];
@@ -263,7 +263,7 @@ export default function Form(props) {
       redirect: "follow",
     };
     fetch(
-      `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab2/${Upid}`,
+      `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab2/${s_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -374,7 +374,7 @@ export default function Form(props) {
         redirect: "follow",
       };
       fetch(
-        `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab2/${Upid}`,
+        `https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab2/${s_id}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -447,6 +447,7 @@ export default function Form(props) {
                           inputListFinal.splice(desI, 0, inputListFinal.splice(srcI, 1)[0]);
                           List.saveList(inputListFinal);
                           console.log(inputListFinal)
+                          GetallRecords()
                           updateJson(inputListFinal);
                         }
                       }}
@@ -455,7 +456,7 @@ export default function Form(props) {
 
                         <div className="row clearfix flex-nowrap">
                           <div className="col-lg-2">
-                            <div className="form-group">
+                            <div className="form-group text-center">
                               <strong>Select Vilakshan Journey</strong>
                             </div>
                             {/* {org_name} */}
@@ -482,7 +483,7 @@ export default function Form(props) {
                             </div>
                           </div>
                           <div className="col-lg-2">
-                            <div className="form-group">
+                            <div className="form-group text-center">
                               <strong>Strategic Support Process</strong>
                             </div>
                           </div>
@@ -492,13 +493,10 @@ export default function Form(props) {
                             </div>
                           </div>
                           <div className="col-lg-2">
-                            <div className="form-group">
+                            <div className="form-group text-center">
                               <strong>Strategic Support Output</strong>
                             </div>
                           </div>
-
-
-
                         </div>
 
 
@@ -531,13 +529,15 @@ export default function Form(props) {
                                         <div className="row clearfix flex-nowrap">
                                           {Array.from({ length: 1 }, (item, index) => {
                                             return (
+                                              // completeData.length > 0 && DrpValues.length > 0 ? (
                                               <>
                                                 {DrpValues.length > 0 ? (
                                                   <div className="col-lg-2">
                                                     <div className="form-group">
                                                       <div className="row clearfix flex-nowrap">
                                                         <DragHandle {...provided.dragHandleProps} className="mr-2" />
-                                                        <select name="tag" id="add_tag" value={x[`tag`]} className="form-control" onChange={(e) => handleInputChange(e, i)}>
+                                                        <select name="tag" className="form-control" name={`tag${index}`} id={x[`${index}`]} value={x[`tag${index}`]} onChange={(e) => handleInputChange(e, i)}>
+                                                          <option value=""></option>
                                                           {DrpValues.map((item, key) => (
                                                             // console.log(item.vilakshan_journey)
                                                             <option value={item.value0}>{item.value0}</option>
@@ -548,6 +548,8 @@ export default function Form(props) {
                                                   </div>
                                                 ) : (null)}
                                               </>
+                                              // ) : (null)
+
                                             );
                                           })
                                           }

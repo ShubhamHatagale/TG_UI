@@ -12,7 +12,9 @@ import Editor from "../../components/SunEditor"
 import Modal from "react-bootstrap/Modal";
 
 const AccrodionTabs = (props) => {
-  let formData = props.AllData;
+  var s_id = localStorage.getItem('tr_id')
+
+  const formData = props.AllData;
   let optionData = props.Optiondata;
   let rows = [];
   let [Briefblock, setBriefblock] = useState('')
@@ -27,33 +29,23 @@ const AccrodionTabs = (props) => {
   const [Accrodianid, setAccrodianid] = useState('');
   const [CMMid, setCMMid] = useState('');
   const [smShow, setSmShow] = useState(false);
+  const [objIndex, setobjIndex] = useState();
+  const [InputListFinal, setInputListFinal] = useState();
+  const [Madd, setMadd] = useState(false);
+  const [Mupdate, setMupdate] = useState(false);
+  const [Mdelete, setMdelete] = useState(false);
+  const [Error, setError] = useState("");
 
   const handleClose = () => {
     setOpen(false);
     setAccrodianid('')
   };
-  const handleChangeEditorBrief = (newContent) => {
-    console.log(newContent)
-    setBriefblock(newContent);
-  }
+
   const handleChangestartDate = (event) => {
     console.log(event.target.value)
     setstartDate(event.target.value);
   }
-  const handleChangeExpectedDate = (event) => {
-    setexpectedDate(event.target.value);
-    let Expected = event.target.value;
-    var date1 = startDate;
-    var date2 = Expected;
-    // First we split the values to arrays date1[0] is the year, [1] the month and [2] the day
-    date1 = date1.split('-');
-    date2 = date2.split('-');
-    // Now we convert the array to a Date object, which has several helpful methods
-    var dt1 = new Date(date1[0], date1[1], date1[2]);
-    var dt2 = new Date(date2[0], date2[1], date2[2]);
-    setweaks(diff_weeks(dt1, dt2));
-    setdays(Math.floor((dt2.getTime() - dt1.getTime()) / (1000 * 60 * 60 * 24)));
-  }
+
   const handleChangeWeaks = (event) => {
     console.log(event.target.value)
 
@@ -64,10 +56,6 @@ const AccrodionTabs = (props) => {
 
     setdays(event.target.value);
   }
-  const handleChangeOwner = (event) => {
-    console.log(event.target.value)
-    setownership(event.target.value);
-  }
   const GetFormattedDate = (datepara) => {
     var todayTime = new Date(datepara);
     var month = todayTime.getMonth() + 1;
@@ -76,50 +64,145 @@ const AccrodionTabs = (props) => {
     return month + "/" + day + "/" + year;
   }
 
-  const AddBriefBlock = (id) => {
-    setBriefblock("")
-    setdays("");
-    setownership("");
-    setstartDate("");
-    setexpectedDate("");
-    setweaks("");
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var requestOptionsget = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-    fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${id}`, requestOptionsget)
-      .then((response) => response.json())
-      .then((resData) => {
-        setCMMid(id)
-        console.log("Fetched dthe api", resData.data);
-        let response = resData.data;
-        setcompleteData(resData.data)
-        if (response.length !== 0) {
-          response.map((item) => {
-            console.log("Total Welaks", item.weeks)
-            console.log(item.ownership)
-            console.log(item.brief_building_blocks)
-            setBriefblock(item.brief_building_blocks)
-            setdays(item.days);
-            setownership(item.ownership);
-            let dateMDY = GetFormattedDate(item.start_date);
-            console.log(dateMDY)
-            setstartDate(item.start_date);
-            let enddateMDY = new Date(item.expected_closure_date);
-            let dateMDYcon = `${enddateMDY.getFullYear()}-${enddateMDY.getMonth() + 1}-${enddateMDY.getDate()}`;
-            setexpectedDate(item.expected_closure_date);
-            setweaks(item.weeks);
-            setOpen(true);
-            setAccrodianid(id);
-          })
-        } else {
-          setOpen(true);
-        }
-      })
-      .catch((error) => console.log("error", error))
+
+
+
+  const handleChangeEditorBrief = (newContent, d) => {
+    console.log(newContent)
+    // console.log(d)
+
+    setBriefblock(newContent);
+
+    // const { name, value } = e.target;
+    const list = [...formData];
+    console.log("Here is the Value---1>", list);
+    list[objIndex]['richTextVal'] = newContent;
+    console.log("Here is the Value---1>", list);
+
+    console.log(list[objIndex][newContent]);
+    console.log("Here is the Value---1>", list);
+
+    console.log(newContent + "val");
+
+    setInputListFinal(list);
+    console.log(InputListFinal)
+    console.log(list)
+
+
+
+  }
+
+
+  const handleChangeExpectedDate = (e) => {
+    console.log(e.target.value)
+    setexpectedDate(e.target.value);
+    let Expected = e.target.value;
+    var date1 = startDate;
+    var date2 = Expected;
+    // First we split the values to arrays date1[0] is the year, [1] the month and [2] the day
+    date1 = date1.split('-');
+    date2 = date2.split('-');
+    // Now we convert the array to a Date object, which has several helpful methods
+    var dt1 = new Date(date1[0], date1[1], date1[2]);
+    var dt2 = new Date(date2[0], date2[1], date2[2]);
+    setweaks(diff_weeks(dt1, dt2));
+    setdays(Math.floor((dt2.getTime() - dt1.getTime()) / (1000 * 60 * 60 * 24)));
+
+
+    const { name, value } = e.target;
+    const list = [...formData];
+    console.log("Here is the Value---1>", list);
+    list[objIndex][name] = value;
+    list[objIndex]['weeks'] = diff_weeks(dt1, dt2);
+    list[objIndex]['days'] = Math.floor((dt2.getTime() - dt1.getTime()) / (1000 * 60 * 60 * 24));
+
+    console.log(list[objIndex]['name']);
+    console.log(value + "val");
+
+    setInputListFinal(list);
+
+
+  }
+
+
+  const handleInputChange = (e) => {
+    console.log(e.target.value)
+    console.log(e.target.name)
+    let startDt = e.target.value;
+    setstartDate(startDt)
+    const { name, value } = e.target;
+    const list = [...formData];
+    console.log("Here is the Value---1>", list);
+    list[objIndex][name] = value;
+    console.log(list[objIndex][name]);
+    console.log(value + "val");
+    setInputListFinal(list);
+
+  }
+
+
+  const AddBriefBlock = (fdata, item, key) => {
+    setBriefblock(item.richTextVal ? item.richTextVal : "")
+    setdays(item.days ? item.days : "");
+    setownership(item.ownership ? item.ownership : "");
+    setstartDate(item.start_date ? item.start_date : "");
+    setexpectedDate(item.start_date ? item.start_date : "");
+    setweaks(item.weeks ? item.weeks : "");
+    // list[objIndex]['days'] = "value";
+    // delete InputListFinal[objIndex]['days'];
+    // delete formData[objIndex]['days'];
+
+    console.log(fdata)
+    console.log(item.ownership)
+    console.log(key)
+    console.log(formData)
+    setobjIndex(key)
+
+    setOpen(true);
+
+    // setBriefblock("")
+    // setdays("");
+    // setownership("");
+    // setstartDate("");
+    // setexpectedDate("");
+    // setweaks("");
+    // var myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
+    // var requestOptionsget = {
+    //   method: "GET",
+    //   headers: myHeaders,
+    //   redirect: "follow",
+    // };
+    // fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${id}`, requestOptionsget)
+    //   .then((response) => response.json())
+    //   .then((resData) => {
+    //     setCMMid(id)
+    //     console.log("Fetched dthe api", resData.data);
+    //     let response = resData.data;
+    //     setcompleteData(resData.data)
+    //     if (response.length !== 0) {
+    //       response.map((item) => {
+    //         console.log("Total Welaks", item.weeks)
+    //         console.log(item.ownership)
+    //         console.log(item.brief_building_blocks)
+    //         setBriefblock(item.brief_building_blocks)
+    //         setdays(item.days);
+    //         setownership(item.ownership);
+    //         let dateMDY = GetFormattedDate(item.start_date);
+    //         console.log(dateMDY)
+    //         setstartDate(item.start_date);
+    //         let enddateMDY = new Date(item.expected_closure_date);
+    //         let dateMDYcon = `${enddateMDY.getFullYear()}-${enddateMDY.getMonth() + 1}-${enddateMDY.getDate()}`;
+    //         setexpectedDate(item.expected_closure_date);
+    //         setweaks(item.weeks);
+    //         setOpen(true);
+    //         setAccrodianid(id);
+    //       })
+    //     } else {
+    //       setOpen(true);
+    //     }
+    //   })
+    //   .catch((error) => console.log("error", error))
   }
   const diff_weeks = (dt2, dt1) => {
     var diff = (dt2.getTime() - dt1.getTime()) / 1000;
@@ -128,75 +211,99 @@ const AccrodionTabs = (props) => {
   }
 
   const HandleSubmit = () => {
-    setOpen(false);
+    console.log(InputListFinal)
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var rawrich = JSON.stringify({
-      brief_building_blocks: Briefblock,
-      ownership: ownership,
-      start_date: startDate,
-      expected_closure_date: expectedDate,
-      weeks: weaks,
-      days: days,
-      cmmid: CMMid,
-      email_id: "1",
-      created_by: "2"
-    })
-    // var myHeadersGet = new Headers();
-    // myHeadersGet.append("Content-Type", "application/json");
-    // var requestOptionsget = {
-    //   method: "GET",
-    //   headers: myHeaders,
-    //   redirect: "follow",
-    // };
-    // fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${Accrodianid}`, requestOptionsget)
-    //   .then((response) => response.json())
-    //   .then((resData) => {
-    //     console.log("all Get fetched ", resData.data)
-    //     setpostorupdate(resData.data)
-    //   })
-    if (completeData.length === 0) {
-      var requestOptionsget = {
-        method: "POST",
-        headers: myHeaders,
-        body: rawrich,
-        redirect: "follow",
-      };
-      fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3`, requestOptionsget)
-        .then((response) => response.json())
-        .then((resData) => {
-          console.log(resData.data);
-          if (resData.status == 200) {
-            setSmShow(true);
-            setTimeout(() => {
-              setSmShow(false);
-            }, 1000)
-            console.log("Data Added succesfully POSt")
-          }
-        })
-        .catch((error) => console.log("error", error))
-    } else {
-      var requestOptionsget = {
-        method: "PUT",
-        headers: myHeaders,
-        body: rawrich,
-        redirect: "follow",
-      };
-      fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${Accrodianid}`, requestOptionsget)
-        .then((response) => response.json())
-        .then((resData) => {
-          console.log(resData.data);
-          if (resData.status == 200) {
-            console.log("Data Added succesfully Update")
-            setSmShow(true);
-            setTimeout(() => {
-              setSmShow(false);
-            }, 1000)
-          }
-        })
-        .catch((error) => console.log("error", error))
-    }
+    var raw = JSON.stringify({
+      features: InputListFinal,
+      email_id: s_id,
+      created_by: s_id,
+    });
+    var requestOptions = {
+      method: "PUT",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+    fetch(
+      `https://parivartan.transganization.com/nodejs/masters/customerTab2/${s_id}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((resData) => {
+        console.log(resData);
+        if (resData.status == 200) {
+          console.log("Values Submitted Succesfully==>");
+          setError("Form Saved Successfully");
+          setTimeout(() => {
+            setError("");
+          }, 2000)
+          // GetallRecords();
+          console.log("Values Submitted Succesfully==>>>>>>>>>>>>");
+
+        }
+      })
+      .catch((error) => console.log("error", error));
+
+    // setOpen(false);
+    // var myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
+    // var rawrich = JSON.stringify({
+    //   brief_building_blocks: Briefblock,
+    //   ownership: ownership,
+    //   start_date: startDate,
+    //   expected_closure_date: expectedDate,
+    //   weeks: weaks,
+    //   days: days,
+    //   cmmid: CMMid,
+    //   email_id: "1",
+    //   created_by: "2"
+    // })
+
+    // if (completeData.length === 0) {
+    //   var requestOptionsget = {
+    //     method: "POST",
+    //     headers: myHeaders,
+    //     body: rawrich,
+    //     redirect: "follow",
+    //   };
+    //   fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3`, requestOptionsget)
+    //     .then((response) => response.json())
+    //     .then((resData) => {
+    //       console.log(resData.data);
+    //       if (resData.status == 200) {
+    //         setSmShow(true);
+    //         setTimeout(() => {
+    //           setSmShow(false);
+    //         }, 1000)
+    //         console.log("Data Added succesfully POSt")
+    //       }
+    //     })
+    //     .catch((error) => console.log("error", error))
+    // } else {
+    //   var requestOptionsget = {
+    //     method: "PUT",
+    //     headers: myHeaders,
+    //     body: rawrich,
+    //     redirect: "follow",
+    //   };
+    //   fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${Accrodianid}`, requestOptionsget)
+    //     .then((response) => response.json())
+    //     .then((resData) => {
+    //       console.log(resData.data);
+    //       if (resData.status == 200) {
+    //         console.log("Data Added succesfully Update")
+    //         setSmShow(true);
+    //         setTimeout(() => {
+    //           setSmShow(false);
+    //         }, 1000)
+    //       }
+    //     })
+    //     .catch((error) => console.log("error", error))
+    // }
   }
+
   if (formData) {
     formData.map((item, key) => {
       if (item.tag0 == "Current Process Improvement") {
@@ -271,7 +378,7 @@ const AccrodionTabs = (props) => {
             <div style={{ marginTop: 20 }}>
             </div>
             <div className="col-md-2">
-              <button type="button" class="btn addbtndark waves-effect" onClick={() => AddBriefBlock(item.id)}>ADD </button>
+              <button type="button" class="btn addbtndark waves-effect" onClick={() => AddBriefBlock(formData, item, key)}>ADD </button>
             </div>
             <div style={{ marginTop: 20 }}>
             </div>
@@ -280,36 +387,72 @@ const AccrodionTabs = (props) => {
       }
     })
   }
+
+
+
   return (
     <div className="card">
       <Modal
         size="sm"
-        show={smShow}
-        onHide={() => setSmShow(false)}
+        show={Mupdate}
+        onHide={() => setMupdate(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
+        <Modal.Body >Form Update Successful</Modal.Body>
+      </Modal>
+
+      <Modal
+        size="sm"
+        show={Mdelete}
+        onHide={() => setMdelete(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
+        <Modal.Body >Form Row Deleted Successfully</Modal.Body>
+      </Modal>
+
+      <Modal
+        size="sm"
+        show={Madd}
+        onHide={() => setMadd(false)}
         aria-labelledby="example-modal-sizes-title-sm"
       >
         <Modal.Body >Form Saved Successful</Modal.Body>
       </Modal>
+
+
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth maxWidth="lg">
-        <DialogTitle id="form-dialog-title">Customer Mind Map</DialogTitle>
+         <DialogTitle id="form-dialog-title">Customer Mind Map</DialogTitle>
+        <DialogTitle className='text-center text-danger' id="form-dialog-title">{Error}</DialogTitle>
+
+
         <DialogContent>
           <h6 className="card-inside-title">
             <strong>Brief Building Blocks</strong>
           </h6>
-          <Editor contents={Briefblock} getValue={handleChangeEditorBrief} />
+          <Editor contents={Briefblock} name={`value${5}`} getValue={handleChangeEditorBrief} />
           <div style={{ marginTop: 10 }}>
           </div>
           <h6 className="card-inside-title">
             <strong>Ownership</strong>
           </h6>
+          {/* {formData.map((x, i) => {
+            return ( */}
+          {/* {console.log(formData[objIndex].[`ownership`])} */}
+          {/* {completeData? ( */}
           <div className="form-group">
             <input
               type="text"
               className="form-control"
-              onChange={handleChangeOwner}
+              name={`ownership`}
+              // value={formData[objIndex].[`ownership`]}
+              onChange={handleInputChange}
               Value={ownership}
             />
           </div>
+          {/* ) : (null)} */}
+
+          {/* )
+          })} */}
           <div style={{ marginTop: 10 }}>
           </div>
           <h6 className="card-inside-title">
@@ -318,8 +461,9 @@ const AccrodionTabs = (props) => {
           <input
             type="date"
             className="form-control"
+            name='start_date'
             Value={startDate}
-            onChange={e => handleChangestartDate(e)}
+            onChange={e => handleInputChange(e)}
           />
           <div style={{ marginTop: 10 }}>
           </div>
@@ -329,6 +473,7 @@ const AccrodionTabs = (props) => {
           <input
             type="date"
             className="form-control"
+            name='end_date'
             Value={expectedDate}
             onChange={handleChangeExpectedDate}
           />

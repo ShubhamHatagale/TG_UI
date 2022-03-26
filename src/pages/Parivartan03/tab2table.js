@@ -237,7 +237,7 @@ const Table = props => {
         inputList.map((comp, key) => {
             competition.push(comp);
         });
-    
+
         customerList.map((item, key) => {
             if (Object.keys(item).length === 3) {
                 Values.push(item);
@@ -248,12 +248,12 @@ const Table = props => {
                 }
             }
         });
-    
+
         var allObject = [...competition, ...Values];
         console.log("all datra", allObject);
         console.log("all data inputlist", inputListFinal);
         console.log("all data inputlist2", inputListFinal2);
-    
+
         if (completeData.length === 0) {
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
@@ -276,8 +276,8 @@ const Table = props => {
                 .then((resData) => {
                     console.log(resData);
                     props.OnValidate1(true)
-    
-    
+
+
                     if (resData.status == 200) {
                         console.log("Values Submitted Succesfully==>");
                         // setMadd(true);
@@ -286,11 +286,11 @@ const Table = props => {
                         //   setMadd(false);
                         // }, 1000)
                         props.OnValidateTab2(true);
-    
-    
-    
+
+
+
                         //             props.OnValidate1(true)
-    
+
                     }
                 })
                 .catch((error) => console.log("error", error));
@@ -323,15 +323,15 @@ const Table = props => {
                         // }, 1000)
                         // props.OnValidate1(true)
                         props.OnValidateTab2(true);
-    
-    
-    
+
+
+
                         // GetallRecords();
                     }
                 })
                 .catch((error) => console.log("error", error));
         }
-    
+
     };
 
     return (

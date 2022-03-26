@@ -364,8 +364,6 @@ const Table = props => {
             </Modal>
 
             <div className="row clearfix" style={{ backgroundColor: "#F3F6F9" }}>
-
-
                 <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="card p-4 mt-2">
                         {console.log(completeData.length)}
@@ -439,7 +437,6 @@ const Table = props => {
                                                                     key={x.id}
                                                                     draggableId={"draggable-" + i}
                                                                     index={i}
-                                                                // recId={x.id}
                                                                 >
                                                                     {(provided, snapshot) => (
                                                                         <ListItem

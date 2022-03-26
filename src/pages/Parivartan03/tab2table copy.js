@@ -170,3 +170,117 @@ const Table = props => {
     )
 }
 export default Table;
+
+
+
+<button type="button" class="btn finalizebtn btn-square waves-effect" onClick={OnSubmitHandle}>FINALIZE CMM</button>
+  const OnSubmitHandle = () => {
+    for (var i = 0; i < inputListFinal.length; i++) {
+        if (inputListFinal[i].value0 == "" || !inputListFinal[i].value0) {
+            // seterrorshow(true);
+            return false;
+        }
+    }
+    setCustomerList([...customerList], inputList);
+    let competition = [];
+    let Values = [];
+    // allObject.push(inputList);
+    inputList.map((comp, key) => {
+        competition.push(comp);
+    });
+
+    customerList.map((item, key) => {
+        if (Object.keys(item).length === 3) {
+            Values.push(item);
+            for (var key in item) {
+                console.log("Key Value is", item);
+                console.log("Key Value is", item[key]);
+                console.log("Key Value is", allObject);
+            }
+        }
+    });
+
+    var allObject = [...competition, ...Values];
+    console.log("all datra", allObject);
+    console.log("all data inputlist", inputListFinal);
+    console.log("all data inputlist2", inputListFinal2);
+
+    if (completeData.length === 0) {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({
+            features: inputListFinal,
+            email_id: s_id,
+            created_by: s_id,
+        });
+        var requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow",
+        };
+        fetch(
+            `https://parivartan.transganization.com/nodejs/masters/customerTab2`,
+            requestOptions
+        )
+            .then((response) => response.json())
+            .then((resData) => {
+                console.log(resData);
+                props.OnValidate1(true)
+
+
+                if (resData.status == 200) {
+                    console.log("Values Submitted Succesfully==>");
+                    // setMadd(true);
+                    // setMadd(false);
+                    // setTimeout(() => {
+                    //   setMadd(false);
+                    // }, 1000)
+                    props.OnValidateTab2(true);
+
+
+
+                    //             props.OnValidate1(true)
+
+                }
+            })
+            .catch((error) => console.log("error", error));
+    } else {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({
+            features: inputListFinal,
+            email_id: s_id,
+            created_by: s_id,
+        });
+        var requestOptions = {
+            method: "PUT",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow",
+        };
+        fetch(
+            `https://parivartan.transganization.com/nodejs/masters/customerTab2/${s_id}`,
+            requestOptions
+        )
+            .then((response) => response.json())
+            .then((resData) => {
+                console.log(resData);
+                if (resData.status == 200) {
+                    // console.log("Values Submitted Succesfully==>");
+                    // setMupdate(true);
+                    // setTimeout(() => {
+                    //   setMupdate(false);
+                    // }, 1000)
+                    // props.OnValidate1(true)
+                    props.OnValidateTab2(true);
+
+
+
+                    // GetallRecords();
+                }
+            })
+            .catch((error) => console.log("error", error));
+    }
+
+};

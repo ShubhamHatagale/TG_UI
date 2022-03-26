@@ -71,6 +71,7 @@ export default function ScrollableTabsButtonAuto() {
   const [holdValue, setholdValue] = useState([]);
   const [allOptions, setallOptions] = useState([]);
   const [beliverName, setbeliverName] = useState("");
+  const [pdfShowDes, setpdfShowDes] = useState(0);
 
   const regEx = /(<([^>]+)>)/ig;
   const GetFormattedDate = (datepara) => {
@@ -146,10 +147,18 @@ export default function ScrollableTabsButtonAuto() {
   }
 
   const pdfExportComponent = React.useRef(null);
+
   const exportPDFWithMethod = () => {
-    if (pdfExportComponent.current) {
-      pdfExportComponent.current.save();
-    }
+    setpdfShowDes(1);
+    setTimeout(() => {
+      // alert(pdfShowDes);
+      if (pdfExportComponent.current) {
+        pdfExportComponent.current.save();
+        setTimeout(() => {
+          setpdfShowDes(0);
+        }, 300)
+      }
+    }, 300)
   };
 
   const handleChange = (event, newValue) => {
@@ -254,110 +263,114 @@ export default function ScrollableTabsButtonAuto() {
                             color: "black"
                           }}
                         >
-                          <PDFExport
-                            paperSize="A4"
-                            margin="1cm"
-                            ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
-                            forcePageBreak=".page-break"
-                          >
-                            <Modal.Header style={{ padding: "10px" }}>
-                              <div className="col-md-12 row" >
-                                <div className="col-md-6">
-                                  <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
-                                </div>
-                                <div className="col-md-6 pageHeading" >
-                                  Customer
-                                </div>
-                              </div>
-                              <Modal.Title id="example-modal-sizes-title-lg">
+                          {pdfShowDes > 0 ? (
 
-                              </Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                              <div >
-                                <div id="divToPrint" className="mt4 pdfBody"  >
+                            <PDFExport
+                              paperSize="A4"
+                              margin="1cm"
+                              ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
+                              forcePageBreak=".page-break"
+                            >
+                              <Modal.Header style={{ padding: "10px" }}>
+                                <div className="col-md-12 row" >
+                                  <div className="col-md-6">
+                                    <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
+                                  </div>
+                                  <div className="col-md-6 pageHeading" >
+                                    Customer
+                                  </div>
+                                </div>
+                                <Modal.Title id="example-modal-sizes-title-lg">
 
-                                  <div className="row clearfix" >
-                                    <div className="col-md-12">
-                                      <div className="pdfHeader" >Customer Mind Map</div>
-                                      <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                          <thead>
-                                            <tr>
-                                              <th>Questions Appearing in Mind Journey</th>
-                                              <th>Questions Appearing in Mind of</th>
-                                              <th data-breakpoints="sm xs">who Gives Answer</th>
-                                              <th data-breakpoints="sm xs">Possible Answer</th>
-                                              <th data-breakpoints="sm xs md">Choice Made</th>
-                                              <th data-breakpoints="sm xs md">Point to be considered</th>
-                                            </tr>
-                                          </thead>
-                                          {completeData.map((item, i) => {
-                                            return <tr>
-                                              <td><h5>{item.value0}</h5></td>
-                                              <td><h5>{item.value1}</h5></td>
-                                              <td><h5>{item.value2}</h5></td>
-                                              <td><h5>{item.value3}</h5></td>
-                                              <td><h5>{item.value4}</h5></td>
-                                              <td><h5>{item.tag0}</h5></td>
-                                            </tr>;
-                                          })}
-                                        </table>
+                                </Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                                <div >
+                                  <div id="divToPrint" className="mt4 pdfBody"  >
+
+                                    <div className="row clearfix" >
+                                      <div className="col-md-12">
+                                        <div className="pdfHeader" >Customer Mind Map</div>
+                                        <div class="table-responsive">
+                                          <table class="table table-bordered">
+                                            <thead>
+                                              <tr>
+                                                <th>Questions Appearing in Mind Journey</th>
+                                                <th>Questions Appearing in Mind of</th>
+                                                <th data-breakpoints="sm xs">who Gives Answer</th>
+                                                <th data-breakpoints="sm xs">Possible Answer</th>
+                                                <th data-breakpoints="sm xs md">Choice Made</th>
+                                                <th data-breakpoints="sm xs md">Point to be considered</th>
+                                              </tr>
+                                            </thead>
+                                            {completeData.map((item, i) => {
+                                              console.log(item)
+                                              return <tr>
+                                                <td><h5>{item.value0}</h5></td>
+                                                <td><h5>{item.value1}</h5></td>
+                                                <td><h5>{item.value2}</h5></td>
+                                                <td><h5>{item.value3}</h5></td>
+                                                <td><h5>{item.value4}</h5></td>
+                                                <td><h5>{item.tag0}</h5></td>
+                                              </tr>;
+                                            })}
+                                          </table>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div className="row clearfix" className="page-break">
-                                    <div className="col-md-12">
-                                      <div className="pdfHeader">Customer Mind Map</div>
-                                      <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                          <thead>
-                                            <tr>
-                                              <th>Point to be Considered</th>
-                                              <th>Brief Building Blocks</th>
-                                              <th data-breakpoints="sm xs">Owner Ship</th>
-                                            </tr>
-                                          </thead>
-                                          {allOptions.map((item, i) => {
-                                            return <tr>
-                                              <td><h5>{item.Point}</h5></td>
-                                              <td><h5>{item.Briefblock}</h5></td>
-                                              <td><h5>{item.Owener}</h5></td>
-                                            </tr>;
-                                          })}
-                                        </table>
+                                    <div className="row clearfix" className="page-break">
+                                      <div className="col-md-12">
+                                        <div className="pdfHeader">Customer Mind Map</div>
+                                        <div class="table-responsive">
+                                          <table class="table table-bordered">
+                                            <thead>
+                                              <tr>
+                                                <th>Point to be Considered</th>
+                                                <th>Brief Building Blocks</th>
+                                                <th data-breakpoints="sm xs">Owner Ship</th>
+                                              </tr>
+                                            </thead>
+                                            {completeData.map((item, i) => {
+                                              return <tr>
+                                                <td><h5>{item.tag0}</h5></td>
+                                                <td><h5>{item.richTextVal ? item.richTextVal.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ') : ""}</h5></td>
+                                                <td><h5>{item.ownership}</h5></td>
+                                              </tr>;
+                                            })}
+                                          </table>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div className="row clearfix" className="page-break">
-                                    <div className="col-md-12">
-                                      <div className="pdfHeader" >Customer Mind Map</div>
-                                      <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                          <thead>
-                                            <tr>
-                                              <th data-breakpoints="sm xs">Start Date</th>
-                                              <th data-breakpoints="sm xs md">Expected Closure Date</th>
-                                              <th data-breakpoints="sm xs md">Days</th>
-                                              <th data-breakpoints="sm xs md">Weeks</th>
-                                            </tr>
-                                          </thead>
-                                          {allOptions.map((item, i) => {
-                                            return <tr>
-                                              <td><h5>{item.Start}</h5></td>
-                                              <td><h5>{item.End}</h5></td>
-                                              <td><h5>{item.Days}</h5></td>
-                                              <td><h5>{item.Weekcount}</h5></td>
-                                            </tr>;
-                                          })}
-                                        </table>
+                                    <div className="row clearfix" className="page-break">
+                                      <div className="col-md-12">
+                                        <div className="pdfHeader" >Customer Mind Map</div>
+                                        <div class="table-responsive">
+                                          <table class="table table-bordered">
+                                            <thead>
+                                              <tr>
+                                                <th data-breakpoints="sm xs">Start Date</th>
+                                                <th data-breakpoints="sm xs md">Expected Closure Date</th>
+                                                <th data-breakpoints="sm xs md">Days</th>
+                                                <th data-breakpoints="sm xs md">Weeks</th>
+                                              </tr>
+                                            </thead>
+                                            {completeData.map((item, i) => {
+                                              return <tr>
+                                                <td><h5>{item.start_date}</h5></td>
+                                                <td><h5>{item.end_date}</h5></td>
+                                                <td><h5>{item.days}</h5></td>
+                                                <td><h5>{item.weeks}</h5></td>
+                                              </tr>;
+                                            })}
+                                          </table>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                            </Modal.Body>
-                          </PDFExport>
+                              </Modal.Body>
+                            </PDFExport>
+                          ) : (null)}
                         </div>
 
 
