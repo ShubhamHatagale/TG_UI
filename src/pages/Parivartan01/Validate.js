@@ -1598,7 +1598,7 @@ export default function Validate() {
                             <div className="col-md-6" style={{ padding: "5px", fontSize: "22px", alignSelf: 'right', alignContent: 'right', textAlign: 'right', marginTop: '16px', fontWeight: "bold" }}>
 
                                 Purpose Discovery
-                            </div>
+                            </div> 
                         </div>
 
                         <Modal.Title id="example-modal-sizes-title-lg">

@@ -626,7 +626,7 @@ export default function Vilakshan(props) {
       method: "PUT",
       headers: myHeaders,
       body: raw,
-      redirect: "follow",
+      redirect: "follow", 
     };
     fetch(
       `https://parivartan.transganization.com/nodejs/masters/vilakshan/${s_id}`,
@@ -923,8 +923,8 @@ export default function Vilakshan(props) {
                                               type="text"
                                               className="form-control"
                                               placeholder="0"
-                                              maxLength={200}
-                                              max={200}
+                                              maxLength={500}
+                                              max={500}
                                               name={`value${index}`}
                                               value={x[`value${index}`]}
                                               onChange={(e) => handleInputChange(e, i)}
@@ -984,8 +984,8 @@ export default function Vilakshan(props) {
                                               type="text"
                                               className="form-control"
                                               placeholder="0"
-                                              maxLength={200}
-                                              max={200}
+                                              maxLength={500}
+                                              max={500}
                                               name={`value_sec${index}`}
                                               value={x[`value_sec${index}`]}
                                               onChange={(e) => handleInputChange(e, i)}

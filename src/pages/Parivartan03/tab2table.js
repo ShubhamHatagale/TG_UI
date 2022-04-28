@@ -466,8 +466,8 @@ const Table = props => {
                                                                                                         type="text"
                                                                                                         className="form-control"
                                                                                                         placeholder="0"
-                                                                                                        maxLength={200}
-                                                                                                        max={200}
+                                                                                                        maxLength={500}
+                                                                                                        max={500}
                                                                                                         name={`value${index}`}
                                                                                                         value={x[`value${index}`]}
                                                                                                         onChange={(e) => handleInputChange(e, i)}

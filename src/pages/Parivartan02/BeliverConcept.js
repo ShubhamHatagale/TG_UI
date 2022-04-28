@@ -970,7 +970,7 @@ export default function Form() {
                               style={{
                                 maxHeight: "400px",
                               }}
-                              data={inputList.slice(0, 100)}
+                              data={inputList.slice(0, 200)}
                             >
                               <Column
                                 field="beliverse_group"
@@ -988,7 +988,7 @@ export default function Form() {
                               style={{
                                 maxHeight: "400px",
                               }}
-                              data={inputList2.slice(0, 2)}
+                              data={inputList2.slice(0, 200)}
                             >
                               <Column
                                 field="face_of_tribe"
@@ -1108,7 +1108,7 @@ export default function Form() {
                                   style={{
                                     maxHeight: "400px",
                                   }}
-                                  data={inputList.slice(0, 100)}
+                                  data={inputList.slice(0, 200)}
                                 >
                                   <Column
                                     field="beliverse_group"
@@ -1126,7 +1126,7 @@ export default function Form() {
                                   style={{
                                     maxHeight: "400px",
                                   }}
-                                  data={inputList2.slice(0, 2)}
+                                  data={inputList2.slice(0, 200)}
                                 >
                                   <Column
                                     field="face_of_tribe"

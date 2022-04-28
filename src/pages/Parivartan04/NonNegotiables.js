@@ -126,7 +126,7 @@ export default function Form() {
   const [customer_service, setcustomer_service] = useState();
   const [channels, setchannels] = useState();
   const [lead_time, setlead_time] = useState();
-  const [fixed_cost_investment2, setfixed_cost_investment2] = useState();
+  // const [fixed_cost_investment2, setfixed_cost_investment2] = useState();
   const [through_put, setthrough_put] = useState();
   const [pricing, setpricing] = useState();
   const [prod_dev_life_cycle, setprod_dev_life_cycle] = useState();
@@ -238,9 +238,9 @@ export default function Form() {
 
   };
 
-  const fixed_cost_investmentfn2 = (event) => {
-    setfixed_cost_investment2(event.target.value);
-  };
+  // const fixed_cost_investmentfn2 = (event) => {
+  //   setfixed_cost_investment2(event.target.value);
+  // };
 
   const through_putfn = (event) => {
     setthrough_put(event.target.value);
@@ -525,7 +525,7 @@ export default function Form() {
         customer_service: customer_service,
         channels: channels,
         lead_time: lead_time,
-        fixed_cost_investment2: fixed_cost_investment2,
+        // fixed_cost_investment2: fixed_cost_investment2, 
         through_put: through_put,
         pricing: pricing,
         prod_dev_life_cycle: prod_dev_life_cycle,
@@ -575,7 +575,7 @@ export default function Form() {
         customer_service: customer_service,
         channels: channels,
         lead_time: lead_time,
-        fixed_cost_investment2: fixed_cost_investment2,
+        // fixed_cost_investment2: fixed_cost_investment2,
         through_put: through_put,
         pricing: pricing,
         prod_dev_life_cycle: prod_dev_life_cycle,
@@ -656,7 +656,7 @@ export default function Form() {
           setcustomer_service(item.customer_service);
           setchannels(item.channels);
           setlead_time(item.lead_time);
-          setfixed_cost_investment2(item.fixed_cost_investment2);
+          // setfixed_cost_investment2(item.fixed_cost_investment2);
           setthrough_put(item.through_put);
           setpricing(item.pricing);
           setprod_dev_life_cycle(item.prod_dev_life_cycle);
@@ -823,10 +823,10 @@ export default function Form() {
       parameters: "Lead Time",
       operational: lead_time,
     },
-    {
-      parameters: "Fixed Cost Investment",
-      operational: fixed_cost_investment2,
-    },
+    // {
+    //   parameters: "Fixed Cost Investment",
+    //   operational: fixed_cost_investment2,
+    // },
     {
       parameters: "Through Put",
       operational: through_put,
@@ -912,7 +912,8 @@ export default function Form() {
                   </div>
                   <div className="col-md-12">
                     <div className="form-group">
-                      <input type="text" className="form-control" placeholder="Believer OTP" name="firstName" value={BeliverOTP} />
+                      <textarea
+                        rows="4" type="text" className="form-control" placeholder="Believer OTP" name="firstName" value={BeliverOTP} />
 
 
 
@@ -920,7 +921,8 @@ export default function Form() {
                   </div>
                   <div className="col-md-12">
                     <div className="form-group">
-                      <input type="text" className="form-control" placeholder="Enter Beliver OTP" name="EnteredBeliverOTP" onChange={HandleInputChange} />
+                      <textarea
+                        rows="4" type="text" className="form-control" placeholder="Enter Beliver OTP" name="EnteredBeliverOTP" onChange={HandleInputChange} />
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -955,12 +957,14 @@ export default function Form() {
                   </div>
                   <div className="col-md-12">
                     <div className="form-group">
-                      <input type="text" className="form-control" placeholder="Transganizer OTP" name="firstName" value={transOTP} />
+                      <textarea
+                        rows="4" type="text" className="form-control" placeholder="Transganizer OTP" name="firstName" value={transOTP} />
                     </div>
                   </div>
                   <div className="col-md-12">
                     <div className="form-group">
-                      <input type="text" className="form-control" placeholder="Enter Transganizer OTP" name="EnteredBeliverOTP" onChange={HandleInputChange} />
+                      <textarea
+                        rows="4" type="text" className="form-control" placeholder="Enter Transganizer OTP" name="EnteredBeliverOTP" onChange={HandleInputChange} />
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -1029,13 +1033,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Gross Margin</strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="gross_margin"
@@ -1046,13 +1051,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Opportunity Size</strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="opportunity_size"
@@ -1063,13 +1069,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Unit Pricing </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         id="unit_pricing"
@@ -1082,13 +1089,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Unit Margin </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="unit_margin"
@@ -1099,13 +1107,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Time to Breakeven</strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="time_to_breakeven"
@@ -1116,13 +1125,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Fixed Cost Investment </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="fixed_cost_investment"
@@ -1133,13 +1143,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Credit Terms</strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="credit_terms"
@@ -1150,13 +1161,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>NPV </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="npv"
@@ -1184,13 +1196,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>End Product Quality</strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="end_prod_quality"
@@ -1201,13 +1214,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Supplier Quality Standard </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="supplier_quality_standard"
@@ -1218,13 +1232,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Customer Service </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         id="customer_service"
@@ -1236,13 +1251,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Channels </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="channels"
@@ -1253,13 +1269,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Lead Time</strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="lead_timefn"
@@ -1269,14 +1286,15 @@ export default function Form() {
                       />
                     </div>
                   </div>
-                  <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                  {/* <div className="row clearfix" style={{ marginTop: 20 }}>
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Fixed Cost Investment </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                      rows="4"
                         type="text"
                         className="form-control"
                         name="fixed_cost_investment"
@@ -1285,15 +1303,16 @@ export default function Form() {
                         value={fixed_cost_investment2}
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Through Put </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="through_put"
@@ -1304,13 +1323,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Pricing </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="pricing"
@@ -1321,13 +1341,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Product Development Life Cycle </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="prod_dev_life_cycle"
@@ -1338,13 +1359,14 @@ export default function Form() {
                     </div>
                   </div>
                   <div className="row clearfix" style={{ marginTop: 20 }}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Brand Parameters </strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
-                      <input
+                      <textarea
+                        rows="4"
                         type="text"
                         className="form-control"
                         name="brand_parameter"
@@ -1547,37 +1569,43 @@ export default function Form() {
                                               <tbody>
                                                 <tr>
                                                   <th scope="row">Total Revenue</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={TotalRevenue1}
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={TotalRevenue2}
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={TotalRevenue3}
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={TotalRevenue4}
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={TotalRevenue5}
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1587,21 +1615,24 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">Total Revenue (Growth / Degrowth %)</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={RevenueReadOnly1}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={RevenueReadOnly2}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1609,7 +1640,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1617,7 +1649,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1625,7 +1658,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1639,42 +1673,48 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">Direct Expenses</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpences1}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpences2}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpences3}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpences4}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpences5}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1687,42 +1727,48 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row" >Direct Expenses</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpencesReadOnly1}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpencesReadOnly2}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpencesReadOnly3}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpencesReadOnly4}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={DirectExpencesReadOnly5}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1734,42 +1780,48 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">Gross Profit</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfit1}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfit2}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfit3}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfit4}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfit5}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1780,42 +1832,48 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">Gross Profit ( Increase / Decrease)</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfitID1}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfitID2}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfitID3}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfitID4}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={GrossProfitID5}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1826,41 +1884,47 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">Indirect Expenses</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpences1}
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpences2}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpences3}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpences4}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpences5}
 
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1872,42 +1936,48 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">Indirect Expenses (Increase / Decrease)</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpencesID1}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpencesID2}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpencesID3}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpencesID4}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
                                                     value={IndirectExpencesID5}
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1918,7 +1988,8 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">EBITDA</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1926,7 +1997,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1934,7 +2006,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1942,7 +2015,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1950,7 +2024,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1958,7 +2033,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1971,7 +2047,8 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">EBITDA%</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1979,7 +2056,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1987,7 +2065,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -1995,7 +2074,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2003,7 +2083,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2011,7 +2092,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2024,7 +2106,8 @@ export default function Form() {
 
                                                 <tr>
                                                   <th scope="row">EBITDA (Increase / Decrease)</th>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2032,7 +2115,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2040,7 +2124,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2048,7 +2133,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2056,7 +2142,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2064,7 +2151,8 @@ export default function Form() {
 
                                                     readOnly
                                                   /></td>
-                                                  <td><input
+                                                  <td><textarea
+                                                    rows="4"
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="0"
@@ -2166,10 +2254,10 @@ export default function Form() {
                                                 <td>Lead time</td>
                                                 <td>{non_negoData[0].lead_time}</td>
                                               </tr>
-                                              <tr>
+                                              {/* <tr>
                                                 <td>Fixed Cost Investment</td>
                                                 <td>{non_negoData[0].fixed_cost_investment2}</td>
-                                              </tr>
+                                              </tr> */}
                                               <tr>
                                                 <td>Through Put</td>
                                                 <td>{non_negoData[0].through_put}</td>
@@ -2278,10 +2366,10 @@ export default function Form() {
                                             <td>Lead time</td>
                                             <td>{non_negoData[0].lead_time}</td>
                                           </tr>
-                                          <tr>
+                                          {/* <tr>
                                             <td>Fixed Cost Investment</td>
                                             <td>{non_negoData[0].fixed_cost_investment2}</td>
-                                          </tr>
+                                          </tr> */}
                                           <tr>
                                             <td>Through Put</td>
                                             <td>{non_negoData[0].through_put}</td>
@@ -2417,37 +2505,43 @@ export default function Form() {
                                           <tbody>
                                             <tr>
                                               <th scope="row">Total Revenue</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={TotalRevenue1}
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={TotalRevenue2}
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={TotalRevenue3}
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={TotalRevenue4}
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={TotalRevenue5}
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2457,21 +2551,24 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">Total Revenue (Growth / Degrowth %)</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={RevenueReadOnly1}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={RevenueReadOnly2}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2479,7 +2576,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2487,7 +2585,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2495,7 +2594,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2509,42 +2609,48 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">Direct Expenses</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpences1}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpences2}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpences3}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpences4}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpences5}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2557,42 +2663,48 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row" >Direct Expenses</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpencesReadOnly1}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpencesReadOnly2}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpencesReadOnly3}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpencesReadOnly4}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={DirectExpencesReadOnly5}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2604,42 +2716,48 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">Gross Profit</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfit1}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfit2}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfit3}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfit4}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfit5}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2650,42 +2768,48 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">Gross Profit ( Increase / Decrease)</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfitID1}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfitID2}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfitID3}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfitID4}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={GrossProfitID5}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2696,41 +2820,47 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">Indirect Expenses</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpences1}
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpences2}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpences3}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpences4}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpences5}
 
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2742,42 +2872,48 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">Indirect Expenses (Increase / Decrease)</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpencesID1}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpencesID2}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpencesID3}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpencesID4}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
                                                 value={IndirectExpencesID5}
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2788,7 +2924,8 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">EBITDA</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2796,7 +2933,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2804,7 +2942,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2812,7 +2951,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2820,7 +2960,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2828,7 +2969,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2841,7 +2983,8 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">EBITDA%</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2849,7 +2992,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2857,7 +3001,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2865,7 +3010,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2873,7 +3019,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2881,7 +3028,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2894,7 +3042,8 @@ export default function Form() {
 
                                             <tr>
                                               <th scope="row">EBITDA (Increase / Decrease)</th>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2902,7 +3051,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2910,7 +3060,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2918,7 +3069,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2926,7 +3078,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -2934,7 +3087,8 @@ export default function Form() {
 
                                                 readOnly
                                               /></td>
-                                              <td><input
+                                              <td><textarea
+                                                rows="4"
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="0"
@@ -3036,10 +3190,10 @@ export default function Form() {
                                             <td>Lead time</td>
                                             <td>{non_negoData[0].lead_time}</td>
                                           </tr>
-                                          <tr>
+                                          {/* <tr>
                                             <td>Fixed Cost Investment</td>
                                             <td>{non_negoData[0].fixed_cost_investment2}</td>
-                                          </tr>
+                                          </tr> */}
                                           <tr>
                                             <td>Through Put</td>
                                             <td>{non_negoData[0].through_put}</td>
