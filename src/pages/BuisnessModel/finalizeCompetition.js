@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { StickyTable, Row, Cell } from "react-sticky-table";
 import { useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+// const OnSubmitHandle = () => {
+//   GetallRecords();
+//   props.OnValidateStrategy(true);
 
+// }
 export default function Form(props) {
 
   const history = useHistory();
@@ -11,7 +15,8 @@ export default function Form(props) {
   const [inputListFeature2, setInputListFeature2] = useState([{ featues2: "" }]);
 
   const [inputList, setInputList] = useState([{ competition: "" }]);
-  const [inputListFinal, setInputListFinal] = useState([]);
+  const [inputListFinal, setInputListFinal] = useState([{ competition: "" }]);
+  const [inputListFinal2, setInputListFinal2] = useState([{}]);
 
   const [customerList, setCustomerList] = useState([{}]);
   const [allList, setallList] = useState("");
@@ -34,16 +39,6 @@ export default function Form(props) {
     if (!s_id) {
       history.push("Not_support");
     }
-
-    GetallRecords();
-
-  }, []);
-
-  // handle input change
-
-
-
-  const GetallRecords = () => {
     setShowHideErr(false)
     var myGetHeaders = new Headers();
     myGetHeaders.append("Content-Type", "application/json");
@@ -100,12 +95,11 @@ export default function Form(props) {
           setUpid(resData.data[0].id);
 
         }
+        console.log("Edit Values", MyValues);
 
         MyValues.map((item, key) => {
-          console.log("before Eval", item);
+          console.log("before Eval", item.features);
           let Feature = eval(item.features);
-          let FeatureG = eval(item.features);
-
           let Feature2 = eval(item.features2);
 
           console.log("SDfjdskjfn jsdhfkjsdfn", Feature);
@@ -114,13 +108,11 @@ export default function Form(props) {
           setCustomerList(Feature);
           setInputList(Feature);
           setInputListFinal(Feature)
+          setInputListFinal2(Feature2)
 
         });
 
-        console.log("Edit Values", MyValues);
-
-
-
+        console.log("Edit Values", MyValues1);
 
         // MyValues1.map((i, key) => {
         //   console.log("before Eval", i.features);
@@ -135,70 +127,221 @@ export default function Form(props) {
 
         // });
       });
-  }
 
-  const OnSubmitHandle = () => {
-    GetallRecords();
-    props.OnValidateStrategy(true);
-
-  }
-
-
-
-
-
-  const checkFinalize = (e) => {
-    console.log(e.target.value);
-    let updValue = e.target.value;
-    let checked_value = `1`;
-    console.log(inputListFinal);
-
-    for (var i = 0; i < inputListFinal.length; i++) {
-      if (inputListFinal[i].competition === updValue) {
-        if (inputListFinal[i].is_display == 0) {
-          inputListFinal[i].is_display = 1;
-          GetallRecords();
-
-        } else {
-          inputListFinal[i].is_display = 0;
-          GetallRecords();
-
-        }
-        console.log(inputListFinal);
-
-        break;
-      }
-    }
-    console.log(inputListFinal);
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({
-      features: inputListFinal,
-    });
-    var requestOptions = {
-      method: "PUT",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-    fetch(
-      `https://parivartan.transganization.com/nodejs/masters/competionsheetCheck/${Upid}`,
-      requestOptions
-    )
+    fetch(`https://parivartan.transganization.com/nodejs/masters/customerSegment/user/${s_id}`, requestOptions)
       .then((response) => response.json())
       .then((resData) => {
-        console.log(resData);
-        if (resData.status == 200) {
-          GetallRecords()
-          // props.OnValidateStrategy(true);
+        // setcompleteData(resData.data)
+        console.log("In Beliver Get all Reccords Function", resData.data.length);
+        if (resData.data.length > 0) {
+          setorg_name(resData.data[0].org_name);
+          console.log(resData.data)
+          let MyValues = resData.data;
+          console.log("In UseEffect Function", MyValues);
+          // MyValues.map((item, key) => {
+          //   let customerFaceMap = eval(item.customer_face);
+          //   console.log("Data customerFaceMap ", customerFaceMap);
+          //   setcustomerSegmentData(customerFaceMap)
+          //   setInputList(customerFaceMap);
+          // });
         }
-        GetallRecords();
+        // setShowHideErrData(true)
+      });
 
-      })
-      .catch((error) => console.log("error", error));
+  }, []);
 
-  }
+  // handle input change
+  const handleInputChange = (e, index) => {
+    // console.log(e.target.id)
+    // console.log(index)
+    console.log(e.target.value)
+    // console.log(e.target.checked)
+
+    if (e.target.value > 9) {
+      setShowHideErr(false)
+    } else {
+      setShowHideErr(true);
+      // alert(Show)
+    }
+
+    const { name, value, ips } = e.target;
+    const list = [...inputListFinal];
+    console.log("Here is the Value---1>", list);
+    list[index][name] = value;
+    list[index]["is_display"] = 0;
+
+    console.log(list[index][name]);
+    console.log(value + "val");
+
+    setInputListFinal(list);
+  };
+
+
+  const handleInputChange2 = (e, index) => {
+    if (e.target.value > 9) {
+      setShowHideErr(false)
+    } else {
+      setShowHideErr(true);
+      // alert(Show)
+    }
+
+    const { name, value } = e.target;
+    const list2 = [...inputListFinal2];
+    console.log("Here is the Value2", list2);
+    list2[0][name] = value;
+    setInputListFinal2(list2);
+  };
+
+  const handleInputChange3 = (e, index) => {
+    // console.log(e.target.id)
+    // console.log(index)
+    console.log(e.target.value)
+    console.log(e.target.checked)
+
+    // if (e.target.value > 9) {
+    //   setShowHideErr(false)
+    // } else {
+    //   setShowHideErr(true);
+    //   // alert(Show)
+    // }
+
+    const { name, checked, ips } = e.target;
+    const list = [...inputListFinal];
+    console.log("Here is the checked---1>", list);
+    list[index][name] = checked;
+    list[index]["is_display"] = 0;
+
+    console.log(list[index][name]);
+    console.log(checked + "val");
+
+    setInputListFinal(list);
+  };
+
+  const handleRemoveClick = (index) => {
+    const list = [...inputListFinal];
+    setInputListFinal(list);
+    list.splice(index, 1);
+  };
+
+  const handleAddClick = () => {
+    let value = [];
+    let key = [];
+    value.push('competition');
+    for (let i = 1; i <= total; i++) {
+      value.push(`value${i}`)
+    }
+    for (let i = 1; i <= total; i++) {
+      key.push([`${i}`])
+    }
+    var pack = function (arr) {
+      var length = arr.length,
+        result = {},
+        i;
+      for (i = 0; i < length; i++) {
+        result[(i < 10 ? '0' : '') + (i + 1)] = arr[i];
+      }
+      return result;
+    };
+    const finalobject = pack(value); //{01: "one", 02: "two", 03: "three"}      
+    console.log("object is", finalobject)
+    setInputListFinal([...inputListFinal, finalobject]);
+    console.log(inputList);
+  };
+  const OnSubmitHandle = () => {
+    setCustomerList([...customerList], inputList);
+    let competition = [];
+    let Values = [];
+    // allObject.push(inputList);
+    inputList.map((comp, key) => {
+      competition.push(comp);
+    });
+    customerList.map((item, key) => {
+      if (Object.keys(item).length === 3) {
+        Values.push(item);
+        for (var key in item) {
+          console.log("Key Value is", item);
+          console.log("Key Value is", item[key]);
+          console.log("Key Value is", allObject);
+        }
+      }
+    });
+
+    var allObject = [...competition, ...Values];
+    console.log("all datra", allObject);
+    console.log("all data inputlist", inputListFinal);
+    console.log("all data inputlist2", inputListFinal2);
+
+    if (completeData.length === 0) {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      var raw = JSON.stringify({
+        features: inputListFinal,
+        features2: inputListFinal2,
+        email_id: s_id,
+        created_by: s_id,
+      });
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+      fetch(
+        `https://parivartan.transganization.com/nodejs/masters/competionsheet/`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((resData) => {
+          console.log(resData);
+          if (resData.status == 200) {
+            console.log("Values Submitted Succesfully==>");
+            // setMadd(true);
+            // setMadd(false);
+            // setTimeout(() => {
+            //   setMadd(false);
+            // }, 1000)
+
+            props.OnValidateStrategy(true);
+          }
+        })
+        .catch((error) => console.log("error", error));
+    } else {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      var raw = JSON.stringify({
+        features: inputListFinal,
+        features2: inputListFinal2,
+        email_id: s_id,
+        created_by: s_id,
+      });
+      var requestOptions = {
+        method: "PUT",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+      fetch(
+        `https://parivartan.transganization.com/nodejs/masters/competionsheet/${Upid}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((resData) => {
+          console.log(resData);
+          if (resData.status == 200) {
+            // console.log("Values Submitted Succesfully==>");
+            // setMupdate(true);
+            // setTimeout(() => {
+            //   setMupdate(false);
+            // }, 1000)
+            props.OnValidateStrategy(true);
+
+            // GetallRecords();
+          }
+        })
+        .catch((error) => console.log("error", error));
+    }
+
+  };
 
   return (
     <div className="container-fluid">
@@ -220,7 +363,7 @@ export default function Form(props) {
         <Modal.Body >Form Update Successful</Modal.Body>
       </Modal>
       {/* <div className="row clearfix " style={{ backgroundColor: "#F3F6F9",width:"100rem",overflowX:"auto",whiteSpace:"nowrap" }}> */}
-      <div className="row clearfix " style={{ backgroundColor: "white", width: "80rem", overflowX: "auto", backgroundColor: "#F3F6F9" }} >
+      <div className="row clearfix " style={{ backgroundColor: "white", width: "80rem", overflowX: "auto", backgroundColor: "#F3F6F9" }}>
 
         <div className="col-lg-12 col-md-12 col-sm-12" >
           <div className="card p-4 mt-2" >
@@ -235,28 +378,27 @@ export default function Form(props) {
                   <div style={{ marginTop: 20 }}></div>
 
                   <div className="row clearfix flex-nowrap">
-                    <div className="col-lg-6">
+                    <div className="col-lg-4">
                       <div className="form-group">
-                        <strong>Organization Name</strong>
+                        <strong>Select Organization Name</strong>
+
                       </div>
                       {/* {org_name} */}
                     </div>
-
-                    <div className="col-lg-6">
+                    <div className="col-lg-2">
                       <div className="form-group">
                         <strong>Select</strong>
+
                       </div>
                       {/* {org_name} */}
                     </div>
-
                     <div className="col-md-2" ></div>
                   </div>
 
                   <div className="row clearfix flex-nowrap">
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <span>{org_name}</span>
-                        {/* <input
+                    <div className="col-lg-4">
+                      <div className="form-group w-50">
+                        <input
                           type="text"
                           className="form-control"
                           placeholder="Features"
@@ -264,41 +406,122 @@ export default function Form(props) {
                           value={org_name}
                           // onChange={(e) => handleInputChange(e, i)}
                           disabled
-                        /> */}
+                        />
                       </div>
                     </div>
 
 
+
+                    {inputListFinal2.map((x, i) => {
+                      // console.log("The competion sheet aa", b)
+
+                      return (
+                        <>
+                         
+                          {Array.from({ length: 1 }, (item, index1) => {
+                            return (
+                              <div className="col-lg-2">
+                                <div className="form-group mt-2 ">
+
+                                  <input type="checkbox"
+                                    className="form-contro ml-3"
+                                    checked={`true`}
+                                    id="exampleCheck1"
+                                    disabled="true"
+
+
+                                  />
+
+                                </div>
+                              </div>
+                            );
+                          })
+                          }
+
+                        </>
+                      );
+                    })}
                     <div className="col-md-2" ></div>
                   </div>
-                  {console.log("The ------ffff", inputListFinal)
-                  }
+
                   {inputListFinal.map((x, i) => {
+                    console.log("The competion sheet", x)
                     return (
                       <div className="row clearfix flex-nowrap">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <span>{x.competition}</span>
-                            {/* <span>{x.is_display}</span> */}
+                        <div className="col-lg-4">
+                          <div className="form-group w-50">
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Competition"
+                              name="competition"
+                              ips="0"
+
+                              value={x.competition}
+                              onChange={(e) =>
+                                handleInputChange(e, i)
+                              }
+                            />
 
                           </div>
                         </div>
-                        <div className="col-lg-6 ml-4">
+
+
+                       
+
+
+
+
+                        <div className="col-lg-2">
                           <div className="form-group">
-                            <input type="checkbox" class="form-check-input" checked={(x.is_display == 0 ? x.is_display = 1 : x.is_display = 0)} value={x.competition} id="exampleCheck1" onChange={checkFinalize} />
+                            {/* <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Competition"
+                              name="competition"
+                              ips="0"
+
+                              value={x.competition}
+                              onChange={(e) =>
+                                handleInputChange(e, i)
+                              }
+                            /> */}
+
+                            <input type="checkbox"
+                              className="form-contro mt-3  ml-3"
+                              checked={x.checkboxVal}
+                              id="exampleCheck1"
+                              name="checkboxVal"
+
+                              onChange={(e) =>
+                                handleInputChange3(e, i)
+                              }
+
+                            />
+
                           </div>
+
+
                         </div>
+
+
+
+
+
+
+                        
 
 
                       </div>
                     );
                   })}
+
+
                   <div style={{ marginTop: 30 }}></div>
                   <button
                     type="submit"
                     class="btn savebtn waves-effect"
                     onClick={OnSubmitHandle}
-
                   >
                     SAVE <i className="ml-1 zmdi zmdi-save " />
                   </button>

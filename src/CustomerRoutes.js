@@ -75,7 +75,8 @@ const MasterAdminRouting = () => {
             </Route>
 
             <Route exact path="/">
-                <SideBar data={<Home />} data1={<Header />} />
+                {/* <SideBar data={<Home />} data1={<Header />} /> */}
+                <SideBar data={<Dashboard />} data1={<Header />} />
             </Route>
             <Route exact path="/home">
                 <SideBar data={<Home />} data1={<Header />} />

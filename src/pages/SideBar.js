@@ -59,7 +59,7 @@ export const Home = (props) => {
                 </div>
                 <div className="menu">
                     <ul className="list">
-                        <li className=" open" ><a className=" actvl " href onClick={() => { history.push("/") }}><span>Dashboard</span></a></li>
+                        {/* <li className=" open" ><a className=" actvl " href onClick={() => { history.push("/") }}><span>Dashboard</span></a></li> */}
                         <li ><a className="menu-toggle actvl " name="pdisc" ><span>Purpose Discovery</span></a>
                             <ul className="ml-menu">
                                 {/* <li><a href onClick={() => { history.push("/Soch-Spiritual") }}  >Soch - Spiritual Foundations </a></li> */}

@@ -164,8 +164,33 @@ export default function Form(props) {
             })
     }
 
+    const addCheck = () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({
+            title: "yoyo"
+        })
+        var requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow",
+        };
+        fetch(`http://localhost:9001/apis/user_add`, requestOptions)
+            .then((response) => response.json())
+            .then((resData) => {
+                console.log(resData);
+                if (resData.status == 200) {
+                    console.log(resData)
+                }
+            })
+            .catch((error) => console.log("error", error));
+
+    }
+
     return (
         <>
+            {/* <button onClick={addCheck}>check</button> */}
             <Modal
                 size="sm"
                 show={smShow}

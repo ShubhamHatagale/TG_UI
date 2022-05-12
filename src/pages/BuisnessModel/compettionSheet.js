@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { StickyTable, Row, Cell } from "react-sticky-table";
 import { useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+// const OnSubmitHandle = () => {
+//   GetallRecords();
+//   props.OnValidateStrategy(true);
 
+// }
 export default function Form(props) {
 
   const history = useHistory();
@@ -150,6 +154,8 @@ export default function Form(props) {
   const handleInputChange = (e, index) => {
     // console.log(e.target.id)
     // console.log(index)
+    console.log(e.target.value)
+    // console.log(e.target.checked)
 
     if (e.target.value > 9) {
       setShowHideErr(false)
@@ -158,7 +164,7 @@ export default function Form(props) {
       // alert(Show)
     }
 
-    const { name, value,ips } = e.target;
+    const { name, value, ips } = e.target;
     const list = [...inputListFinal];
     console.log("Here is the Value---1>", list);
     list[index][name] = value;
@@ -186,7 +192,30 @@ export default function Form(props) {
     setInputListFinal2(list2);
   };
 
+  const handleInputChange3 = (e, index) => {
+    // console.log(e.target.id)
+    // console.log(index)
+    console.log(e.target.value)
+    console.log(e.target.checked)
 
+    // if (e.target.value > 9) {
+    //   setShowHideErr(false)
+    // } else {
+    //   setShowHideErr(true);
+    //   // alert(Show)
+    // }
+
+    const { name, checked, ips } = e.target;
+    const list = [...inputListFinal];
+    console.log("Here is the checked---1>", list);
+    list[index][name] = checked;
+    list[index]["is_display"] = 0;
+
+    console.log(list[index][name]);
+    console.log(checked + "val");
+
+    setInputListFinal(list);
+  };
 
   const handleRemoveClick = (index) => {
     const list = [...inputListFinal];
@@ -383,6 +412,8 @@ export default function Form(props) {
                       </div>
                     </div>
 
+
+
                     {inputListFinal2.map((x, i) => {
                       // console.log("The competion sheet aa", b)
 
@@ -402,6 +433,25 @@ export default function Form(props) {
                                     value={x[`val${index1}`]}
 
                                     onChange={(e) => handleInputChange2(e, i)}
+                                  />
+
+                                </div>
+                              </div>
+                            );
+                          })
+                          }
+                          {Array.from({ length: 1 }, (item, index1) => {
+                            return (
+                              <div className="col-lg-2">
+                                <div className="form-group mt-2">
+
+                                  <input type="checkbox"
+                                    className="form-contro"
+                                    checked={`true`}
+                                    id="exampleCheck1"
+                                    disabled="true"
+
+
                                   />
 
                                 </div>
@@ -437,6 +487,8 @@ export default function Form(props) {
 
                           </div>
                         </div>
+
+
                         {Array.from({ length: total }, (item, index) => {
                           return (
                             <div className="col-lg-2">
@@ -462,6 +514,47 @@ export default function Form(props) {
                           );
                         })
                         }
+
+
+
+
+                        <div className="col-lg-2">
+                          <div className="form-group">
+                            {/* <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Competition"
+                              name="competition"
+                              ips="0"
+
+                              value={x.competition}
+                              onChange={(e) =>
+                                handleInputChange(e, i)
+                              }
+                            /> */}
+
+                            <input type="checkbox"
+                              className="form-contro mt-3"
+                              checked={x.checkboxVal}
+                              id="exampleCheck1"
+                              name="checkboxVal"
+
+                              onChange={(e) =>
+                                handleInputChange3(e, i)
+                              }
+
+                            />
+
+                          </div>
+
+
+                        </div>
+
+
+
+
+
+
                         <div className="col-md-2">
                           {inputListFinal.length !== 1 && (
                             <button
@@ -482,9 +575,13 @@ export default function Form(props) {
                             </button>
                           )}
                         </div>
+
+
                       </div>
                     );
                   })}
+
+
                   <div style={{ marginTop: 30 }}></div>
                   <button
                     type="submit"

@@ -149,7 +149,7 @@ export default function Form(props) {
     if (!s_id) {
       history.push("Not_support");
     }
-    
+
     var myGetHeaders = new Headers();
     myGetHeaders.append("Content-Type", "application/json");
     var requestOptions = {
@@ -245,7 +245,7 @@ export default function Form(props) {
           console.log(Feature)
 
           console.log(
-            Feature.filter(({ is_display }) => is_display === 1)
+            Feature.filter(({ checkboxVal }) => checkboxVal === true)
           );
 
           // console.log("item.features", item.features2);
@@ -261,11 +261,11 @@ export default function Form(props) {
             let super_array2 = [];
 
             // console.log("Featurea", Feature);
-            // const result = Feature.filter(item => item.is_display === 0);
+            // const result = Feature.filter(item => item.checkboxVal === 0);
             // console.log(result,"resVal");
 
             // const resu = Feature.filter(item => item.isDisplay === "");
-            valoDisp = Feature.filter(({ is_display }) => is_display === 1)
+            valoDisp = Feature.filter(({ checkboxVal }) => checkboxVal === true)
 
             valoDisp.map((x, i) => {
               // console.log("hhval", i, x.value0, x.value1, x.value2, x.value3, x.value4, x.value5, x.value6, x.value7, x.value8, x.value9, x.value10, x.value11, x.value12, x.value13, x.value14, x.value15, x.value16, x.value17, x.value18, x.value19, x.value20);
@@ -1205,45 +1205,6 @@ export default function Form(props) {
                               </div>
                             </div>
                           </div>
-
-
-                          {/* <div className="row clearfix">
-              <div className="col-md-12">
-                <div className="table-responsive">
-                  <Grid
-                    style={{
-                      maxHeight: "400px",
-                    }}
-                    data={inputList.slice(0, 2)}
-                  >
-                    <Column
-                      field="customer_face"
-                      title="List of Customer Face"
-                      width="420px"
-                    />
-                  </Grid>
-                </div>
-              </div>
-            </div> */}
-
-                          {/* <div className="row clearfix">
-              <div className="col-md-12">
-                <div className="table-responsive">
-                  <Grid
-                    style={{
-                      maxHeight: "400px",
-                    }}
-                    data={inputList.slice(0, 2)}
-                  >
-                    <Column
-                      field="firstName"
-                      title="List of Customer Face"
-                      width="420px"
-                    />
-                  </Grid>
-                </div>
-              </div>
-            </div> */}
                         </div>
                       </div>
                       <div style={{ marginTop: 30 }}></div>
@@ -1256,126 +1217,51 @@ export default function Form(props) {
 
 
 
-              <div className="container-fluid">
-                <div className="row clearfix">
-                  <div className="col-lg-12 col-md-12 col-sm-12 ">
-                    <div className="card ">
-                      <div id="divToPrint" className="mt4 pdfBody ">
 
-                        <div
-                          className="pdfHeader"
-                        >
-                          Value Proposition
+              <div id="divToPrint" className="mt4 pdfBody" >
+                <div className="row clearfix" >
+                  <div className="col-md-12 m-2">
+                    <div
+                      className="pdfHeader"
+                    >
+                      Value Proposition
 
-                        </div>
-
-                        {inputList2 ? (
-                          <div className="body" style={{ overflowX: "scroll" }}>
-                            <div className="header">
-                              <h2>
-                                <strong>Possible Combination  :{PossibleCombination}
-                                </strong>
-                              </h2>
-                            </div>
-                            <div style={{ marginTop: 20 }}>
-                            </div>
-                            <div className="row clearfix" >
-                              <div className="col-md-3">
-                                <h2 className="card-inside-title">
-                                  <strong>Features</strong>
-                                </h2>
-                              </div>
-                              <div className="col-md-2">
-                                <h2 className="card-inside-title">
-                                  <strong>No of Possiblities</strong>
-                                </h2>
-                              </div>
-                              <div className="col-md-2">
-                                <h2 className="card-inside-title">
-                                  <strong>Possiblities</strong>
-                                </h2>
-                              </div>
-                              <div className="col-md-2">
-                                <h2 className="card-inside-title">
-                                  <strong>Choice Made</strong>
-                                </h2>
-                              </div>
-                            </div>
-                            {inputList2.map((x, i) => {
-                              return (
-                                <div className="row clearfix">
-                                  <div className="col-md-3">
-                                    <div className="form-group">
-                                      <span>{x.featues}</span>
-                                      {/* <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Features"
-                        name="featues"
-                        value={x.featues}
-                        onChange={(e) => handleInputChange(e, i)}
-                      /> */}
-                                    </div>
-                                  </div>
-                                  <div className="col-md-2">
-                                    <div className="form-group">
-                                      <span>{x.noofpossiblity}</span>
-                                      {/* <input
-                        type="text"
-                        className="form-control"
-                        placeholder="No of Possiblities"
-                        name="noofpossiblity"
-                        value={x.noofpossiblity}
-                        onChange={(e) => handleInputChange(e, i)}
-                      /> */}
-                                    </div>
-                                  </div>
-                                  <div className="col-md-2">
-                                    <div className="form-group">
-                                      <span>{x.possiblity}</span>
-
-                                      {/* <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Possiblities"
-                        name="possiblity"
-                        value={x.possiblity}
-                        onChange={(e) => handleInputChange(e, i)}
-                      /> */}
-                                    </div>
-                                  </div>
-                                  <div className="col-md-2">
-                                    <div className="form-group">
-                                      <span>{x.choicemade}</span>
-
-                                      {/* <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Choice Made"
-                        name="choicemade"
-                        value={x.choicemade}
-                        onChange={(e) => handleInputChange(e, i)}
-                      /> */}
-                                    </div>
-                                  </div>
-
-                                  {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList2)}</div> */}
-                                </div>
-                              );
-                            })}
-
-                            {/* <span>{text_stmt}</span> */}
-
-                            <div style={{ marginTop: 30 }}></div>
-
-                          </div>
-                        ) : null}
-                      </div>
                     </div>
+                    <div className="header">
+                      <small>
+                        <strong>Possible Combination  :{PossibleCombination}
+                        </strong>
+                      </small>
+                    </div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Features</th>
+                          <th scope="col">No Of Possiblities </th>
+                          <th scope="col">Possiblities</th>
+                          <th scope="col">Choice Made</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {inputList2.map((item, key) => (
+                          <tr>
+                            <td className="text-center"><small>{item.featues}</small></td>
+                            <td className="text-center"><small>{item.noofpossiblity}</small></td>
+                            <td className="text-center"><small>{item.possiblity}</small></td>
+                            <td className="text-center"><small>{item.choicemade}</small></td>
 
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
+
+
+
                 </div>
               </div>
+
+
 
 
 
@@ -1384,304 +1270,115 @@ export default function Form(props) {
 
 
               {/* Competition Sheet */}
-              <div className="container-fluid">
-                <div className="row clearfix">
-                  <div className="col-lg-12 col-md-12 col-sm-12">
-                    <div className="card">
-                      <div id="divToPrint" className="mt4 pdfBody p-3">
 
-                        <div
-                          className="pdfHeader"
-                        >
-                          Competition Sheet
 
+
+              <div className="page-break">
+                <div id="divToPrint" className="mt4 pdfBody p-3"  >
+
+                  <div
+                    className="pdfHeader"
+                  >
+                    Competition Sheet
+
+                  </div>
+                  <div style={{ marginTop: 20 }}></div>
+                  <div className="row clearfix">
+                    <div className="col">
+                      <div className="form-group">
+                        <span>{org_name}</span>
+                      </div>
+                    </div>
+                    {inputListFeature.map((x, i) => {
+                      return (
+                        <div className="col">
+                          <div className="form-group">
+                            <span>{x.featues}</span>
+                          </div>
                         </div>
-                        <div style={{ marginTop: 20 }}></div>
+                      );
+                    })}
+                  </div>
+                  {inputListFinal.map((x, i) => {
+                    if (i === 0) {
+                      return (
                         <div className="row clearfix">
                           <div className="col">
                             <div className="form-group">
-                              <span>{org_name}</span>
-
-                              {/* <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Features"
-                    name="featue"
-                    value={org_name}
-                    // onChange={(e) => handleInputChange(e, i)}
-                    disabled
-                  /> */}
+                              <span>{x.competition}</span>
                             </div>
-
                           </div>
-                          {inputListFeature.map((x, i) => {
+                          {Array.from({ length: total }, (item, index) => {
                             return (
                               <div className="col">
                                 <div className="form-group">
-                                  <span>{x.featues}</span>
-
-                                  {/* <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Features"
-                        name="featue"
-                        value={x.featues}
-                        onChange={(e) => handleInputChange(e, i)}
-                        disabled
-                      /> */}
+                                  <span>{x[`value${index}`]}</span>
                                 </div>
                               </div>
                             );
                           })}
                         </div>
-                        {inputListFinal.map((x, i) => {
-                          if (i === 0) {
+                      );
+                    }
+                  })}
+                  {inputListFinal.map((x, i) => {
+                    if (i === limit) {
+                      return (
+                        <div className="row clearfix">
+                          <div className="col">
+                            <div className="form-group">
+
+                            </div>
+                          </div>
+                          {Array.from({ length: total }, (item, index) => {
                             return (
-                              <div className="row clearfix">
-                                <div className="col">
-                                  <div className="form-group">
-                                    <span>{x.competition}</span>
-
-                                    {/* <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Competition"
-                          name="competition"
-                          value={x.competition}
-                          onChange={(e) => handleInputChange(e, i)}
-                        /> */}
-                                  </div>
+                              <div className="col">
+                                <div className="form-group">
+                                  {/* <span>{`value${index}`}</span> */}
                                 </div>
-                                {Array.from({ length: total }, (item, index) => {
-                                  return (
-                                    <div className="col">
-                                      <div className="form-group">
-                                        <span>{x[`value${index}`]}</span>
-
-                                        {/* <input
-                              type="text"
-                              className="form-control"
-                              placeholder="value"
-                              name={`value${index}`}
-                              //   name={`value`}
-                              value={x[`value${index}`]}
-                              onChange={(e) => handleInputChange(e, i)}
-                            /> */}
-                                      </div>
-                                    </div>
-                                  );
-                                })}
                               </div>
                             );
-                          }
-                        })}
-                        {inputListFinal.map((x, i) => {
-                          if (i === limit) {
-                            return (
-                              <div className="row clearfix">
-                                <div className="col">
-                                  <div className="form-group">
-                                    {/* <Autocomplete
-                          id="controllable-states-demo"
-                          defaultValue={Finalizationddl}
-                          options={competition}
-                          // onChange={}
-                          // style={{ width: 0 }}
-                          onChange={(event, value) => {
-                            ChangeFinalization(event, value);
-                          }}
-                          renderInput={(params) => (
-                            <TextField {...params} variant="outlined" />
-                          )}
-                        />{" "} */}
-                                  </div>
-                                </div>
-                                {Array.from({ length: total }, (item, index) => {
-                                  return (
-                                    <div className="col">
-                                      <div className="form-group">
-                                        <span>{`value${index}`}</span>
-
-                                        {/* <input
-                              type="text"
-                              className="form-control"
-                              placeholder="value"
-                              name={`value${index}`}
-                              //   name={`value`}
-                              value={x[`value${index}`]}
-                              onChange={(e) => handleInputChange(e, i)}
-                            /> */}
-                                      </div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            );
-                          }
-                        })}
-                      </div>
-
-                    </div>
-                  </div>
+                          })}
+                        </div>
+                      );
+                    }
+                  })}
                 </div>
+
               </div>
 
 
-
-
-
-              <div className="container-fluid">
+              <div className="container-fluid" className="page-break">
                 <div className="row clearfix">
                   <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="card">
-                      <div id="divToPrint" className="mt4 pdfBody ">
-
+                      <div id="divToPrint" className="mt4 ">
                         {inputListFeature && inputListFinal ? (
                           <div className="body">
                             <div className="header">
 
                               <div className="row clearfix">
-                                <div className="col-md-12">
+                                <div className="col-md-12" >
                                   <div
                                     className="pdfHeader"
                                   >
                                     Strategy Map
-
                                   </div>
                                 </div>
                               </div>
 
                             </div>
-                            <div style={{ marginTop: 20 }}></div>
-                            <div className="row clearfix">
-                              <div className="col">
-                                <div className="form-group">
-                                  <span>{org_name}</span>
-
-                                  {/* <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Features"
-                    name="featue"
-                    value={org_name}
-                    // onChange={(e) => handleInputChange(e, i)}
-                    disabled
-                  /> */}
-                                </div>
-
-                              </div>
-                              {inputListFeature.map((x, i) => {
-                                return (
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <span>{x.featues}</span>
-
-                                      {/* <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Features"
-                        name="featue"
-                        value={x.featues}
-                        onChange={(e) => handleInputChange(e, i)}
-                        disabled
-                      /> */}
-                                    </div>
-                                  </div>
-                                );
-                              })}
+                            <div style={{ marginTop: "150px" }}></div>
+                            <div className="row clearfix" style={{ height: "100%", width: "100%", transform: "rotate(90deg)" }}>
+                              <Line data={data} />
                             </div>
-                            {inputListFinal.map((x, i) => {
-                              if (i === 0) {
-                                return (
-                                  <div className="row clearfix">
-                                    <div className="col">
-                                      <div className="form-group">
-                                        <span>{x.competition}</span>
-
-                                        {/* <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Competition"
-                          name="competition"
-                          value={x.competition}
-                          onChange={(e) => handleInputChange(e, i)}
-                        /> */}
-                                      </div>
-                                    </div>
-                                    {Array.from({ length: total }, (item, index) => {
-                                      return (
-                                        <div className="col">
-                                          <div className="form-group">
-                                            <span>{x[`value${index}`]}</span>
-
-                                            {/* <input
-                              type="text"
-                              className="form-control"
-                              placeholder="value"
-                              name={`value${index}`}
-                              //   name={`value`}
-                              value={x[`value${index}`]}
-                              onChange={(e) => handleInputChange(e, i)}
-                            /> */}
-                                          </div>
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
-                                );
-                              }
-                            })}
-                            {inputListFinal.map((x, i) => {
-                              if (i === limit) {
-                                return (
-                                  <div className="row clearfix">
-                                    <div className="col">
-                                      <div className="form-group">
-                                        {/* <Autocomplete
-                          id="controllable-states-demo"
-                          defaultValue={Finalizationddl}
-                          options={competition}
-                          // onChange={}
-                          // style={{ width: 0 }}
-                          onChange={(event, value) => {
-                            ChangeFinalization(event, value);
-                          }}
-                          renderInput={(params) => (
-                            <TextField {...params} variant="outlined" />
-                          )}
-                        />{" "} */}
-                                      </div>
-                                    </div>
-                                    {Array.from({ length: total }, (item, index) => {
-                                      return (
-                                        <div className="col">
-                                          <div className="form-group">
-                                            <span>{`value${index}`}</span>
-
-                                            {/* <input
-                              type="text"
-                              className="form-control"
-                              placeholder="value"
-                              name={`value${index}`}
-                              //   name={`value`}
-                              value={x[`value${index}`]}
-                              onChange={(e) => handleInputChange(e, i)}
-                            /> */}
-                                          </div>
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
-                                );
-                              }
-                            })}
-
                             <div style={{ marginTop: 30 }}></div>
-
                           </div>
                         ) : null}
 
                       </div>
+
+
 
                     </div>
                   </div>
@@ -2238,128 +1935,8 @@ export default function Form(props) {
                           </div>
                           <div style={{ marginTop: 20 }}></div>
                           <div className="row clearfix">
-                            <div className="col">
-                              <div className="form-group">
-                                <span>{org_name}</span>
-
-                                {/* <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Features"
-                              name="featue"
-                              value={org_name}
-                              // onChange={(e) => handleInputChange(e, i)}
-                              disabled
-                            /> */}
-                              </div>
-
-                            </div>
-                            {inputListFeature.map((x, i) => {
-                              return (
-                                <div className="col">
-                                  <div className="form-group">
-                                    <span>{x.featues}</span>
-
-                                    {/* <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Features"
-                                  name="featue"
-                                  value={x.featues}
-                                  onChange={(e) => handleInputChange(e, i)}
-                                  disabled
-                                /> */}
-                                  </div>
-                                </div>
-                              );
-                            })}
+                            <Line data={data} />
                           </div>
-                          {inputListFinal.map((x, i) => {
-                            if (i === 0) {
-                              return (
-                                <div className="row clearfix">
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <span>{x.competition}</span>
-
-                                      {/* <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Competition"
-                                    name="competition"
-                                    value={x.competition}
-                                    onChange={(e) => handleInputChange(e, i)}
-                                  /> */}
-                                    </div>
-                                  </div>
-                                  {Array.from({ length: total }, (item, index) => {
-                                    return (
-                                      <div className="col">
-                                        <div className="form-group">
-                                          <span>{x[`value${index}`]}</span>
-
-                                          {/* <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="value"
-                                        name={`value${index}`}
-                                        //   name={`value`}
-                                        value={x[`value${index}`]}
-                                        onChange={(e) => handleInputChange(e, i)}
-                                      /> */}
-                                        </div>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              );
-                            }
-                          })}
-                          {inputListFinal.map((x, i) => {
-                            if (i === limit) {
-                              return (
-                                <div className="row clearfix">
-                                  <div className="col">
-                                    <div className="form-group">
-                                      {/* <Autocomplete
-                                    id="controllable-states-demo"
-                                    defaultValue={Finalizationddl}
-                                    options={competition}
-                                    // onChange={}
-                                    // style={{ width: 0 }}
-                                    onChange={(event, value) => {
-                                      ChangeFinalization(event, value);
-                                    }}
-                                    renderInput={(params) => (
-                                      <TextField {...params} variant="outlined" />
-                                    )}
-                                  />{" "} */}
-                                    </div>
-                                  </div>
-                                  {Array.from({ length: total }, (item, index) => {
-                                    return (
-                                      <div className="col">
-                                        <div className="form-group">
-                                          <span>{`value${index}`}</span>
-
-                                          {/* <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="value"
-                                        name={`value${index}`}
-                                        //   name={`value`}
-                                        value={x[`value${index}`]}
-                                        onChange={(e) => handleInputChange(e, i)}
-                                      /> */}
-                                        </div>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              );
-                            }
-                          })}
-
                           <div style={{ marginTop: 30 }}></div>
 
                         </div>

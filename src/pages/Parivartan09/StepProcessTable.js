@@ -57,6 +57,16 @@ const Table = (props) => {
   };
 
 
+  const getSr_no = (a) => {
+    console.log(a)
+    if (ProcessData) {
+      // console.log(ProcessData.filter(({ parent_process_id, created_by }) => parent_process_id === a && created_by === s_id))
+      var strLen = ProcessData.filter(({ parent_process_id, created_by }) => parent_process_id === a && created_by === s_id)
+      return strLen.length + 1
+
+    }
+
+  }
 
   const handleClose = () => {
 
@@ -92,10 +102,11 @@ const Table = (props) => {
 
   const handleSubmit = (parent_process_id) => {
     // alert(parent_process_id);
+    var str_nov = getSr_no(`${parent_process_id}`)
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var rawrich = JSON.stringify({
-      sr_no: sr_no,
+      sr_no: getSr_no(`${parent_process_id}`),
       step_decription: step_decription,
       trasaction_time: trasaction_time,
       resource_allocated: resource_allocated,
@@ -168,16 +179,41 @@ const Table = (props) => {
       .catch((error) => console.log("error", error));
 
 
-    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab2/user/${s_id}`, requestOptionsget)
+    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshanMapTab1/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
-        setcompleteData(resData.data[0].features);
-        console.log(resData.data);
+        console.log(resData.data[0]);
+        console.log(completeData)
 
-        // console.log(resData.data[0].features);
-        if (resData.status == 200) {
-          console.log("Data Added succesfully");
-        }
+
+        let MyValues = resData.data;
+        // if (MyValues.length > 0) {
+        //   // setedituser(true);
+        //   setUpid(resData.data[0].id);
+
+        // }
+        console.log("Edit Values", MyValues);
+
+        MyValues.map((item, key) => {
+          console.log("before Eval", item.features);
+          let Feature = eval(item.features);
+          let Feature2 = eval(item.features2);
+
+          console.log("SDfjdskjfn jsdhfkjsdfn", Feature);
+          console.log("SDfjdskjfn jsdhfkjsdfn22", Feature2);
+          setcompleteData(Feature);
+
+          // setCustomerList(Feature);
+          // setInputList(Feature);
+          // setInputListFinal(Feature)
+          // setInputListFinal2(Feature2)
+
+        });
+
+
+
+
+
       })
       .catch((error) => console.log("error", error));
 
@@ -538,6 +574,7 @@ const Table = (props) => {
 
           <h2 className="card-inside-title">
             <strong>Process Name : {item.value0}</strong>
+
           </h2>
           <div className="container-fluid" style={{ backgroundColor: "#F3F6F9" }}>
             <div className="row clearfix">
@@ -554,8 +591,9 @@ const Table = (props) => {
                             className="form-control"
                             placeholder="Sr.No."
                             name="sr_no"
-                            onChange={sr_noFn}
-                            value={sr_no}
+                            disabled
+                            // onChange={sr_noFn}
+                            value={getSr_no(`${item.value0}`)}
                           />
                         </div>
                         <div className="col-2">
@@ -642,14 +680,16 @@ const Table = (props) => {
                                     {/* Child Component {childName} */}
 
                                     <tr>
-                                      <th>Sr. No.</th>
-                                      <th>Step Description</th>
-                                      <th>Transaction Time (Days / Hours)</th>
-                                      <th>Resource Allocated (Departments)</th>
-                                      <th>Name of Resources (Individuals)</th>
-                                      <th style={{ textAlign: "center" }}>Action</th>
+                                      <th className="col-lg-1">Sr. No.</th>
+                                      <th className="col-lg-4">Step Description</th>
+                                      <th className="col-lg-1">Transaction Time (Days / Hours)</th>
+                                      <th className="col-lg-2">Resource Allocated (Departments)</th>
+                                      <th className="col-lg-2">Name of Resources (Individuals)</th>
+                                      <th className="col-lg-2" style={{ textAlign: "center" }}>Action</th>
                                     </tr>
                                   </thead>
+                                  {console.log(ProcessData.filter(({ parent_process_id, created_by }) => parent_process_id === item.value0 && created_by === s_id))
+                                  }
                                   {
                                     ProcessData.filter(({ parent_process_id, created_by }) => parent_process_id === item.value0 && created_by === s_id)
                                       .map((itm, keys) => (
@@ -753,11 +793,11 @@ const Table = (props) => {
                                 {/* Child Component {childName} */}
 
                                 <tr>
-                                  <th>Sr. No.</th>
-                                  <th>Step Description</th>
-                                  <th>Transaction Time (Days / Hours)</th>
-                                  <th>Resource Allocated (Departments)</th>
-                                  <th>Name of Resources (Individuals)</th>
+                                  <th className="col-lg-1">Sr. No.</th>
+                                  <th className="col-lg-6">Step Description</th>
+                                  <th className="col-lg-1">Transaction Time (Days / Hours)</th>
+                                  <th className="col-lg-2">Resource Allocated (Departments)</th>
+                                  <th className="col-lg-2">Name of Resources (Individuals)</th>
                                 </tr>
                               </thead>
                               {
@@ -869,7 +909,7 @@ const Table = (props) => {
                             <thead>
                               <tr>
                                 <th>Vilakshan Journey</th>
-                                {/* <th>Vilakshan Form</th> */}
+                                <th>Vilakshan Form</th>
                                 {/* <th>VCCs (Cost Centres)</th> */}
                                 <th>Parent Process Name</th>
                                 <th>Parent Process Input</th>
@@ -883,7 +923,6 @@ const Table = (props) => {
                             <tbody>
                               {completeData.map((item, key) => (
                                 <tr>
-                                  <td>{item.tag}</td>
                                   {/* <td>{item.vilakshan_journey}</td> */}
                                   <td>{item.value0}</td>
                                   <td>{item.value1}</td>
@@ -893,6 +932,8 @@ const Table = (props) => {
                                   <td>{item.value5}</td>
                                   <td>{item.value6}</td>
                                   <td>{item.value7}</td>
+                                  <td>{item.value8}</td>
+
                                 </tr>
                               ))}
                             </tbody>
@@ -907,7 +948,7 @@ const Table = (props) => {
               <div >
                 <div id="divToPrint" className="mt4 pdfBody" >
 
-                  <div className="row clearfix">
+                  <div className="row clearfix " >
                     <div className="col-md-12">
                       <div className="pdfHeader">Step by Step Process</div>
                       <div className="p-5">
@@ -935,7 +976,7 @@ const Table = (props) => {
               >
 
                 <PDFExport
-                  paperSize="A3"
+                  paperSize="A2"
                   margin="1cm"
                   ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
                   forcePageBreak=".page-break"
@@ -946,7 +987,7 @@ const Table = (props) => {
                         <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
                       </div>
                       <div className="col-md-6 pageHeading" >
-                        Financial Model
+                        System & Process
                       </div>
                     </div>
                     <Modal.Title id="example-modal-sizes-title-lg">
@@ -957,8 +998,8 @@ const Table = (props) => {
 
                     <div >
                       <div id="divToPrint" className="mt4 pdfBody" >
-                        <div className="row clearfix">
-                          <div className="col-md-12">
+                        <div className="row clearfix" >
+                          <div className="col-md-12 m-2">
                             <div className="pdfHeader">Vilakshan Map</div>
                             <div style={{ marginTop: 30 }}>
                               <div class="table-responsive" id="Table">
@@ -966,7 +1007,7 @@ const Table = (props) => {
                                   <thead>
                                     <tr>
                                       <th>Vilakshan Journey</th>
-                                      {/* <th>Vilakshan Form</th> */}
+                                      <th>Vilakshan Form</th>
                                       {/* <th>VCCs (Cost Centres)</th> */}
                                       <th>Parent Process Name</th>
                                       <th>Parent Process Input</th>
@@ -980,16 +1021,15 @@ const Table = (props) => {
                                   <tbody>
                                     {completeData.map((item, key) => (
                                       <tr>
-                                        <td>{item.tag}</td>
-                                        {/* <td>{item.vilakshan_journey}</td> */}
-                                        <td>{item.value0}</td>
-                                        <td>{item.value1}</td>
-                                        <td>{item.value2}</td>
-                                        <td>{item.value3}</td>
-                                        <td>{item.value4}</td>
-                                        <td>{item.value5}</td>
-                                        <td>{item.value6}</td>
-                                        <td>{item.value7}</td>
+                                        <td><small>{item.value0}</small></td>
+                                        <td><small>{item.value1}</small></td>
+                                        <td><small>{item.value2}</small></td>
+                                        <td><small>{item.value3}</small></td>
+                                        <td><small>{item.value4}</small></td>
+                                        <td><small>{item.value5}</small></td>
+                                        <td><small>{item.value6}</small></td>
+                                        <td><small>{item.value7}</small></td>
+                                        <td><small>{item.value8}</small></td>
                                       </tr>
                                     ))}
                                   </tbody>
@@ -998,30 +1038,28 @@ const Table = (props) => {
                             </div>
                           </div>
 
-                          <div className="col-md-12">
+                          <div className="col-md-12 m-2" className="page-break">
                             <div className="pdfHeader">Step By Step Process</div>
                             <div style={{ marginTop: 30 }}>
                               {completeData.map((item, key) => (
                                 <>
                                   {/* <div className="pdfHeader">Step by Step Process</div> */}
-                                  <div style={{ marginTop: 30 }}>
+                                  <div style={{ marginTop: 30,padding:"16px" }}>
                                     <div class="table-responsive" id="Table">
-                                      <table class="table-responsive table-bordered">
+                                      <table class="table-responsive table-bordered rounded">
                                         <thead>
-                                          <tr>
-                                            <th>Input</th>
-                                            <th>
-                                              <tr align="center">
-                                                <div style={{ marginLeft: "28rem" }}>
-                                                  {item.value0}
-                                                </div>
-                                              </tr>
+                                          <tr className="text-center">
+                                            <th className="col-lg-1">Input</th>
+                                            <th className="text-center">
+                                              {/* <tr className="text-center" align="center"> */}
+                                              {item.value0}
+                                              {/* </tr> */}
                                             </th>
-                                            <th>Output</th>
+                                            <th className="col-lg-1 text-center">Output</th>
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <td>{item.value1}</td>
+                                          <td className="text-center"><small>{item.value1}</small></td>
 
                                           <td>
                                             {ProcessData.length > 0 ? (
@@ -1032,11 +1070,11 @@ const Table = (props) => {
                                                       {/* Child Component {childName} */}
 
                                                       <tr>
-                                                        <th>Sr. No.</th>
-                                                        <th>Step Description</th>
-                                                        <th>Transaction Time (Days / Hours)</th>
-                                                        <th>Resource Allocated (Departments)</th>
-                                                        <th>Name of Resources (Individuals)</th>
+                                                        <th className="col-lg-1">Sr. No.</th>
+                                                        <th className="col-lg-6">Step Description</th>
+                                                        <th className="col-lg-1">Transaction Time (Days / Hours)</th>
+                                                        <th className="col-lg-2">Resource Allocated (Departments)</th>
+                                                        <th className="col-lg-2">Name of Resources (Individuals)</th>
                                                       </tr>
                                                     </thead>
                                                     {
@@ -1045,11 +1083,11 @@ const Table = (props) => {
                                                           <>
                                                             {/* // console.log(itm) */}
                                                             <tbody>
-                                                              <td>{itm.sr_no}</td>
-                                                              <td>{itm.step_decription}</td>
-                                                              <td>{itm.trasaction_time}</td>
-                                                              <td>{itm.resource_allocated}</td>
-                                                              <td>{itm.resource_name}</td>
+                                                              <td><small>{itm.sr_no}</small></td>
+                                                              <td><small>{itm.step_decription}</small></td>
+                                                              <td><small>{itm.trasaction_time}</small></td>
+                                                              <td><small>{itm.resource_allocated}</small></td>
+                                                              <td><small>{itm.resource_name}</small></td>
 
                                                             </tbody>
                                                           </>
@@ -1066,7 +1104,7 @@ const Table = (props) => {
                                           </td>
 
 
-                                          <td>{item.value2}</td>
+                                          <td className="text-center"><small>{item.value2}</small></td>
                                         </tbody>
                                       </table>
                                     </div>

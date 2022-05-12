@@ -46,7 +46,7 @@ export default function Vilakshan(props) {
   const [Mupdate, setMupdate] = useState(false);
   const [Mdelete, setMdelete] = useState(false);
 
-  const [vilakshanData, setVilakshanData] = useState("");
+  const [vilakshanData, setVilakshanData] = useState('');
   const [show, setShow] = useState(false);
   const [editModal, seteditModal] = useState(false);
 
@@ -86,6 +86,7 @@ export default function Vilakshan(props) {
   const [total, settotal] = useState(0);
   const [inputList, setInputList] = useState([{ competition: "" }]);
   const [completeData, setcompleteData] = useState('')
+  const [statusText, setstatusText] = useState('')
 
   const ViewModel = () => {
     setviewModal(true);
@@ -117,6 +118,7 @@ export default function Vilakshan(props) {
   };
 
   const GetallRecords = () => {
+    setstatusText("Loading...")
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -136,6 +138,7 @@ export default function Vilakshan(props) {
           settransEmail(resData.data.tranz_email);
           setbypassEmail(resData.data.bypass_email);
           setbeliverName(resData.data.beliver_name);
+          setstatusText("")
 
         }
 
@@ -147,7 +150,6 @@ export default function Vilakshan(props) {
       .then((response) => response.json())
       .then((resData) => {
         console.log(resData.data);
-        setVilakshanData(resData.data[0].features);
         setvarifiedValue(resData.data[0].verified);
         setUpid(resData.data[0].id);
 
@@ -159,6 +161,7 @@ export default function Vilakshan(props) {
         if (MyValues.length > 0) {
           // setedituser(true);
           setUpid(resData.data[0].id);
+          setstatusText("")
 
         }
         console.log("Edit Values", MyValues);
@@ -167,6 +170,7 @@ export default function Vilakshan(props) {
           console.log("before Eval", item.features);
           let Feature = eval(item.features);
           let Feature2 = eval(item.features2);
+          setVilakshanData(Feature);
 
           console.log("SDfjdskjfn jsdhfkjsdfn", Feature);
           console.log("SDfjdskjfn jsdhfkjsdfn22", Feature2);
@@ -626,7 +630,7 @@ export default function Vilakshan(props) {
       method: "PUT",
       headers: myHeaders,
       body: raw,
-      redirect: "follow", 
+      redirect: "follow",
     };
     fetch(
       `https://parivartan.transganization.com/nodejs/masters/vilakshan/${s_id}`,
@@ -655,6 +659,91 @@ export default function Vilakshan(props) {
       .catch((error) => console.log("error", error));
   }
 
+
+  const handleFilter = (e) => {
+    setstatusText("Loading...")
+
+    const fvalue = e.target.value;
+    const optionName = e.target.name;
+
+    console.log(e.target.value)
+    console.log(e.target.name)
+
+    if (fvalue === "select") {
+      setstatusText("Loading...")
+      GetallRecords()
+      setstatusText("")
+      return false
+    }
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var requestOptionsget = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    fetch(`https://parivartan.transganization.com/nodejs/masters/vilakshan/user/${s_id}`, requestOptionsget)
+      .then((response) => response.json())
+      .then((resData) => {
+        // console.log(resData.data);
+
+        // console.log("---resDAta--->", resData.data[0]);
+        // let MyValues1 = resData.data;
+
+        let MyValues = resData.data;
+        if (MyValues.length > 0) {
+          // setedituser(true);
+          setUpid(resData.data[0].id);
+
+        }
+        // console.log("Edit Values", MyValues);
+
+        MyValues.map((item, key) => {
+          // console.log("before Eval", item.features);
+          const Feature = eval(item.features);
+          // let Feature2 = eval(item.features2);
+
+          console.log("SDfjdskjfn jsdhfkjsdfn", Feature);
+          // console.log("SDfjdskjfn jsdhfkjsdfn22", Feature2);
+          console.log(optionName === "tag0")
+          if (optionName === "tag0") {
+            var optionVal = Feature.filter(({ tag0 }) => tag0 === fvalue)
+          } else if (optionName === "tag1") {
+            var optionVal = Feature.filter(({ tag1 }) => tag1 === fvalue)
+          } else if (optionName === "tag2") {
+            var optionVal = Feature.filter(({ tag2 }) => tag2 === fvalue)
+          } else if (optionName === "tag3") {
+            var optionVal = Feature.filter(({ tag3 }) => tag3 === fvalue)
+          } else if (optionName === "tag4") {
+            var optionVal = Feature.filter(({ tag4 }) => tag4 === fvalue)
+          } else if (optionName === "tag5") {
+            var optionVal = Feature.filter(({ tag5 }) => tag5 === fvalue)
+          }
+          console.log(optionVal)
+          // setCustomerList(Feature);
+          setInputListFinal(optionVal)
+          console.log(optionVal)
+          setstatusText("Loading...")
+
+          if (optionVal.length === 0) {
+            setstatusText("No Data Found")
+          } else if (optionVal.length > 0) {
+            setstatusText("")
+          }
+          // setInputListFinal2(Feature2)
+
+        });
+
+        // console.log("Edit Values", MyValues1);
+
+
+      })
+
+      .catch((error) => console.log("error", error));
+
+
+
+  }
 
   return (
     <>
@@ -858,22 +947,64 @@ export default function Vilakshan(props) {
                     </div>
                     <div className="col-lg-2 text-center">
                       <strong>Non Financial</strong>
+                      <div className="col-lg-12">
+                        <select className="form-control " name="tag0" onChange={handleFilter}>
+                          <option value="select">Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
                     </div>
 
                     <div className="col-lg-2 text-center">
                       <strong>Objective</strong>
+                      <div className="col-lg-12">
+                        <select className="form-control " name="tag1" onChange={handleFilter}>
+                          <option value="select">Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
                     </div>
                     <div className="col-lg-2 ml-3 text-center">
                       <strong>Measurable</strong>
+                      <div className="col-lg-12">
+                        <select className="form-control " name="tag2" onChange={handleFilter}>
+                          <option value="select">Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
                     </div>
                     <div className="col-lg-2 ml-3 text-center">
                       <strong>Volume Growth</strong>
+                      <div className="col-lg-12">
+                        <select className="form-control " name="tag3" onChange={handleFilter}>
+                          <option value="select">Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
                     </div>
                     <div className="col-lg-2 ml-3 text-center">
                       <strong>Value Growth</strong>
+                      <div className="col-lg-12">
+                        <select className="form-control " name="tag4" onChange={handleFilter}>
+                          <option value="select">Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
                     </div>
                     <div className="col-lg-2 ml-3 text-center">
                       <strong>Near/Far to PCB</strong>
+                      <div className="col-lg-12">
+                        <select className="form-control " name="tag4" onChange={handleFilter}>
+                          <option value="select">Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
                     </div>
                     <div className="col-lg-2 ml-3 text-center">
                       <strong>OPERATIONAL EXCELLENCE</strong>
@@ -881,9 +1012,9 @@ export default function Vilakshan(props) {
                     <div className="col-lg-2 ml-3 text-center">
                       <strong>CUSTOMER INTIMACY</strong>
                     </div>
-                    <div className="col-lg-2 ">
+                    {/* <div className="col-lg-2 ">
                       <strong>Vilakshan</strong>
-                    </div>
+                    </div> */}
 
 
                   </ListContainer>
@@ -916,7 +1047,6 @@ export default function Vilakshan(props) {
                                     <DragHandle {...provided.dragHandleProps} className="mr-2" />
                                     {Array.from({ length: 1 }, (item, index) => {
                                       return (
-
                                         <>
                                           <div className="col-lg-2">
                                             <input
@@ -1000,31 +1130,24 @@ export default function Vilakshan(props) {
                                     })
                                     }
 
-                                    {Array.from({ length: 1 }, (item, index) => {
+                                    {/* {Array.from({ length: 1 }, (item, index) => {
                                       return (
                                         <>
-                                          {/* {DrpValues.length > 0 ? ( */}
                                           <div className="col-lg-2">
-                                            {/* <DragHandle {...provided.dragHandleProps} className="mr-2" /> */}
                                             <div class="btn-group m-1">
-                                              {/* <span></span> */}
                                               <input type="checkbox"
                                                 className="m-2"
                                                 name={`checkVal${index}`}
                                                 value={x[`checkVal${index}`]}
                                                 checked={x[`checkVal${index}`]}
-                                                // onChange={() => yesFn(item.checkVal, item.id)} />
                                                 onChange={(e) => handleInputChange2(e, i)}
                                               />
-
-
                                             </div>
                                           </div>
-                                          {/* ) : (null)} */}
                                         </>
                                       );
                                     })
-                                    }
+                                    } */}
 
 
                                     <div className="col-md-2">
@@ -1064,7 +1187,8 @@ export default function Vilakshan(props) {
 
                     )}
                   </Droppable>
-
+                  {/* <div className="text-center">Loading...</div> */}
+                  <div className="text-center">{statusText}</div>
                 </DragDropContext>
 
                 <div style={{ marginTop: 30 }}></div>
@@ -1115,7 +1239,6 @@ export default function Vilakshan(props) {
                       </Modal.Header>
                       <Modal.Body>
                         {vilakshanData.length > 0 ? (
-
                           <div>
                             <div id="divToPrint" className="mt4">
 
@@ -1224,6 +1347,8 @@ export default function Vilakshan(props) {
 
         </Modal.Header>
         <Modal.Body>
+          {/* {console.log(vilakshanData.length > 0)}
+          {console.log(vilakshanData[0])} */}
           {vilakshanData.length > 0 ? (
 
             <div>

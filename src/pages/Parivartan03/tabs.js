@@ -106,7 +106,14 @@ export default function ScrollableTabsButtonAuto() {
         console.log(resData.data);
         let response = resData.data[0].features;
         console.log(response)
-        setcompleteData(response);
+
+        let myValues = resData.data;
+
+        myValues.map((item, key) => {
+          let Feature = eval(item.features);
+          setcompleteData(Feature);
+
+        })
         // response.map((item, key) => {
         //   fetch(`https://parivartan.transganization.com/nodejs/masters/CMMT3/` + `${item.id}`, requestOptionsget)
         //     .then((response) => response.json())
@@ -188,6 +195,7 @@ export default function ScrollableTabsButtonAuto() {
       <div className="row clearfix">
         <div className="col-lg-12 col-md-12 col-sm-12">
           <div className="card p-4 mt-2">
+            {console.log(completeData[0])}
             <div className={classes.root}>
               <AppBar position="static" color="default">
                 <Tabs
@@ -266,7 +274,7 @@ export default function ScrollableTabsButtonAuto() {
                           {pdfShowDes > 0 ? (
 
                             <PDFExport
-                              paperSize="A4"
+                              paperSize="A2"
                               margin="1cm"
                               ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
                               forcePageBreak=".page-break"
@@ -285,33 +293,33 @@ export default function ScrollableTabsButtonAuto() {
                                 </Modal.Title>
                               </Modal.Header>
                               <Modal.Body>
-                                <div >
+                                <div >  
                                   <div id="divToPrint" className="mt4 pdfBody"  >
 
                                     <div className="row clearfix" >
-                                      <div className="col-md-12">
+                                      <div className="col-md-12" >
                                         <div className="pdfHeader" >Customer Mind Map</div>
-                                        <div class="table-responsive">
-                                          <table class="table table-bordered">
+                                        <div class="table-responsive" >
+                                          <table class="table table-bordered table-responsive">
                                             <thead>
                                               <tr>
-                                                <th>Questions Appearing in Mind Journey</th>
-                                                <th>Questions Appearing in Mind of</th>
-                                                <th data-breakpoints="sm xs">who Gives Answer</th>
-                                                <th data-breakpoints="sm xs">Possible Answer</th>
-                                                <th data-breakpoints="sm xs md">Choice Made</th>
-                                                <th data-breakpoints="sm xs md">Point to be considered</th>
+                                                <th data-breakpoints="sm xs" scope="col">Questions Appearing in Mind Journey</th>
+                                                <th data-breakpoints="sm xs" scope="col">Questions Appearing in Mind of</th>
+                                                <th data-breakpoints="sm xs" scope="col">who Gives Answer</th>
+                                                <th data-breakpoints="sm xs" scope="col">Possible Answer</th>
+                                                <th data-breakpoints="sm xs md" scope="col">Choice Made</th>
+                                                <th data-breakpoints="sm xs md" scope="col">Point to be considered</th>
                                               </tr>
                                             </thead>
                                             {completeData.map((item, i) => {
                                               console.log(item)
                                               return <tr>
-                                                <td><h5>{item.value0}</h5></td>
-                                                <td><h5>{item.value1}</h5></td>
-                                                <td><h5>{item.value2}</h5></td>
-                                                <td><h5>{item.value3}</h5></td>
-                                                <td><h5>{item.value4}</h5></td>
-                                                <td><h5>{item.tag0}</h5></td>
+                                                <td><small>{item.value0}</small></td>
+                                                <td><small>{item.value1}</small></td>
+                                                <td><small>{item.value2}</small></td>
+                                                <td><small>{item.value3}</small></td>
+                                                <td><small>{item.value4}</small></td>
+                                                <td><small>{item.tag0}</small></td>
                                               </tr>;
                                             })}
                                           </table>
@@ -325,16 +333,16 @@ export default function ScrollableTabsButtonAuto() {
                                           <table class="table table-bordered">
                                             <thead>
                                               <tr>
-                                                <th>Point to be Considered</th>
-                                                <th>Brief Building Blocks</th>
+                                                <th data-breakpoints="sm xs" scope="col">Point to be Considered</th>
+                                                <th data-breakpoints="sm xs" scope="col">Brief Building Blocks</th>
                                                 <th data-breakpoints="sm xs">Owner Ship</th>
                                               </tr>
                                             </thead>
                                             {completeData.map((item, i) => {
                                               return <tr>
-                                                <td><h5>{item.tag0}</h5></td>
-                                                <td><h5>{item.richTextVal ? item.richTextVal.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ') : ""}</h5></td>
-                                                <td><h5>{item.ownership}</h5></td>
+                                                <td><small>{item.tag0}</small></td>
+                                                <td><small>{item.richTextVal ? item.richTextVal.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ') : ""}</small></td>
+                                                <td><small>{item.ownership}</small></td>
                                               </tr>;
                                             })}
                                           </table>
@@ -356,10 +364,10 @@ export default function ScrollableTabsButtonAuto() {
                                             </thead>
                                             {completeData.map((item, i) => {
                                               return <tr>
-                                                <td><h5>{item.start_date}</h5></td>
-                                                <td><h5>{item.end_date}</h5></td>
-                                                <td><h5>{item.days}</h5></td>
-                                                <td><h5>{item.weeks}</h5></td>
+                                                <td><small>{item.start_date}</small></td>
+                                                <td><small>{item.end_date}</small></td>
+                                                <td><small>{item.days}</small></td>
+                                                <td><small>{item.weeks}</small></td>
                                               </tr>;
                                             })}
                                           </table>
@@ -372,10 +380,6 @@ export default function ScrollableTabsButtonAuto() {
                             </PDFExport>
                           ) : (null)}
                         </div>
-
-
-
-
 
                       ) : (null)}
                       <button type="button" class="btn downloadbtn btn-square waves-effect" onClick={exportPDFWithMethod} >Download PDF   <i class="ml-1 zmdi zmdi-cloud-download"></i></button>

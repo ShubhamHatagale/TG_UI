@@ -299,6 +299,7 @@ const AccrodionTabs = (props) => {
     //     .catch((error) => console.log("error", error))
     // }
   }
+  console.log(formData)
   if (formData) {
     formData.map((item, key) => {
       if (item.tag0 == "Undefined") {
