@@ -13,7 +13,7 @@ export default function Form() {
 
   const history = useHistory();
 
-  const ExcelFile = ReactExport.ExcelFile;
+  const ExcelFile = ReactExport.ExcelFile; 
   const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
   const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
   const pdfExportComponent = React.useRef(null);

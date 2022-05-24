@@ -217,8 +217,17 @@ export default function Form(props) {
           setproblem_solving(resData.data[0].problem_solving);
 
           // console.log(resData.data)
-          let MyValues = resData.data;
           // console.log("In UseEffect Function", MyValues);
+          console.log(resData.data)
+          let MyValues = resData.data;
+          console.log("In UseEffect Function", MyValues);
+          MyValues.map((item, key) => {
+            let customerFaceMap = eval(item.customer_face);
+            console.log("Data customerFaceMap ", customerFaceMap);
+            setcustomerSegmentData(customerFaceMap)
+            setInputList(customerFaceMap);
+          });
+
 
         }
         // setShowData(true)
@@ -782,8 +791,416 @@ export default function Form(props) {
 
   return (
     <>
-      <ModalSubmit show={showHide} />
 
+
+
+      {/* Competition Sheet */}
+
+
+      <PDFExport
+        paperSize="A4"
+        margin="1cm"
+        ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
+        forcePageBreak=".page-break"
+      >
+        <Modal.Header style={{ padding: "10px" }}>
+          <div className="col-md-12 row" >
+            <div className="col-md-6">
+              <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
+            </div>
+            <div className="col-md-6 pageHeading" >
+              Business Model
+            </div>
+          </div>
+          <Modal.Title id="example-modal-sizes-title-lg">
+
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Customer Segment started */}
+          <div className="container-fluid">
+            <div className="row clearfix">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="card">
+                  <div>
+                    <div id="divToPrint" className="mt4 pdfBody">
+                      <div className="row clearfix">
+                        <div className="col-md-12">
+                          <div
+                            className="pdfHeader"
+                          >
+                            Customer Segmentation
+                          </div>
+
+                          <div
+                            className="dynamicContent"
+                            style={{ margin: "30px" }}
+
+                          >
+                            <div
+                              className="headText "
+                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                            >
+                              1. Your Organization Name
+
+
+                            </div>
+
+                            {org_name.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row clearfix">
+                        <div className="col-md-12">
+
+
+                          <div
+                            className="dynamicContent"
+                            style={{ margin: "30px" }}
+
+                          >
+                            <div
+                              className="headText "
+                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                            >
+                              2. Products/Services Offering by
+
+
+                            </div>
+
+
+                            {product_service_offering_by.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row clearfix">
+                        <div className="col-md-12">
+
+                          <div
+                            className="dynamicContent"
+                            style={{ margin: "30px" }}
+
+                          >
+                            <div
+                              className="headText "
+                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                            >
+                              3. What is the problem you are solving?
+
+                            </div>
+                            {problem_solving.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div className="row clearfix">
+                        <div className="col-md-12">
+                          <div className="table-responsive">
+                            <Grid
+                              style={{
+                                maxHeight: "400px",
+                              }}
+                              data={inputList.slice(0, 100)}
+
+                            >
+                              <Column
+                                field="customer_face"
+                                title="List of Customer Face"
+                                width="420px"
+
+                              />
+
+                            </Grid>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* <div className="row clearfix">
+              <div className="col-md-12">
+                <div className="table-responsive">
+                  <Grid
+                    style={{
+                      maxHeight: "400px",
+                    }}
+                    data={inputList.slice(0, 2)}
+                  >
+                    <Column
+                      field="firstName"
+                      title="List of Customer Face"
+                      width="420px"
+                    />
+                  </Grid>
+                </div>
+              </div>
+            </div> */}
+                    </div>
+                  </div>
+                  <div style={{ marginTop: 30 }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* playground business model */}
+
+          <div className="container-fluid" className="page-break">
+            <div className="row clearfix">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="card">
+                  <div>
+                    <div id="divToPrint" className="mt4 pdfBody">
+                      <div className="row clearfix" >
+                        {/* <div className="col-md-12">
+                <img
+                  src="../../assets/images/transaganization.png"
+                  width="135"
+                  alt="Transganization"
+                />
+                <h1
+                  style={{
+                    alignSelf: "center",
+                    alignContent: "center",
+                    textAlign: "center",
+                    marginTop: "20px",
+                  }}
+                >
+                  Buiseness Model
+                </h1>
+              </div> */}
+                      </div>
+                      <div className="row clearfix">
+                        <div className="col-md-12">
+                          <div
+                            className="pdfHeader"
+                          >
+                            Playground Buiseness Model
+
+                          </div>
+
+                          <div
+                            className="dynamicContent"
+                            style={{ margin: "30px" }}
+
+                          >
+                            <div
+                              className="headText "
+                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                            >
+                              1. Basis of your Playground
+
+
+                            </div>
+                            {basisofplayground.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row clearfix">
+                        <div className="col-md-12">
+
+                          <div
+                            className="dynamicContent"
+                            style={{ margin: "30px" }}
+
+                          >
+                            <div
+                              className="headText "
+                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                            >
+                              2. Define your Playground
+
+
+                            </div>
+                            {defineplayground.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ marginTop: 30 }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+          <div id="divToPrint" className="mt4 pdfBody" className="page-break">
+            <div className="row clearfix" >
+              <div className="col-md-12 m-2">
+                <div
+                  className="pdfHeader"
+                >
+                  Value Proposition
+
+                </div>
+                <div className="header">
+                  <small>
+                    <strong>Possible Combination  :{PossibleCombination}
+                    </strong>
+                  </small>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Features</th>
+                      <th scope="col">No Of Possiblities </th>
+                      <th scope="col">Possiblities</th>
+                      <th scope="col">Choice Made</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {inputList2.map((item, key) => (
+                      <tr>
+                        <td className="text-center"><small>{item.featues}</small></td>
+                        <td className="text-center"><small>{item.noofpossiblity}</small></td>
+                        <td className="text-center"><small>{item.possiblity}</small></td>
+                        <td className="text-center"><small>{item.choicemade}</small></td>
+
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+
+
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+          {/* Competition Sheet */}
+
+          <div className="page-break">
+            <div id="divToPrint" className="mt4 pdfBody p-3" className="page-break" >
+
+              <div
+                className="pdfHeader"
+              >
+                Competition Sheet
+
+              </div>
+              <div style={{ marginTop: 20 }}></div>
+              <div className="row clearfix">
+                <div className="col">
+                  <div className="form-group">
+                    <span>{org_name}</span>
+                  </div>
+                </div>
+                {inputListFeature.map((x, i) => {
+                  return (
+                    <div className="col">
+                      <div className="form-group">
+                        <span>{x.featues}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {console.log(inputListFinal + "inp")}
+              {inputListFinal.map((x, i) => {
+                // if (i === 0) {
+                return (
+                  <div className="row clearfix">
+                    <div className="col">
+                      <div className="form-group">
+                        <span>{x.competition}</span>
+                      </div>
+                    </div>
+                    {Array.from({ length: total }, (item, index) => {
+                      return (
+                        <div className="col">
+                          <div className="form-group">
+                            <span>{x[`value${index}`]}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+                // }
+              })}
+              {inputListFinal.map((x, i) => {
+                if (i === limit) {
+                  return (
+                    <div className="row clearfix">
+                      <div className="col">
+                        <div className="form-group">
+
+                        </div>
+                      </div>
+                      {Array.from({ length: total }, (item, index) => {
+                        return (
+                          <div className="col">
+                            <div className="form-group">
+                              {/* <span>{`value${index}`}</span> */}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+
+          </div>
+
+          {/* Strategy Map Graph */}
+          <div className="container-fluid" className="page-break">
+            <div className="row clearfix">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="card">
+                  <div id="divToPrint" className="mt4 ">
+                    {inputListFeature && inputListFinal ? (
+                      <div className="body">
+                        <div className="header">
+
+                          <div className="row clearfix">
+                            <div className="col-md-12" >
+                              <div
+                                className="pdfHeader"
+                              >
+                                Strategy Map
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div style={{ marginTop: "150px" }}></div>
+                        <div className="row clearfix" style={{ height: "100%", width: "100%", transform: "rotate(90deg)" }}>
+                          <Line data={data} />
+                        </div>
+                        <div style={{ marginTop: 30 }}></div>
+                      </div>
+                    ) : null}
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </Modal.Body>
+      </PDFExport>
+
+      <ModalSubmit show={showHide} />
       <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -1014,6 +1431,7 @@ export default function Form(props) {
         {/* // Strategy Map ----->pdf */}
         {pdfShowDes > 0 ? (
 
+
           <PDFExport
             paperSize="A4"
             margin="1cm"
@@ -1048,91 +1466,109 @@ export default function Form(props) {
                               >
                                 Customer Segmentation
                               </div>
-                              <div
-                                className="headText"
-                              >
-                                1. Your Organization Name
 
-                              </div>
                               <div
                                 className="dynamicContent"
+                                style={{ margin: "30px" }}
+
                               >
+                                <div
+                                  className="headText "
+                                  style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                                >
+                                  1. Your Organization Name
+
+
+                                </div>
+
                                 {org_name.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
                               </div>
                             </div>
                           </div>
                           <div className="row clearfix">
                             <div className="col-md-12">
-                              <div
-                                className="headText"
-                              >
-                                2. Products/Services Offering by
 
 
-
-
-                              </div>
                               <div
                                 className="dynamicContent"
+                                style={{ margin: "30px" }}
+
                               >
+                                <div
+                                  className="headText "
+                                  style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                                >
+                                  2. Products/Services Offering by
+
+
+                                </div>
+
+
                                 {product_service_offering_by.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
                               </div>
                             </div>
                           </div>
                           <div className="row clearfix">
                             <div className="col-md-12">
-                              <div
-                                className="headText"
-                              >
-                                3. What is the problem you are solving?
 
-                              </div>
                               <div
                                 className="dynamicContent"
+                                style={{ margin: "30px" }}
+
                               >
+                                <div
+                                  className="headText "
+                                  style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                                >
+                                  3. What is the problem you are solving?
+
+                                </div>
                                 {problem_solving.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
                               </div>
                             </div>
                           </div>
 
 
-                          <div className="row clearfix">
+                          <div className="row clearfix" className="page-break">
                             <div className="col-md-12">
                               <div className="table-responsive">
                                 <Grid
                                   style={{
                                     maxHeight: "400px",
                                   }}
-                                  data={inputList.slice(0, 2)}
+                                  data={inputList.slice(0, 100)}
+
                                 >
                                   <Column
                                     field="customer_face"
                                     title="List of Customer Face"
                                     width="420px"
+
                                   />
+
                                 </Grid>
                               </div>
                             </div>
                           </div>
 
                           {/* <div className="row clearfix">
-              <div className="col-md-12">
-                <div className="table-responsive">
-                  <Grid
-                    style={{
-                      maxHeight: "400px",
-                    }}
-                    data={inputList.slice(0, 2)}
-                  >
-                    <Column
-                      field="firstName"
-                      title="List of Customer Face"
-                      width="420px"
-                    />
-                  </Grid>
-                </div>
+            <div className="col-md-12">
+              <div className="table-responsive">
+                <Grid
+                  style={{
+                    maxHeight: "400px",
+                  }}
+                  data={inputList.slice(0, 2)}
+                >
+                  <Column
+                    field="firstName"
+                    title="List of Customer Face"
+                    width="420px"
+                  />
+                </Grid>
               </div>
-            </div> */}
+            </div>
+          </div> */}
                         </div>
                       </div>
                       <div style={{ marginTop: 30 }}></div>
@@ -1143,30 +1579,30 @@ export default function Form(props) {
 
               {/* playground business model */}
 
-              <div className="container-fluid">
+              <div className="container-fluid" className="page-break">
                 <div className="row clearfix">
                   <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="card">
                       <div>
                         <div id="divToPrint" className="mt4 pdfBody">
-                          <div className="row clearfix">
+                          <div className="row clearfix" >
                             {/* <div className="col-md-12">
-                <img
-                  src="../../assets/images/transaganization.png"
-                  width="135"
-                  alt="Transganization"
-                />
-                <h1
-                  style={{
-                    alignSelf: "center",
-                    alignContent: "center",
-                    textAlign: "center",
-                    marginTop: "20px",
-                  }}
-                >
-                  Buiseness Model
-                </h1>
-              </div> */}
+              <img
+                src="../../assets/images/transaganization.png"
+                width="135"
+                alt="Transganization"
+              />
+              <h1
+                style={{
+                  alignSelf: "center",
+                  alignContent: "center",
+                  textAlign: "center",
+                  marginTop: "20px",
+                }}
+              >
+                Buiseness Model
+              </h1>
+            </div> */}
                           </div>
                           <div className="row clearfix">
                             <div className="col-md-12">
@@ -1176,31 +1612,40 @@ export default function Form(props) {
                                 Playground Buiseness Model
 
                               </div>
-                              <div
-                                className="headText"
-                              >
-                                1. Basis of your Playground
 
-
-                              </div>
                               <div
                                 className="dynamicContent"
+                                style={{ margin: "30px" }}
+
                               >
+                                <div
+                                  className="headText "
+                                  style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                                >
+                                  1. Basis of your Playground
+
+
+                                </div>
                                 {basisofplayground.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
                               </div>
                             </div>
                           </div>
                           <div className="row clearfix">
                             <div className="col-md-12">
-                              <div
-                                className="headText"
-                              >
-                                2. Define your Playground
 
-                              </div>
                               <div
                                 className="dynamicContent"
+                                style={{ margin: "30px" }}
+
                               >
+                                <div
+                                  className="headText "
+                                  style={{ position: "absolute", bottom: "140px", left: "10px" }}
+                                >
+                                  2. Define your Playground
+
+
+                                </div>
                                 {defineplayground.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
                               </div>
                             </div>
@@ -1218,7 +1663,7 @@ export default function Form(props) {
 
 
 
-              <div id="divToPrint" className="mt4 pdfBody" >
+              <div id="divToPrint" className="mt4 pdfBody" className="page-break">
                 <div className="row clearfix" >
                   <div className="col-md-12 m-2">
                     <div
@@ -1271,10 +1716,8 @@ export default function Form(props) {
 
               {/* Competition Sheet */}
 
-
-
               <div className="page-break">
-                <div id="divToPrint" className="mt4 pdfBody p-3"  >
+                <div id="divToPrint" className="mt4 pdfBody p-3" className="page-break" >
 
                   <div
                     className="pdfHeader"
@@ -1299,27 +1742,28 @@ export default function Form(props) {
                       );
                     })}
                   </div>
+                  {console.log(inputListFinal + "inp")}
                   {inputListFinal.map((x, i) => {
-                    if (i === 0) {
-                      return (
-                        <div className="row clearfix">
-                          <div className="col">
-                            <div className="form-group">
-                              <span>{x.competition}</span>
-                            </div>
+                    // if (i === 0) {
+                    return (
+                      <div className="row clearfix">
+                        <div className="col">
+                          <div className="form-group">
+                            <span>{x.competition}</span>
                           </div>
-                          {Array.from({ length: total }, (item, index) => {
-                            return (
-                              <div className="col">
-                                <div className="form-group">
-                                  <span>{x[`value${index}`]}</span>
-                                </div>
-                              </div>
-                            );
-                          })}
                         </div>
-                      );
-                    }
+                        {Array.from({ length: total }, (item, index) => {
+                          return (
+                            <div className="col">
+                              <div className="form-group">
+                                <span>{x[`value${index}`]}</span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                    // }
                   })}
                   {inputListFinal.map((x, i) => {
                     if (i === limit) {
@@ -1347,7 +1791,7 @@ export default function Form(props) {
 
               </div>
 
-
+              {/* Strategy Map Graph */}
               <div className="container-fluid" className="page-break">
                 <div className="row clearfix">
                   <div className="col-lg-12 col-md-12 col-sm-12">
@@ -1390,6 +1834,8 @@ export default function Form(props) {
 
             </Modal.Body>
           </PDFExport>
+
+
         ) : (null)}
 
 

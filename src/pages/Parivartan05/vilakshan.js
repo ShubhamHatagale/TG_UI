@@ -1012,9 +1012,9 @@ export default function Vilakshan(props) {
                     <div className="col-lg-2 ml-3 text-center">
                       <strong>CUSTOMER INTIMACY</strong>
                     </div>
-                    {/* <div className="col-lg-2 ">
+                    <div className="col-lg-2 ">
                       <strong>Vilakshan</strong>
-                    </div> */}
+                    </div>
 
 
                   </ListContainer>
@@ -1130,7 +1130,7 @@ export default function Vilakshan(props) {
                                     })
                                     }
 
-                                    {/* {Array.from({ length: 1 }, (item, index) => {
+                                    {Array.from({ length: 1 }, (item, index) => {
                                       return (
                                         <>
                                           <div className="col-lg-2">
@@ -1147,7 +1147,7 @@ export default function Vilakshan(props) {
                                         </>
                                       );
                                     })
-                                    } */}
+                                    }
 
 
                                     <div className="col-md-2">

@@ -53,8 +53,7 @@ export default function Form() {
         };
         // for server--->
         // `https://parivartan.transganization.com/nodejs/masters/parivartan_user/checkemail/email=${fname}`,
-        fetch(
-            `https://parivartan.transganization.com/nodejs/masters/parivartan_user/checkemail/email=${fname}`,
+        fetch(`https://parivartan.transganization.com/nodejs/masters/parivartan_user/checkemail/email=${fname}`,
             requestOptions
         )
             .then((response) => response.json())

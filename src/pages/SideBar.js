@@ -111,7 +111,7 @@ export const Home = (props) => {
                             <ul className="ml-menu">
                                 <li><NavLink exact to="/vilakshan" activeClassName="text-primary font-weight-bold" >Vilakshan</NavLink></li>
                                 <li><NavLink exact to="/naisthya" activeClassName="text-primary font-weight-bold" >Naisthya</NavLink></li>
-                                <li><NavLink exact to="/drishti" activeClassName="text-primary font-weight-bold" >Drishti Calculator</NavLink></li>
+                                <li><NavLink exact to="/DrishtiTabs" activeClassName="text-primary font-weight-bold" >Drishti Calculator</NavLink></li>
                                 <li><NavLink exact to="/prayaan" activeClassName="text-primary font-weight-bold" >Building Block</NavLink></li>
                                 <li><NavLink exact to="/shulk-lakshya" activeClassName="text-primary font-weight-bold" >Shulk Lakshya</NavLink></li>
                             </ul>

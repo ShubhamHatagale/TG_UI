@@ -32,6 +32,7 @@ import Not_support from "./components/Not_support";
 import AddUser from "./pages/Admin/AddUser";
 
 import RightSidebar from "./pages/RightSideBar";
+import DrishtiTabs from "./pages/Parivartan07/DrishtiTabs";
 
 const MasterAdminRouting = () => {
     // const history = useHistory();
@@ -105,9 +106,14 @@ const MasterAdminRouting = () => {
             <Route exact path="/naisthya">
                 <SideBar data={<NaisthyaPrayaan />} data1={<Header />} />
             </Route>
-            <Route exact path="/drishti">
+            {/* <Route exact path="/drishti">
                 <SideBar data={<DrishtiCal />} data1={<Header />} />
+            </Route> */}
+            <Route exact path="/DrishtiTabs">
+                <SideBar data={<DrishtiTabs />} data1={<Header />} />
             </Route>
+
+
             <Route exact path="/shulk-lakshya">
                 <SideBar data={<ShulkLak />} data1={<Header />} />
             </Route>

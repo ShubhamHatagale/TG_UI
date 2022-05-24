@@ -515,12 +515,12 @@ export default function Vilakshan(props) {
                 aria-labelledby="example-modal-sizes-title-lg"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title id="example-modal-sizes-title-lg" style={{display:pointerEvent}}>
+                    <Modal.Title id="example-modal-sizes-title-lg" style={{ display: pointerEvent }}>
                         Edit
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="container-fluid" style={{ backgroundColor: "#F3F6F9",pointerEvents:pointerEvent }}>
+                    <div className="container-fluid" style={{ backgroundColor: "#F3F6F9", pointerEvents: pointerEvent }}>
                         <div className="row clearfix">
                             <div className="col-lg-12 col-md-12 col-sm-12">
                                 <div style={{ marginLeft: "40%" }}>
@@ -737,7 +737,7 @@ export default function Vilakshan(props) {
                                             type="submit"
                                             className="btn savebtn waves-effect"
                                             onClick={() => OnSubmitUpdate(editId)}
-                                            style={{display:pointerEvent}}
+                                            style={{ display: pointerEvent }}
                                         >
                                             Update
                                         </button>
@@ -813,11 +813,11 @@ export default function Vilakshan(props) {
                                                 </h3>
                                             </div>
                                             <div className="col-md-10">
-                                            {/* <button type="button" className="btn savebtn waves-effect m-r-20" data-toggle="modal" data-target="#largeModal" onClick={OnSubmitForm}>SUBMIT</button> */}
+                                                {/* <button type="button" className="btn savebtn waves-effect m-r-20" data-toggle="modal" data-target="#largeModal" onClick={OnSubmitForm}>SUBMIT</button> */}
 
-                                                <button className="btn adminAddBtn" style={{ marginLeft: "86%" }} onClick={()=>history.push("admin-AddUser")}>Add User</button>
+                                                <button className="btn adminAddBtn" style={{ marginLeft: "86%" }} onClick={() => history.push("admin-AddUser")}>Add User</button>
                                             </div>
-                                           
+
                                         </div>
 
 

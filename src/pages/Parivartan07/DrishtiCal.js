@@ -787,11 +787,9 @@ export default function Form() {
       >
         <Modal.Body >Form Saved Successful</Modal.Body>
       </Modal>
-      <section class="content" style={{ backgroundColor: "white" }}>
-        <div class="body_scroll">
-          <div className="block-header">
-            <div className="row">
-              <div className="col-lg-7 col-md-6 col-sm-12">
+      <div className="block-header">
+        <div className="row">
+          {/* <div className="col-lg-7 col-md-6 col-sm-12">
                 <h2>Drishti Calculator</h2>
                 <button
                   className="btn btn-primary btn-icon mobile_menu"
@@ -799,251 +797,244 @@ export default function Form() {
                 >
                   <i className="zmdi zmdi-sort-amount-desc"></i>
                 </button>
-              </div>
-
-              {/* <div className="col-lg-5 col-md-6 col-sm-12">
-                <button
-                  className="btn btn-primary btn-icon float-right right_icon_toggle_btn"
-                  type="button"
-                >
-                  <i className="zmdi zmdi-arrow-right"></i>
-                </button>
               </div> */}
-            </div>
-          </div>
-          <div className={classes.root}>
-            <TabPanel value={value} index={0}>
-              <div className="container-fluid" style={{ backgroundColor: "#F3F6F9" }}>
-                <div className="row clearfix">
-                  <div className="col-lg-12 col-md-12 col-sm-12">
-                    <div className="card p-4 mt-2">
-                      <div className="body p-5">
-                        <form>
-                          <h2 className="card-inside-title">
-                            <strong>Vilakshan and Associated Parameters </strong>
-                          </h2>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Vilakshan and Associated Parameters"
-                            name="Vilakshan"
-                            onChange={(event) => { setvilakPara(event.target.value) }}
-                            value={vilakPara}
-                          // placeholder="Vilakshan"
-                          />
-                          <h2 className="card-inside-title">
-                            <strong>
-                              FY {Fdate}-{date + 1}
-                            </strong>
-                          </h2>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder={`FY ${Fdate}-${date + 1}`}
-                            name="fy1"
-                            onChange={(event) => { setfy1(event.target.value) }}
-                            value={fy1}
-                          />
-                          <h2 className="card-inside-title">
-                            <strong>FY {Fdate + 1}-{date + 2}
-                            </strong>
-                          </h2>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder={`FY ${Fdate + 1}-${date + 2}`}
-                            name="fy2"
-                            onChange={(event) => { setfy2(event.target.value) }}
-                            value={fy2}
-                          />
-                          <h2 className="card-inside-title">
-                            <strong>FY {Fdate + 2}-{date + 3}
-                            </strong>
-                          </h2>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder={`FY ${Fdate + 2}-${date + 3}`}
-                            name="fy3"
-                            onChange={(event) => { setfy3(event.target.value) }}
-                            value={fy3}
-                          />
-                          <h2 className="card-inside-title">
-                            <strong>FY {Fdate + 3}-{date + 4}
-                            </strong>
-                          </h2>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder={`FY ${Fdate + 3}-${date + 4}`}
-                            name="fy4"
-                            onChange={(event) => { setfy4(event.target.value) }}
-                            value={fy4}
-                          />
 
-                          <h2 className="card-inside-title">
-                            <strong>FY {Fdate + 4}-{date + 5}
-                            </strong>
-                          </h2>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="setfy5"
-                            placeholder={`FY ${Fdate + 4}-${date + 5}`}
-                            onChange={(event) => { setfy5(event.target.value) }}
-                            value={fy5}
-                          />
-                          <div style={{ marginTop: 20 }}></div>
-                          <button
-                            type="button"
-                            onClick={handleSubmit}
-                            class="btn savebtn btn-square waves-effect"
+
+        </div>
+      </div>
+      <div className={classes.root}>
+        <TabPanel value={value} index={0}>
+          <div className="container-fluid" style={{ backgroundColor: "#F3F6F9" }}>
+            <div className="row clearfix">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="card p-4 mt-2">
+                  <div className="body p-5">
+                    <form>
+                      <h2 className="card-inside-title">
+                        <strong>Vilakshan and Associated Parameters </strong>
+                      </h2>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Vilakshan and Associated Parameters"
+                        name="Vilakshan"
+                        onChange={(event) => { setvilakPara(event.target.value) }}
+                        value={vilakPara}
+                      // placeholder="Vilakshan"
+                      />
+                      <h2 className="card-inside-title">
+                        <strong>
+                          FY {Fdate}-{date + 1}
+                        </strong>
+                      </h2>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder={`FY ${Fdate}-${date + 1}`}
+                        name="fy1"
+                        onChange={(event) => { setfy1(event.target.value) }}
+                        value={fy1}
+                      />
+                      <h2 className="card-inside-title">
+                        <strong>FY {Fdate + 1}-{date + 2}
+                        </strong>
+                      </h2>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder={`FY ${Fdate + 1}-${date + 2}`}
+                        name="fy2"
+                        onChange={(event) => { setfy2(event.target.value) }}
+                        value={fy2}
+                      />
+                      <h2 className="card-inside-title">
+                        <strong>FY {Fdate + 2}-{date + 3}
+                        </strong>
+                      </h2>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder={`FY ${Fdate + 2}-${date + 3}`}
+                        name="fy3"
+                        onChange={(event) => { setfy3(event.target.value) }}
+                        value={fy3}
+                      />
+                      <h2 className="card-inside-title">
+                        <strong>FY {Fdate + 3}-{date + 4}
+                        </strong>
+                      </h2>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder={`FY ${Fdate + 3}-${date + 4}`}
+                        name="fy4"
+                        onChange={(event) => { setfy4(event.target.value) }}
+                        value={fy4}
+                      />
+
+                      <h2 className="card-inside-title">
+                        <strong>FY {Fdate + 4}-{date + 5}
+                        </strong>
+                      </h2>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="setfy5"
+                        placeholder={`FY ${Fdate + 4}-${date + 5}`}
+                        onChange={(event) => { setfy5(event.target.value) }}
+                        value={fy5}
+                      />
+                      <div style={{ marginTop: 20 }}></div>
+                      <button
+                        type="button"
+                        onClick={handleSubmit}
+                        class="btn savebtn btn-square waves-effect"
+                      >
+                        SAVE <i className="ml-1 zmdi zmdi-save " />
+                      </button>
+                      {completeData.length > 0 ? (<button type="button" class="btn viewbtn  waves-effect m-r-20" data-toggle="modal" data-target="#largeModal" onClick={HandleSubmit}>SUBMIT <i className="ml-1 zmdi zmdi-check " /> </button>
+                      ) : null}
+                    </form>
+                    {completeData.length > 0 ? (
+                      <>
+                        {/* For Pdf -----------------------> */}
+                        <div
+                          style={{
+                            position: "absolute",
+                            left: "-3000px",
+                            top: 0,
+                          }}
+                        >
+
+                          <PDFExport
+                            paperSize="A4"
+                            margin="1cm"
+                            ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
+                            forcePageBreak=".page-break"
                           >
-                            SAVE <i className="ml-1 zmdi zmdi-save " />
-                          </button>
-                          {completeData.length > 0 ? (<button type="button" class="btn viewbtn  waves-effect m-r-20" data-toggle="modal" data-target="#largeModal" onClick={HandleSubmit}>SUBMIT <i className="ml-1 zmdi zmdi-check " /> </button>
-                          ) : null}
-                        </form>
-                        {completeData.length > 0 ? (
-                          <>
-                            {/* For Pdf -----------------------> */}
-                            <div
-                              style={{
-                                position: "absolute",
-                                left: "-3000px",
-                                top: 0,
-                              }}
-                            >
+                            <Modal.Header style={{ padding: "10px" }}>
+                              <div className="col-md-12 row" >
+                                <div className="col-md-6">
+                                  <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
+                                </div>
+                                <div className="col-md-6 pageHeading" >
+                                  Financial Model
+                                </div>
+                              </div>
+                              <Modal.Title id="example-modal-sizes-title-lg">
 
-                              <PDFExport
-                                paperSize="A4"
-                                margin="1cm"
-                                ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
-                                forcePageBreak=".page-break"
-                              >
-                                <Modal.Header style={{ padding: "10px" }}>
-                                  <div className="col-md-12 row" >
-                                    <div className="col-md-6">
-                                      <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
-                                    </div>
-                                    <div className="col-md-6 pageHeading" >
-                                      Financial Model
-                                    </div>
-                                  </div>
-                                  <Modal.Title id="example-modal-sizes-title-lg">
+                              </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
 
-                                  </Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
+                              <div >
+                                <div id="divToPrint" className="mt4 pdfBody" >
 
-                                  <div >
-                                    <div id="divToPrint" className="mt4 pdfBody" >
-
-                                      <div className="row clearfix">
-                                        <div className="col-md-12">
-                                          <div className="pdfHeader">Drishti Calculator</div>
-                                          <div class="table-responsive" id="Table">
-                                            <table class="table table-bordered">
-                                              <thead>
-                                                <tr>
-                                                  <th>Vilakshan and Associated Parameters</th>
-                                                  <th>FY 2021-22</th>
-                                                  <th>FY 2022-23</th>
-                                                  <th>FY 2023-24</th>
-                                                  <th>FY 2024-25</th>
-                                                  <th>FY 2025-26</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                                                {completeData.map((item, key) => (
-                                                  <tr>
-                                                    <td>{item.drishti_parameter}</td>
-                                                    <td>{item.year_1}</td>
-                                                    <td>{item.year_2}</td>
-                                                    <td>{item.year_3}</td>
-                                                    <td>{item.year_4}</td>
-                                                    <td>{item.year_5}</td>
-                                                  </tr>
-                                                ))}
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                        </div>
+                                  <div className="row clearfix">
+                                    <div className="col-md-12">
+                                      <div className="pdfHeader">Drishti Calculator</div>
+                                      <div class="table-responsive" id="Table">
+                                        <table class="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th>Vilakshan and Associated Parameters</th>
+                                              <th>FY 2021-22</th>
+                                              <th>FY 2022-23</th>
+                                              <th>FY 2023-24</th>
+                                              <th>FY 2024-25</th>
+                                              <th>FY 2025-26</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {completeData.map((item, key) => (
+                                              <tr>
+                                                <td>{item.drishti_parameter}</td>
+                                                <td>{item.year_1}</td>
+                                                <td>{item.year_2}</td>
+                                                <td>{item.year_3}</td>
+                                                <td>{item.year_4}</td>
+                                                <td>{item.year_5}</td>
+                                              </tr>
+                                            ))}
+                                          </tbody>
+                                        </table>
                                       </div>
                                     </div>
                                   </div>
+                                </div>
+                              </div>
 
-                                </Modal.Body>
+                            </Modal.Body>
 
-                              </PDFExport>
+                          </PDFExport>
+                        </div>
+
+
+                        <Modal
+                          size="lg"
+                          show={viewModal}
+                          onHide={handleClose}
+                          aria-labelledby="example-modal-sizes-title-lg"
+                        >
+                          <Modal.Header style={{ padding: "10px" }}>
+                            <div className="col-md-12 row" >
+                              <div className="col-md-6">
+                                <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
+                              </div>
+                              <div className="col-md-6 pageHeading" >
+                                Financial Model
+                              </div>
+                            </div>
+                            <Modal.Title id="example-modal-sizes-title-lg">
+
+                            </Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>
+
+                            <div >
+                              <div id="divToPrint" className="mt4 pdfBody" >
+
+                                <div className="row clearfix">
+                                  <div className="col-md-12">
+                                    <div className="pdfHeader">Drishti Calculator</div>
+                                    <div class="table-responsive" id="Table">
+                                      <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>Vilakshan and Associated Parameters</th>
+                                            <th>FY 2021-22</th>
+                                            <th>FY 2022-23</th>
+                                            <th>FY 2023-24</th>
+                                            <th>FY 2024-25</th>
+                                            <th>FY 2025-26</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          {completeData.map((item, key) => (
+                                            <tr>
+                                              <td>{item.drishti_parameter}</td>
+                                              <td>{item.year_1}</td>
+                                              <td>{item.year_2}</td>
+                                              <td>{item.year_3}</td>
+                                              <td>{item.year_4}</td>
+                                              <td>{item.year_5}</td>
+                                            </tr>
+                                          ))}
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
 
+                          </Modal.Body>
+                        </Modal>
 
-                            <Modal
-                              size="lg"
-                              show={viewModal}
-                              onHide={handleClose}
-                              aria-labelledby="example-modal-sizes-title-lg"
-                            >
-                              <Modal.Header style={{ padding: "10px" }}>
-                                <div className="col-md-12 row" >
-                                  <div className="col-md-6">
-                                    <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
-                                  </div>
-                                  <div className="col-md-6 pageHeading" >
-                                    Financial Model
-                                  </div>
-                                </div>
-                                <Modal.Title id="example-modal-sizes-title-lg">
+                        <div style={{ marginTop: 30 }}></div>
+                        {/* {renderTable()} */}
 
-                                </Modal.Title>
-                              </Modal.Header>
-                              <Modal.Body>
-
-                                <div >
-                                  <div id="divToPrint" className="mt4 pdfBody" >
-
-                                    <div className="row clearfix">
-                                      <div className="col-md-12">
-                                        <div className="pdfHeader">Drishti Calculator</div>
-                                        <div class="table-responsive" id="Table">
-                                          <table class="table table-bordered">
-                                            <thead>
-                                              <tr>
-                                                <th>Vilakshan and Associated Parameters</th>
-                                                <th>FY 2021-22</th>
-                                                <th>FY 2022-23</th>
-                                                <th>FY 2023-24</th>
-                                                <th>FY 2024-25</th>
-                                                <th>FY 2025-26</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              {completeData.map((item, key) => (
-                                                <tr>
-                                                  <td>{item.drishti_parameter}</td>
-                                                  <td>{item.year_1}</td>
-                                                  <td>{item.year_2}</td>
-                                                  <td>{item.year_3}</td>
-                                                  <td>{item.year_4}</td>
-                                                  <td>{item.year_5}</td>
-                                                </tr>
-                                              ))}
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                              </Modal.Body>
-                            </Modal>
-
-                            <div style={{ marginTop: 30 }}></div>
-                            {/* {renderTable()} */}
-
-                            {/* <div className="row clearfix">
+                        {/* <div className="row clearfix">
                               <div className="col-md-12">
                                 <div class="table-responsive" id="Table">
                                   <table class="table table-bordered">
@@ -1095,84 +1086,82 @@ export default function Form() {
 
 
 
-                            <Modal
-                              size="sm"
-                              show={Mupdate}
-                              onHide={() => setMupdate(false)}
-                              aria-labelledby="example-modal-sizes-title-sm"
-                            >
-                              <Modal.Body >Form Update Successful</Modal.Body>
-                            </Modal>
-                            <div class="table-responsive" id="Table">
-                              <table class="table table-bordered">
-                                <thead>
-                                  <tr>
-                                    <th>Vilakshan and Associated Parameters</th>
-                                    <th>FYE 2021-22</th>
-                                    <th>FYE 2022-23 </th>
-                                    <th>FYE 2023-24 </th>
-                                    <th>FYE 2024-25 </th>
-                                    <th>FYE 2025-26 </th>
-                                    <th style={{ textAlign: "center" }}>Action</th>
-                                  </tr>
-                                </thead>
-                                {completeData.map((item, key) => (
-                                  <tr>
-                                    <td>{item.drishti_parameter}</td>
-                                    <td>{item.year_1}</td>
-                                    <td>{item.year_2}</td>
-                                    <td>{item.year_3}</td>
-                                    <td>{item.year_4}</td>
-                                    <td>{item.year_5}</td>
-                                    <td colspan="8">
-                                      <div class="btn-group">
-                                        <button
-                                          type="submit"
-                                          title="edit"
-                                          class="btn zmdi zmdi-edit waves-effect pull-left"
-                                          style={{ float: "left" }}
-                                          onClick={() => editfn(item.id)}
-                                        ></button>
-                                        <button
-                                          type="submit"
-                                          title="delete"
-                                          class="btn btn-danger zmdi zmdi-delete waves-effect"
-                                          onClick={() => deletefn(item.id)}
-                                        ></button>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </table>
-                            </div>
+                        <Modal
+                          size="sm"
+                          show={Mupdate}
+                          onHide={() => setMupdate(false)}
+                          aria-labelledby="example-modal-sizes-title-sm"
+                        >
+                          <Modal.Body >Form Update Successful</Modal.Body>
+                        </Modal>
+                        <div class="table-responsive" id="Table">
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Vilakshan and Associated Parameters</th>
+                                <th>FYE 2021-22</th>
+                                <th>FYE 2022-23 </th>
+                                <th>FYE 2023-24 </th>
+                                <th>FYE 2024-25 </th>
+                                <th>FYE 2025-26 </th>
+                                <th style={{ textAlign: "center" }}>Action</th>
+                              </tr>
+                            </thead>
+                            {completeData.map((item, key) => (
+                              <tr>
+                                <td>{item.drishti_parameter}</td>
+                                <td>{item.year_1}</td>
+                                <td>{item.year_2}</td>
+                                <td>{item.year_3}</td>
+                                <td>{item.year_4}</td>
+                                <td>{item.year_5}</td>
+                                <td colspan="8">
+                                  <div class="btn-group">
+                                    <button
+                                      type="submit"
+                                      title="edit"
+                                      class="btn zmdi zmdi-edit waves-effect pull-left"
+                                      style={{ float: "left" }}
+                                      onClick={() => editfn(item.id)}
+                                    ></button>
+                                    <button
+                                      type="submit"
+                                      title="delete"
+                                      class="btn btn-danger zmdi zmdi-delete waves-effect"
+                                      onClick={() => deletefn(item.id)}
+                                    ></button>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                          </table>
+                        </div>
 
-                          </>
-                        ) : (null)
-                        }
+                      </>
+                    ) : (null)
+                    }
 
-                      </div>
-                      {completeData.length > 0 ? (
-                        <>
-                          <button
-                            type="button"
-                            class="ml-4 btn viewbtn waves-effect ml-5"
-                            onClick={ViewModel}
-                          >
-                            View  <i className="ml-1 zmdi zmdi-eye " />                        </button>
-                          <button type="button" class="btn downloadbtn waves-effect" onClick={exportPDFWithMethod}>Download PDF   <i class="ml-1 zmdi zmdi-cloud-download"></i></button>
-                        </>
-                      ) : null}
-
-
-
-                    </div>
                   </div>
+                  {completeData.length > 0 ? (
+                    <>
+                      <button
+                        type="button"
+                        class="ml-4 btn viewbtn waves-effect ml-5"
+                        onClick={ViewModel}
+                      >
+                        View  <i className="ml-1 zmdi zmdi-eye " />                        </button>
+                      <button type="button" class="btn downloadbtn waves-effect" onClick={exportPDFWithMethod}>Download PDF   <i class="ml-1 zmdi zmdi-cloud-download"></i></button>
+                    </>
+                  ) : null}
+
+
+
                 </div>
               </div>
-            </TabPanel>
+            </div>
           </div>
-        </div>
-      </section>
+        </TabPanel>
+      </div>
 
 
 

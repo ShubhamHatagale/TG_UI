@@ -73,7 +73,7 @@ export default function Form() {
 
   const exportPDFWithMethod = () => {
     setpdfShowDes(1);
-    setTimeout(() => {
+    setTimeout(() => { 
       // alert(pdfShowDes);
       if (pdfExportComponent.current) {
         pdfExportComponent.current.save();

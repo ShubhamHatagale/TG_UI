@@ -23,10 +23,10 @@ const Table = (props) => {
 
   const [loading, setloading] = useState(false);
   const [sr_no, setsr_no] = useState();
-  const [step_decription, setstep_decription] = useState();
-  const [trasaction_time, settrasaction_time] = useState();
-  const [resource_allocated, setresource_allocated] = useState();
-  const [resource_name, setresource_name] = useState();
+  const [step_decription, setstep_decription] = useState(" ");
+  const [trasaction_time, settrasaction_time] = useState(" ");
+  const [resource_allocated, setresource_allocated] = useState(" ");
+  const [resource_name, setresource_name] = useState(" ");
   const [Madd, setMadd] = useState(false);
   const [Mupdate, setMupdate] = useState(false);
   const [Mdelete, setMdelete] = useState(false);

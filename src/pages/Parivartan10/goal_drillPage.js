@@ -281,7 +281,7 @@ export default function Vilakshan(props) {
                 </div>
               </div>
               <div className="row clearfix">
-                <div className="col-md-12">
+                <div className="col-md-12"> 
                   <h2 className="card-inside-title">
                     <strong>Role</strong>
                   </h2>
