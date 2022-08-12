@@ -660,7 +660,7 @@ const Table = (props) => {
                           <th>
                             <tr align="center">
                               <div style={{ marginLeft: "28rem" }}>
-                                {item.value0}
+                                {item.value2}
 
                               </div>
                             </tr>
@@ -908,16 +908,16 @@ const Table = (props) => {
                           <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th>Vilakshan Journey</th>
-                                <th>Vilakshan Form</th>
-                                {/* <th>VCCs (Cost Centres)</th> */}
-                                <th>Parent Process Name</th>
-                                <th>Parent Process Input</th>
-                                <th>Parent Process Output</th>
-                                <th>Parent Process Owner</th>
-                                <th>Strategic Support Process</th>
-                                <th>Strategic Support Input</th>
-                                <th>Strategic Support Output</th>
+                                <th className="p-2">Vilakshan Journey</th>
+                                <th className="p-2">Vilakshan Form</th>
+                                {/* <th className="p-2">VCCs (Cost Centres)</th> */}
+                                <th className="p-2">Parent Process Name</th>
+                                <th className="p-2">Parent Process Input</th>
+                                <th className="p-2">Parent Process Output</th>
+                                <th className="p-2">Parent Process Owner</th>
+                                <th className="p-2">Strategic Support Process</th>
+                                <th className="p-2">Strategic Support Input</th>
+                                <th className="p-2">Strategic Support Output</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -1001,26 +1001,26 @@ const Table = (props) => {
                         <div className="row clearfix" >
                           <div className="col-md-12 m-2">
                             <div className="pdfHeader">Vilakshan Map</div>
-                            <div style={{ marginTop: 30 }}>
+                            <div style={{ marginTop: 30,marginLeft:"10px" }}>
                               <div class="table-responsive" id="Table">
                                 <table class="table-responsive table-bordered">
                                   <thead>
                                     <tr>
-                                      <th>Vilakshan Journey</th>
-                                      <th>Vilakshan Form</th>
-                                      {/* <th>VCCs (Cost Centres)</th> */}
-                                      <th>Parent Process Name</th>
-                                      <th>Parent Process Input</th>
-                                      <th>Parent Process Output</th>
-                                      <th>Parent Process Owner</th>
-                                      <th>Strategic Support Process</th>
-                                      <th>Strategic Support Input</th>
-                                      <th>Strategic Support Output</th>
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Vilakshan Journey</th>
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Vilakshan Form</th>
+                                      {/* <th className="p-2" style={{fontSize:"10px"}}>VCCs (Cost Centres)</th> */}
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Parent Process Name</th>
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Parent Process Input</th>
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Parent Process Output</th>
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Parent Process Owner</th>
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Strategic Support Process</th>
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Strategic Support Input</th>
+                                      <th className="p-2" style={{ fontSize: "10px" }}>Strategic Support Output</th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     {completeData.map((item, key) => (
-                                      <tr>
+                                      <tr className="text-center">
                                         <td><small>{item.value0}</small></td>
                                         <td><small>{item.value1}</small></td>
                                         <td><small>{item.value2}</small></td>
@@ -1044,7 +1044,7 @@ const Table = (props) => {
                               {completeData.map((item, key) => (
                                 <>
                                   {/* <div className="pdfHeader">Step by Step Process</div> */}
-                                  <div style={{ marginTop: 30,padding:"16px" }}>
+                                  <div style={{ marginTop: 30, padding: "16px" }}>
                                     <div class="table-responsive" id="Table">
                                       <table class="table-responsive table-bordered rounded">
                                         <thead>

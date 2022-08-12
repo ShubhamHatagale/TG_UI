@@ -9,11 +9,11 @@ import ModalSubmit from "../../components/ModalSubmit";
 import { useHistory } from "react-router-dom";
 
 export default function Form() {
-  var s_id = localStorage.getItem('tr_id')
+  const s_id = localStorage.getItem('tr_id')
 
   const history = useHistory();
 
-  const ExcelFile = ReactExport.ExcelFile; 
+  const ExcelFile = ReactExport.ExcelFile;
   const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
   const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
   const pdfExportComponent = React.useRef(null);
@@ -527,7 +527,7 @@ export default function Form() {
         lead_time: lead_time,
         // fixed_cost_investment2: fixed_cost_investment2, 
         through_put: through_put,
-        pricing: pricing,
+        // pricing: pricing,
         prod_dev_life_cycle: prod_dev_life_cycle,
         brand_parameter: brand_parameter,
         email_id: s_id,
@@ -577,7 +577,7 @@ export default function Form() {
         lead_time: lead_time,
         // fixed_cost_investment2: fixed_cost_investment2,
         through_put: through_put,
-        pricing: pricing,
+        // pricing: pricing,
         prod_dev_life_cycle: prod_dev_life_cycle,
         brand_parameter: brand_parameter,
         email_id: s_id,
@@ -636,34 +636,36 @@ export default function Form() {
     fetch(`https://parivartan.transganization.com/nodejs/masters/non_negotiable/user/${s_id}`, requestOptionsget)
       .then((response) => response.json())
       .then((resData) => {
-        console.log(resData.data);
-        setvarifiedValue(resData.data[0].verified);
-        setUpid(resData.data[0].id);
-        ;
+        if (resData.data[0]) {
+          console.log(resData.data);
+          setvarifiedValue(resData.data[0].verified);
+          setUpid(resData.data[0].id);
 
-        let get_list = resData.data;
-        get_list.map((item, key) => {
-          setgross_margin(item.gross_margin);
-          setopportunity_size(item.opportunity_size);
-          setunit_pricing(item.unit_pricing);
-          setunit_margin(item.unit_margin);
-          settime_to_breakeven(item.time_to_breakeven);
-          setfixed_cost_investment(item.fixed_cost_investment);
-          setcredit_terms(item.credit_terms);
-          setnpv(item.npv);
-          setend_prod_quality(item.end_prod_quality);
-          setsupplier_quality_standard(item.supplier_quality_standard);
-          setcustomer_service(item.customer_service);
-          setchannels(item.channels);
-          setlead_time(item.lead_time);
-          // setfixed_cost_investment2(item.fixed_cost_investment2);
-          setthrough_put(item.through_put);
-          setpricing(item.pricing);
-          setprod_dev_life_cycle(item.prod_dev_life_cycle);
-          setbrand_parameter(item.brand_parameter);
+          let get_list = resData.data;
+          get_list.map((item, key) => {
+            setgross_margin(item.gross_margin);
+            setopportunity_size(item.opportunity_size);
+            setunit_pricing(item.unit_pricing);
+            setunit_margin(item.unit_margin);
+            settime_to_breakeven(item.time_to_breakeven);
+            setfixed_cost_investment(item.fixed_cost_investment);
+            setcredit_terms(item.credit_terms);
+            setnpv(item.npv);
+            setend_prod_quality(item.end_prod_quality);
+            setsupplier_quality_standard(item.supplier_quality_standard);
+            setcustomer_service(item.customer_service);
+            setchannels(item.channels);
+            setlead_time(item.lead_time);
+            // setfixed_cost_investment2(item.fixed_cost_investment2);
+            setthrough_put(item.through_put);
+            setpricing(item.pricing);
+            setprod_dev_life_cycle(item.prod_dev_life_cycle);
+            setbrand_parameter(item.brand_parameter);
 
-        });
-        setnon_negoData(resData.data);
+          });
+          setnon_negoData(resData.data);
+        }
+
       })
 
     fetch(`https://parivartan.transganization.com/nodejs/masters/urjaChar/user/${s_id}`, requestOptionsget)
@@ -831,10 +833,10 @@ export default function Form() {
       parameters: "Through Put",
       operational: through_put,
     },
-    {
-      parameters: "Pricing",
-      operational: pricing,
-    },
+    // {
+    //   parameters: "Pricing",
+    //   operational: pricing,
+    // },
     {
       parameters: "Product Development Life Cycle",
       operational: prod_dev_life_cycle,
@@ -1023,7 +1025,7 @@ export default function Form() {
                   <div className="row clearfix">
                     <div className="col-md-6">
                       <h2>
-                        <strong>Parameters</strong>
+                        <strong>Operational Parameters</strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
@@ -1186,7 +1188,7 @@ export default function Form() {
                   <div className="row clearfix">
                     <div className="col-md-6">
                       <h2>
-                        <strong>Parameters</strong>
+                        <strong>Operational Parameters</strong>
                       </h2>
                     </div>
                     <div className="col-md-6">
@@ -1322,7 +1324,7 @@ export default function Form() {
                       />
                     </div>
                   </div>
-                  <div className="row clearfix" style={{ marginTop: 20 }}>
+                  {/* <div className="row clearfix" style={{ marginTop: 20 }}>
                     <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
                         <strong>Pricing </strong>
@@ -1339,7 +1341,7 @@ export default function Form() {
                         value={pricing}
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="row clearfix" style={{ marginTop: 20 }}>
                     <div className="col-md-6 justify-content-center align-self-center">
                       <h2 className="card-inside-title">
@@ -1486,805 +1488,8 @@ export default function Form() {
                               </div>
 
 
-                              <div>
-                                <div id="divToPrint" className="mt4 ">
-                                  <div className="container-fluid pdfBody">
-                                    <div className="row clearfix">
-                                      <div className="col-lg-12 col-md-12 col-sm-12">
-                                        <div className="card">
 
-                                          <div className="row clearfix">
-                                            <div className="col-md-12">
-                                              <div
-                                                className="pdfHeader"
-                                              >
-                                                Playground Buiseness Model
-
-                                              </div>
-                                              <div
-                                                className="headText"
-                                              >
-                                                1. Basis of your Playground
-
-
-                                              </div>
-                                              <div
-                                                className="dynamicContent"
-                                              >
-                                                {basisofplayground.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div className="row clearfix">
-                                            <div className="col-md-12">
-                                              <div
-                                                className="headText"
-                                              >
-                                                2) Define your Playground
-
-                                              </div>
-                                              <div
-                                                className="dynamicContent"
-                                              >
-                                                {defineplayground.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                          <div style={{ marginTop: 30 }}></div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="container-fluid pdfBody">
-                                    <div className="row clearfix">
-                                      <div className="col-lg-12 col-md-12 col-sm-12">
-                                        <div className="card">
-
-                                          <div className="row clearfix">
-                                            <div className="col-md-12">
-                                              <div
-                                                className="pdfHeader"
-                                              >
-                                                Urja Charitra
-
-                                              </div>
-
-                                            </div>
-                                          </div>
-                                          <div style={{ pointerEvents: "none" }}>
-                                            <table class="table">
-                                              <thead>
-                                                <tr>
-                                                  <th scope="col">Particulars</th>
-                                                  <th scope="col">FY {Fdate - 1}-{date}</th>
-                                                  <th scope="col">FY {Fdate - 2}-{date - 1}</th>
-                                                  <th scope="col">FY {Fdate - 3}-{date - 2}</th>
-                                                  <th scope="col">FY {Fdate - 4}-{date - 3}</th>
-                                                  <th scope="col">FY {Fdate - 5}-{date - 4}</th>
-                                                  <th scope="col">FY {Fdate - 6}-{date - 5}</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                                                <tr>
-                                                  <th scope="row">Total Revenue</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={TotalRevenue1}
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={TotalRevenue2}
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={TotalRevenue3}
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={TotalRevenue4}
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={TotalRevenue5}
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={TotalRevenue6}
-                                                  /></td>
-                                                </tr>
-
-                                                <tr>
-                                                  <th scope="row">Total Revenue (Growth / Degrowth %)</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={RevenueReadOnly1}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={RevenueReadOnly2}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={RevenueReadOnly3}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={RevenueReadOnly4}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={RevenueReadOnly5}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={RevenueReadOnly6}
-
-                                                    readOnly
-                                                  /></td>
-                                                </tr>
-
-
-
-                                                <tr>
-                                                  <th scope="row">Direct Expenses</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpences1}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpences2}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpences3}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpences4}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpences5}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpences6}
-
-                                                  /></td>
-                                                </tr>
-
-
-
-                                                <tr>
-                                                  <th scope="row" >Direct Expenses</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpencesReadOnly1}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpencesReadOnly2}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpencesReadOnly3}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpencesReadOnly4}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpencesReadOnly5}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={DirectExpencesReadOnly6}
-                                                    readOnly
-                                                  /></td>
-                                                </tr>
-
-
-                                                <tr>
-                                                  <th scope="row">Gross Profit</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfit1}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfit2}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfit3}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfit4}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfit5}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfit6}
-                                                    readOnly
-                                                  /></td>
-                                                </tr>
-
-                                                <tr>
-                                                  <th scope="row">Gross Profit ( Increase / Decrease)</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfitID1}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfitID2}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfitID3}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfitID4}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfitID5}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={GrossProfitID6}
-                                                    readOnly
-                                                  /></td>
-                                                </tr>
-
-                                                <tr>
-                                                  <th scope="row">Indirect Expenses</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpences1}
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpences2}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpences3}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpences4}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpences5}
-
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpences6}
-
-                                                  /></td>
-                                                </tr>
-
-
-                                                <tr>
-                                                  <th scope="row">Indirect Expenses (Increase / Decrease)</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpencesID1}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpencesID2}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpencesID3}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpencesID4}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpencesID5}
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={IndirectExpencesID6}
-                                                    readOnly
-                                                  /></td>
-                                                </tr>
-
-                                                <tr>
-                                                  <th scope="row">EBITDA</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA1}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA2}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA3}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA4}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA5}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA6}
-
-                                                    readOnly
-                                                  /></td>
-                                                </tr>
-
-
-                                                <tr>
-                                                  <th scope="row">EBITDA%</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDApercent1 + "%"}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDApercent2 + "%"}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDApercent3 + "%"}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDApercent4 + "%"}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDApercent5 + "%"}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDApercent6 + "%"}
-
-                                                    readOnly
-                                                  /></td>
-                                                </tr>
-
-
-                                                <tr>
-                                                  <th scope="row">EBITDA (Increase / Decrease)</th>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA_ID1}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA_ID2}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA_ID3}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA_ID4}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA_ID5}
-
-                                                    readOnly
-                                                  /></td>
-                                                  <td><textarea
-                                                    rows="4"
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="0"
-                                                    value={EBITDA_ID6}
-
-                                                    readOnly
-                                                  /></td>
-                                                </tr>
-
-                                              </tbody>
-                                            </table>
-                                          </div>
-
-                                          <div style={{ marginTop: 30 }}></div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="container-fluid pdfBody">
-                                    <div className="row clearfix ">
-                                      <div className="col-lg-12 col-md-12 col-sm-12">
-                                        <div className="pdfHeader">Non Negotiables </div>
-                                        <div class="table-responsive" id="Table">
-                                          <table class="table table-bordered">
-                                            <thead>
-                                              <tr>
-                                                <th>Parameters</th>
-                                                <th>Financials</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                <td>Gross Margin</td>
-                                                <td>{non_negoData[0].gross_margin}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Opportunity Size</td>
-                                                <td>{non_negoData[0].opportunity_size}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Unit Pricing</td>
-                                                <td>{non_negoData[0].unit_pricing}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Unit Margin</td>
-                                                <td>{non_negoData[0].unit_margin}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Time to Breakeven</td>
-                                                <td>{non_negoData[0].time_to_breakeven}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Fixed Cost Investment</td>
-                                                <td>{non_negoData[0].fixed_cost_investment}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Credit Terms</td>
-                                                <td>{non_negoData[0].credit_terms}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>NPV</td>
-                                                <td>{non_negoData[0].npv}</td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div className="row clearfix " >
-                                      <div className="col-md-12">
-                                        <div class="table-responsive" id="Table">
-                                          <table class="table table-bordered">
-                                            <thead>
-                                              <tr>
-                                                <th>Parameters</th>
-                                                <th>Operational</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                <td>End product quality</td>
-                                                <td>{non_negoData[0].end_prod_quality}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Supplier Quality Standard</td>
-                                                <td>{non_negoData[0].supplier_quality_standard}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Customer Service</td>
-                                                <td>{non_negoData[0].customer_service}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Channels</td>
-                                                <td>{non_negoData[0].channels}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Lead time</td>
-                                                <td>{non_negoData[0].lead_time}</td>
-                                              </tr>
-                                              {/* <tr>
-                                                <td>Fixed Cost Investment</td>
-                                                <td>{non_negoData[0].fixed_cost_investment2}</td>
-                                              </tr> */}
-                                              <tr>
-                                                <td>Through Put</td>
-                                                <td>{non_negoData[0].through_put}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Pricing</td>
-                                                <td>{non_negoData[0].pricing}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Product development life cycle</td>
-                                                <td>{non_negoData[0].prod_dev_life_cycle}</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Brand Parameters</td>
-                                                <td>{non_negoData[0].brand_parameter}</td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                </div>
-                              </div>
-
-                              <div className="container-fluid pdfBody">
+                              <div className="container-fluid pdfBody page-break">
                                 <div className="row clearfix ">
                                   <div className="col-lg-12 col-md-12 col-sm-12">
                                     <div className="pdfHeader">Non Negotiables </div>
@@ -2292,7 +1497,7 @@ export default function Form() {
                                       <table class="table table-bordered">
                                         <thead>
                                           <tr>
-                                            <th>Parameters</th>
+                                            <th>Operational Parameters</th>
                                             <th>Financials</th>
                                           </tr>
                                         </thead>
@@ -2335,13 +1540,16 @@ export default function Form() {
                                   </div>
                                 </div>
 
-                                <div className="row clearfix " >
+
+                              </div>
+                              <div className="container-fluid pdfBody page-break">
+                              <div className="row clearfix " >
                                   <div className="col-md-12">
                                     <div class="table-responsive" id="Table">
                                       <table class="table table-bordered">
                                         <thead>
                                           <tr>
-                                            <th>Parameters</th>
+                                            <th>Operational Parameters</th>
                                             <th>Operational</th>
                                           </tr>
                                         </thead>
@@ -2374,10 +1582,10 @@ export default function Form() {
                                             <td>Through Put</td>
                                             <td>{non_negoData[0].through_put}</td>
                                           </tr>
-                                          <tr>
+                                          {/* <tr>
                                             <td>Pricing</td>
                                             <td>{non_negoData[0].pricing}</td>
-                                          </tr>
+                                          </tr> */}
                                           <tr>
                                             <td>Product development life cycle</td>
                                             <td>{non_negoData[0].prod_dev_life_cycle}</td>
@@ -2392,6 +1600,10 @@ export default function Form() {
                                   </div>
                                 </div>
                               </div>
+
+
+
+
 
                             </div>
                           </div>
@@ -3116,7 +2328,7 @@ export default function Form() {
                                       <table class="table table-bordered">
                                         <thead>
                                           <tr>
-                                            <th>Parameters</th>
+                                            <th>Operational Parameters</th>
                                             <th>Financials</th>
                                           </tr>
                                         </thead>
@@ -3165,7 +2377,7 @@ export default function Form() {
                                       <table class="table table-bordered">
                                         <thead>
                                           <tr>
-                                            <th>Parameters</th>
+                                            <th>Operational Parameters</th>
                                             <th>Operational</th>
                                           </tr>
                                         </thead>
@@ -3198,10 +2410,10 @@ export default function Form() {
                                             <td>Through Put</td>
                                             <td>{non_negoData[0].through_put}</td>
                                           </tr>
-                                          <tr>
+                                          {/* <tr>
                                             <td>Pricing</td>
                                             <td>{non_negoData[0].pricing}</td>
-                                          </tr>
+                                          </tr> */}
                                           <tr>
                                             <td>Product development life cycle</td>
                                             <td>{non_negoData[0].prod_dev_life_cycle}</td>

@@ -73,7 +73,7 @@ export default function Form() {
 
   const exportPDFWithMethod = () => {
     setpdfShowDes(1);
-    setTimeout(() => { 
+    setTimeout(() => {
       // alert(pdfShowDes);
       if (pdfExportComponent.current) {
         pdfExportComponent.current.save();
@@ -1047,7 +1047,7 @@ export default function Form() {
                       <div>
                         <div id="divToPrint" className="mt4 pdfBody">
 
-                          <div className="row clearfix">
+                          <div className="row clearfix card">
                             <div className="col-md-12">
                               <div
                                 className="pdfHeader"
@@ -1067,7 +1067,7 @@ export default function Form() {
                               </div>
                             </div>
                           </div>
-                          <div className="row clearfix">
+                          <div className="row clearfix card">
                             <div className="col-md-12">
                               <div
                                 className="headText"
@@ -1085,7 +1085,7 @@ export default function Form() {
                           </div>
 
 
-                          <div className="row clearfix" className="page-break">
+                          <div className="row clearfix card" className="page-break">
                             <div className="col-md-12">
                               <div
                                 className="headText"
@@ -1101,7 +1101,8 @@ export default function Form() {
                               </div>
                             </div>
                           </div>
-                          <div className="row clearfix pl-2">
+
+                          <div className="row clearfix pl-2 card">
                             <div className="col-md-12">
                               <div className="table-responsive">
                                 <Grid
@@ -1119,7 +1120,7 @@ export default function Form() {
                               </div>
                             </div>
                           </div>
-                          <div className="row clearfix pl-2">
+                          <div className="row clearfix pl-2 card">
                             <div className="col-md-12">
                               <div className="table-responsive">
                                 <Grid

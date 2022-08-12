@@ -776,34 +776,32 @@ export default function Form() {
 
   const selectYear = (e) => {
     console.log(e.target.options[e.target.selectedIndex].text)
-    console.log(e.target.name)
-    console.log(e.target.value)
-
-    // console.log(index)
-
-    // console.log(e.target.ips)
-
-    // console.log(index)
-
-    // if (e.target.value > 9) {
-    //   setShowHideErr(false)
-    // } else {
-    //   setShowHideErr(true);
-    //   // alert(Show)
-    // }
+    // console.log(e.target.name)
+    // console.log(e.target.value)
 
     const { name, value, ips } = e.target;
     const list = [...inputListFinal];
-    console.log("Here is the Value---1>", list);
-    console.log(value)
+    // console.log("Here is the Value---1>", list);
+    // console.log(value)
     list[name]["drishtiTotal"] = value;
     list[name]["drishtiYear"] = e.target.options[e.target.selectedIndex].text;
 
-    // // list[index]["is_display"] = 0;
+    setInputListFinal(list);
+    // setcompleteData(list);
+    // console.log(inputListFinal)
+  }
 
-    // console.log(list[name][name]);
-    // console.log(value + "val");
+  const selectDrishtiParameter = (e) => {
+    // console.log(e.target.options[e.target.selectedIndex].text)
+    // console.log(e.target.name)
+    // console.log(e.target.value)
 
+    const { name, value, ips } = e.target;
+    const list = [...inputListFinal];
+    // console.log("Here is the Value---1>", list);
+    // console.log(value)
+    // list[name]["drishtiTotal"] = value;
+    list[name]["drishti_parameter"] = e.target.options[e.target.selectedIndex].text;
 
     setInputListFinal(list);
     // setcompleteData(list);
@@ -811,12 +809,13 @@ export default function Form() {
   }
 
 
+
   // handle input change
   const handleInputChange = (e, index) => {
-    console.log(e.target.id)
-    console.log(e.target.name)
-    console.log(e.target.value)
-    console.log(index)
+    // console.log(e.target.id)
+    // console.log(e.target.name)
+    // console.log(e.target.value)
+    // console.log(index)
     var num = 0;
 
     // console.log(e.target.ips)
@@ -832,8 +831,8 @@ export default function Form() {
 
     const { name, value, ips } = e.target;
     const list = [...inputListFinal];
-    console.log("Here is the Value---1>", list);
-    console.log(list[index].value0);
+    // console.log("Here is the Value---1>", list);
+    // console.log(list[index].value0);
 
     // console.log(parseInt(list[index][`value${0}`]+list[index][`value${1}`]))
 
@@ -1118,12 +1117,38 @@ export default function Form() {
                               <strong>Vilakshan</strong>
                             </h2>
                           </div>
-                          <div className="col-md-6">
+
+                          <div className="col-md-4">
+                            <h2 className="card-inside-title" >
+                              <strong>
+                                <div className="col-lg-12">
+                                  {/* {console.log(x[`drishtiYear`])} */}
+                                  <select className="form-control"
+                                    name={`${i}`}
+                                    value={x[`drishti_parameter`]}
+                                    onChange={selectDrishtiParameter}
+                                  >
+                                    <option style={{ color: "black", boder: "1px solid black", fontWeight: "bold" }} value="select" >{x[`drishti_parameter`] ? x[`drishti_parameter`] : "Select"}</option>
+                                    {/* {console.log(completeData)}
+                                    {console.log(completeData[completeData.length - 1].drishti_parameter)} */}
+                                    {completeData.map((item, key) => (
+                                      <option>{item.drishti_parameter}</option>
+                                    ))}
+
+                                    {/* ))} */}
+                                  </select>
+                                </div>
+                              </strong>
+                            </h2>
+                          </div>
+
+
+                          {/* <div className="col-md-6">
                             <h2 className="card-inside-title ml-3" >
                               <strong>{completeData[completeData.length - 1].drishti_parameter}</strong>
                             </h2>
                           </div>
-
+ */}
 
                           <div className="col-md-6">
                             <h2 className="card-inside-title mt-2" >

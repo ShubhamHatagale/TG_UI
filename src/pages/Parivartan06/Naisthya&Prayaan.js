@@ -835,44 +835,46 @@ export default function NaisthyaPrayaan() {
                 <div >
                   <div id="divToPrint" className="mt4 pdfBody" >
 
-                    <div className="row clearfix">
+                    <div className="row clearfix card">
                       <div className="col-md-12">
                         <div className="pdfHeader">Naisthya </div>
                         <div className="headText">1. Naishtya Statement</div>
                         <div className="dynamicContent">{naishtyaStatement.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ').replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
                       </div>
                     </div>
-                    <div className="row clearfix">
+
+                    <div className="row clearfix card">
                       <div className="col-md-12">
                         <div className="headText">2. Time Period and No of Vilakshan Units</div>
                         <div className="dynamicContent">{timePeriod.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
                       </div>
                     </div>
-                    <div className="row clearfix">
+
+                    <div className="row clearfix card">
                       <div className="col-md-12">
                         <div className="headText">3. Believer Group</div>
                         <div className="dynamicContent">{believerGroup.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
                       </div>
                     </div>
-                    <div className="row clearfix">
+                    <div className="row clearfix card">
                       <div className="col-md-12">
                         <div className="headText">4. Impact Point</div>
                         <div className="dynamicContent">{impactPoint.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
                       </div>
                     </div>
-                    <div className="row clearfix">
+                    <div className="row clearfix card">
                       <div className="col-md-12">
                         <div className="headText">5. Prayaan Statement</div>
                         <div className="dynamicContent">{prayaanStatement.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
                       </div>
                     </div>
-                    <div className="row clearfix">
+                    <div className="row clearfix card">
                       <div className="col-md-12">
                         <div className="headText">6. Date of Launch of Prayaan</div>
                         <div className="dynamicContent">{dateofLaunch.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
                       </div>
                     </div>
-                    <div className="row clearfix">
+                    <div className="row clearfix card">
                       <div className="col-md-12">
                         <div className="headText">7. List of activities which we will never do</div>
                         <div className="dynamicContent">{listofactivities.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>

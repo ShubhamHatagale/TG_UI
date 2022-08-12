@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StickyTable, Row, Cell } from "react-sticky-table";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import { useReactToPrint } from 'react-to-print';
 
 import { Line } from "react-chartjs-2";
 import TextField from "@material-ui/core/TextField";
@@ -100,6 +101,7 @@ export default function Form(props) {
 
   const [pdfShowDes, setpdfShowDes] = useState(0);
 
+
   const exportPDFWithMethod = () => {
     setpdfShowDes(1);
     setTimeout(() => {
@@ -122,6 +124,7 @@ export default function Form(props) {
 
   const ViewModel = () => {
     setviewModal(true);
+
   };
 
 
@@ -787,6 +790,11 @@ export default function Form(props) {
     setshowConfirmBox(false);
   }
 
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current
+  });
+
 
 
   return (
@@ -794,412 +802,65 @@ export default function Form(props) {
 
 
 
+
+
       {/* Competition Sheet */}
 
+      {/* <div className="page-break " style={{ transform: "rotate(90deg)", marginTop: "30%" }}>
 
-      <PDFExport
-        paperSize="A4"
-        margin="1cm"
-        ref={pdfExportComponent} fileName={`${beliverName}-${history.location.pathname}`}
-        forcePageBreak=".page-break"
-      >
-        <Modal.Header style={{ padding: "10px" }}>
-          <div className="col-md-12 row" >
-            <div className="col-md-6">
-              <img src="../../assets/images/transaganization.png" width="135" alt="Transganization" />
-            </div>
-            <div className="col-md-6 pageHeading" >
-              Business Model
-            </div>
-          </div>
-          <Modal.Title id="example-modal-sizes-title-lg">
+        <div
+          className="pdfHeader"
+        >
+          Competition Sheet
 
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* Customer Segment started */}
-          <div className="container-fluid">
-            <div className="row clearfix">
-              <div className="col-lg-12 col-md-12 col-sm-12">
-                <div className="card">
-                  <div>
-                    <div id="divToPrint" className="mt4 pdfBody">
-                      <div className="row clearfix">
-                        <div className="col-md-12">
-                          <div
-                            className="pdfHeader"
-                          >
-                            Customer Segmentation
-                          </div>
-
-                          <div
-                            className="dynamicContent"
-                            style={{ margin: "30px" }}
-
-                          >
-                            <div
-                              className="headText "
-                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
-                            >
-                              1. Your Organization Name
-
-
-                            </div>
-
-                            {org_name.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row clearfix">
-                        <div className="col-md-12">
-
-
-                          <div
-                            className="dynamicContent"
-                            style={{ margin: "30px" }}
-
-                          >
-                            <div
-                              className="headText "
-                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
-                            >
-                              2. Products/Services Offering by
-
-
-                            </div>
-
-
-                            {product_service_offering_by.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row clearfix">
-                        <div className="col-md-12">
-
-                          <div
-                            className="dynamicContent"
-                            style={{ margin: "30px" }}
-
-                          >
-                            <div
-                              className="headText "
-                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
-                            >
-                              3. What is the problem you are solving?
-
-                            </div>
-                            {problem_solving.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div className="row clearfix">
-                        <div className="col-md-12">
-                          <div className="table-responsive">
-                            <Grid
-                              style={{
-                                maxHeight: "400px",
-                              }}
-                              data={inputList.slice(0, 100)}
-
-                            >
-                              <Column
-                                field="customer_face"
-                                title="List of Customer Face"
-                                width="420px"
-
-                              />
-
-                            </Grid>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* <div className="row clearfix">
-              <div className="col-md-12">
-                <div className="table-responsive">
-                  <Grid
-                    style={{
-                      maxHeight: "400px",
-                    }}
-                    data={inputList.slice(0, 2)}
-                  >
-                    <Column
-                      field="firstName"
-                      title="List of Customer Face"
-                      width="420px"
-                    />
-                  </Grid>
-                </div>
-              </div>
-            </div> */}
-                    </div>
-                  </div>
-                  <div style={{ marginTop: 30 }}></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* playground business model */}
-
-          <div className="container-fluid" className="page-break">
-            <div className="row clearfix">
-              <div className="col-lg-12 col-md-12 col-sm-12">
-                <div className="card">
-                  <div>
-                    <div id="divToPrint" className="mt4 pdfBody">
-                      <div className="row clearfix" >
-                        {/* <div className="col-md-12">
-                <img
-                  src="../../assets/images/transaganization.png"
-                  width="135"
-                  alt="Transganization"
-                />
-                <h1
-                  style={{
-                    alignSelf: "center",
-                    alignContent: "center",
-                    textAlign: "center",
-                    marginTop: "20px",
-                  }}
-                >
-                  Buiseness Model
-                </h1>
-              </div> */}
-                      </div>
-                      <div className="row clearfix">
-                        <div className="col-md-12">
-                          <div
-                            className="pdfHeader"
-                          >
-                            Playground Buiseness Model
-
-                          </div>
-
-                          <div
-                            className="dynamicContent"
-                            style={{ margin: "30px" }}
-
-                          >
-                            <div
-                              className="headText "
-                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
-                            >
-                              1. Basis of your Playground
-
-
-                            </div>
-                            {basisofplayground.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row clearfix">
-                        <div className="col-md-12">
-
-                          <div
-                            className="dynamicContent"
-                            style={{ margin: "30px" }}
-
-                          >
-                            <div
-                              className="headText "
-                              style={{ position: "absolute", bottom: "140px", left: "10px" }}
-                            >
-                              2. Define your Playground
-
-
-                            </div>
-                            {defineplayground.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ marginTop: 30 }}></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-          <div id="divToPrint" className="mt4 pdfBody" className="page-break">
-            <div className="row clearfix" >
-              <div className="col-md-12 m-2">
-                <div
-                  className="pdfHeader"
-                >
-                  Value Proposition
-
-                </div>
-                <div className="header">
-                  <small>
-                    <strong>Possible Combination  :{PossibleCombination}
-                    </strong>
-                  </small>
-                </div>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Features</th>
-                      <th scope="col">No Of Possiblities </th>
-                      <th scope="col">Possiblities</th>
-                      <th scope="col">Choice Made</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {inputList2.map((item, key) => (
-                      <tr>
-                        <td className="text-center"><small>{item.featues}</small></td>
-                        <td className="text-center"><small>{item.noofpossiblity}</small></td>
-                        <td className="text-center"><small>{item.possiblity}</small></td>
-                        <td className="text-center"><small>{item.choicemade}</small></td>
-
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-
-
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-          {/* Competition Sheet */}
-
-          <div className="page-break">
-            <div id="divToPrint" className="mt4 pdfBody p-3" className="page-break" >
-
-              <div
-                className="pdfHeader"
-              >
-                Competition Sheet
-
-              </div>
-              <div style={{ marginTop: 20 }}></div>
-              <div className="row clearfix">
-                <div className="col">
-                  <div className="form-group">
-                    <span>{org_name}</span>
-                  </div>
-                </div>
-                {inputListFeature.map((x, i) => {
-                  return (
-                    <div className="col">
-                      <div className="form-group">
-                        <span>{x.featues}</span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-              {console.log(inputListFinal + "inp")}
-              {inputListFinal.map((x, i) => {
-                // if (i === 0) {
+        </div>
+        <table class="table table-responsive bg-success">
+          <thead >
+            <tr>
+              <th scope="col">{org_name}</th>
+              {inputListFeature.map((x, i) => {
                 return (
-                  <div className="row clearfix">
-                    <div className="col">
-                      <div className="form-group">
-                        <span>{x.competition}</span>
-                      </div>
-                    </div>
-                    {Array.from({ length: total }, (item, index) => {
-                      return (
-                        <div className="col">
-                          <div className="form-group">
-                            <span>{x[`value${index}`]}</span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  <th>{x.featues}</th>
                 );
-                // }
               })}
-              {inputListFinal.map((x, i) => {
-                if (i === limit) {
-                  return (
-                    <div className="row clearfix">
-                      <div className="col">
-                        <div className="form-group">
+            </tr>
+          </thead>
+          <tbody>
+            {inputListFinal.map((x, i) => {
+              return (
+                <tr>
+                  {Array.from({ length: 1 }, (item, index) => {
+                    return (
+                      <>
+                        {console.log(x[`value${index}`])}
+                        {console.log(x)}
+                        <td>{x[`competition`]}</td>
 
-                        </div>
-                      </div>
-                      {Array.from({ length: total }, (item, index) => {
-                        return (
-                          <div className="col">
-                            <div className="form-group">
-                              {/* <span>{`value${index}`}</span> */}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  );
-                }
-              })}
-            </div>
+                      </>
+                    )
+                  })}
 
-          </div>
+                  {Array.from({ length: total }, (item, index) => {
+                    return (
+                      <>
+                        {console.log(x[`value${index}`])}
+                        {console.log(x)}
+                        <td>{x[`value${index}`]}</td>
+                      </>
+                    )
+                  })}
+                </tr>
+              )
+            })}
 
-          {/* Strategy Map Graph */}
-          <div className="container-fluid" className="page-break">
-            <div className="row clearfix">
-              <div className="col-lg-12 col-md-12 col-sm-12">
-                <div className="card">
-                  <div id="divToPrint" className="mt4 ">
-                    {inputListFeature && inputListFinal ? (
-                      <div className="body">
-                        <div className="header">
-
-                          <div className="row clearfix">
-                            <div className="col-md-12" >
-                              <div
-                                className="pdfHeader"
-                              >
-                                Strategy Map
-                              </div>
-                            </div>
-                          </div>
-
-                        </div>
-                        <div style={{ marginTop: "150px" }}></div>
-                        <div className="row clearfix" style={{ height: "100%", width: "100%", transform: "rotate(90deg)" }}>
-                          <Line data={data} />
-                        </div>
-                        <div style={{ marginTop: 30 }}></div>
-                      </div>
-                    ) : null}
-
-                  </div>
+          </tbody>
+        </table>
 
 
-
-                </div>
-              </div>
-            </div>
-          </div>
+      </div> */}
 
 
-
-
-        </Modal.Body>
-      </PDFExport>
-
+      {/* Competition Sheet */}
       <ModalSubmit show={showHide} />
       <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
@@ -1379,9 +1040,17 @@ export default function Form(props) {
                       );
                     }
                   })}
-                  <div className="row clearfix">
+                  <div ref={componentRef} className="row clearfix p-5">
                     <Line data={data} />
                   </div>
+
+
+
+
+                  {/* <button
+                    type="submit"
+                    class="btn savebtn waves-effect"
+                    onClick={handlePrint}>Graph Print </button> */}
 
                   <div style={{ marginTop: 30 }}></div>
                   <button
@@ -1459,79 +1128,64 @@ export default function Form(props) {
                     <div className="card">
                       <div>
                         <div id="divToPrint" className="mt4 pdfBody">
+
+
+                          <div className="row clearfix card">
+                            <div className="col-md-12">
+                              <div className="headText">1. Your Organization Name</div>
+                              <div className="dynamicContent">{org_name.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
+                            </div>
+                          </div>
+
+                          <div className="row clearfix card">
+                            <div className="col-md-12">
+                              <div className="headText">2. Products/Services Offering by</div>
+                              <div className="dynamicContent">{product_service_offering_by.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
+                            </div>
+                          </div>
+
+                          <div className="row clearfix card" className="page-break">
+                            <div className="col-md-12">
+                              <div className="headText">3. What is the problem you are solving?</div>
+                              <div className="dynamicContent">{problem_solving.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}</div>
+                            </div>
+                          </div>
+
+
+
+
+
+
+                        </div>
+                      </div>
+                      <div style={{ marginTop: 30 }}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              {/* List Of Customers  */}
+              <div className="container-fluid">
+                <div className="row clearfix" className="page-break">
+                  <div className="col-lg-12 col-md-12 col-sm-12">
+                    <div className="card">
+                      <div>
+                        <div id="divToPrint" className="mt4 pdfBody">
                           <div className="row clearfix">
                             <div className="col-md-12">
                               <div
                                 className="pdfHeader"
-                              >
-                                Customer Segmentation
-                              </div>
-
-                              <div
-                                className="dynamicContent"
-                                style={{ margin: "30px" }}
 
                               >
-                                <div
-                                  className="headText "
-                                  style={{ position: "absolute", bottom: "140px", left: "10px" }}
-                                >
-                                  1. Your Organization Name
-
-
-                                </div>
-
-                                {org_name.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
+                                List Of Customer Face
                               </div>
+
                             </div>
                           </div>
                           <div className="row clearfix">
                             <div className="col-md-12">
-
-
-                              <div
-                                className="dynamicContent"
-                                style={{ margin: "30px" }}
-
-                              >
-                                <div
-                                  className="headText "
-                                  style={{ position: "absolute", bottom: "140px", left: "10px" }}
-                                >
-                                  2. Products/Services Offering by
-
-
-                                </div>
-
-
-                                {product_service_offering_by.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row clearfix">
-                            <div className="col-md-12">
-
-                              <div
-                                className="dynamicContent"
-                                style={{ margin: "30px" }}
-
-                              >
-                                <div
-                                  className="headText "
-                                  style={{ position: "absolute", bottom: "140px", left: "10px" }}
-                                >
-                                  3. What is the problem you are solving?
-
-                                </div>
-                                {problem_solving.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, ' ')}
-                              </div>
-                            </div>
-                          </div>
-
-
-                          <div className="row clearfix" className="page-break">
-                            <div className="col-md-12">
-                              <div className="table-responsive">
+                              <div className="table-responsive m-2">
                                 <Grid
                                   style={{
                                     maxHeight: "400px",
@@ -1551,24 +1205,8 @@ export default function Form(props) {
                             </div>
                           </div>
 
-                          {/* <div className="row clearfix">
-            <div className="col-md-12">
-              <div className="table-responsive">
-                <Grid
-                  style={{
-                    maxHeight: "400px",
-                  }}
-                  data={inputList.slice(0, 2)}
-                >
-                  <Column
-                    field="firstName"
-                    title="List of Customer Face"
-                    width="420px"
-                  />
-                </Grid>
-              </div>
-            </div>
-          </div> */}
+
+
                         </div>
                       </div>
                       <div style={{ marginTop: 30 }}></div>
@@ -1576,6 +1214,7 @@ export default function Form(props) {
                   </div>
                 </div>
               </div>
+
 
               {/* playground business model */}
 
@@ -1587,22 +1226,22 @@ export default function Form(props) {
                         <div id="divToPrint" className="mt4 pdfBody">
                           <div className="row clearfix" >
                             {/* <div className="col-md-12">
-              <img
-                src="../../assets/images/transaganization.png"
-                width="135"
-                alt="Transganization"
-              />
-              <h1
-                style={{
-                  alignSelf: "center",
-                  alignContent: "center",
-                  textAlign: "center",
-                  marginTop: "20px",
-                }}
-              >
-                Buiseness Model
-              </h1>
-            </div> */}
+        <img
+          src="../../assets/images/transaganization.png"
+          width="135"
+          alt="Transganization"
+        />
+        <h1
+          style={{
+            alignSelf: "center",
+            alignContent: "center",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          Buiseness Model
+        </h1>
+      </div> */}
                           </div>
                           <div className="row clearfix">
                             <div className="col-md-12">
@@ -1716,78 +1355,57 @@ export default function Form(props) {
 
               {/* Competition Sheet */}
 
-              <div className="page-break">
-                <div id="divToPrint" className="mt4 pdfBody p-3" className="page-break" >
+              {/* <div className="page-break bg-success" style={{ transform: "rotate(90deg)",height:"800px", width:"460px",border:"1px solid black" }}> */}
+              <div className="page-break" style={{ transform: "rotate(90deg)", height: "30px", width: "999px", marginTop: "519px", fontSize: "8px" }}>
 
-                  <div
-                    className="pdfHeader"
-                  >
-                    Competition Sheet
+                <div
+                  className="pdfHeader"
+                  style={{marginLeft:"-355px",marginBottom:"35px"}}
+                >
+                  Competition Sheet
 
-                  </div>
-                  <div style={{ marginTop: 20 }}></div>
-                  <div className="row clearfix">
-                    <div className="col">
-                      <div className="form-group">
-                        <span>{org_name}</span>
-                      </div>
-                    </div>
-                    {inputListFeature.map((x, i) => {
+                </div>
+                {/* <div style={{ marginTop: 20 }}></div> */}
+                <table class="table table-responsive text-center">
+                  <thead >
+                    <tr>
+                      <th>{org_name}</th>
+                      {inputListFeature.map((x, i) => {
+                        return (
+                          <th>{x.featues}</th>
+                        );
+                      })}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {inputListFinal.map((x, i) => {
                       return (
-                        <div className="col">
-                          <div className="form-group">
-                            <span>{x.featues}</span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  {console.log(inputListFinal + "inp")}
-                  {inputListFinal.map((x, i) => {
-                    // if (i === 0) {
-                    return (
-                      <div className="row clearfix">
-                        <div className="col">
-                          <div className="form-group">
-                            <span>{x.competition}</span>
-                          </div>
-                        </div>
-                        {Array.from({ length: total }, (item, index) => {
-                          return (
-                            <div className="col">
-                              <div className="form-group">
-                                <span>{x[`value${index}`]}</span>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    );
-                    // }
-                  })}
-                  {inputListFinal.map((x, i) => {
-                    if (i === limit) {
-                      return (
-                        <div className="row clearfix">
-                          <div className="col">
-                            <div className="form-group">
+                        <tr>
+                          {Array.from({ length: 1 }, (item, index) => {
+                            return (
+                              <>
 
-                            </div>
-                          </div>
+                                <td>{x[`competition`]}</td>
+
+                              </>
+                            )
+                          })}
+
                           {Array.from({ length: total }, (item, index) => {
                             return (
-                              <div className="col">
-                                <div className="form-group">
-                                  {/* <span>{`value${index}`}</span> */}
-                                </div>
-                              </div>
-                            );
+                              <>
+
+                                <td>{x[`value${index}`]}</td>
+                              </>
+                            )
                           })}
-                        </div>
-                      );
-                    }
-                  })}
-                </div>
+                        </tr>
+                      )
+                    })}
+
+                  </tbody>
+                </table>
+
 
               </div>
 
@@ -1812,11 +1430,9 @@ export default function Form(props) {
                               </div>
 
                             </div>
-                            <div style={{ marginTop: "150px" }}></div>
-                            <div className="row clearfix" style={{ height: "100%", width: "100%", transform: "rotate(90deg)" }}>
-                              <Line data={data} />
+                            <div className="row clearfix" style={{ height: "500px", width: "650px", transform: "rotate(90deg)" }}>
+                              <Line style={{ height: "400px", marginTop: "214px", padding: "3px" }} data={data} />
                             </div>
-                            <div style={{ marginTop: 30 }}></div>
                           </div>
                         ) : null}
 
@@ -1837,6 +1453,7 @@ export default function Form(props) {
 
 
         ) : (null)}
+
 
 
 
@@ -1923,43 +1540,9 @@ export default function Form(props) {
                         </div>
 
 
-                        <div className="row clearfix">
-                          <div className="col-md-12">
-                            <div className="table-responsive">
-                              <Grid
-                                style={{
-                                  maxHeight: "400px",
-                                }}
-                                data={inputList.slice(0, 2)}
-                              >
-                                <Column
-                                  field="customer_face"
-                                  title="List of Customer Face"
-                                  width="420px"
-                                />
-                              </Grid>
-                            </div>
-                          </div>
-                        </div>
 
-                        {/* <div className="row clearfix">
-                        <div className="col-md-12">
-                          <div className="table-responsive">
-                            <Grid
-                              style={{
-                                maxHeight: "400px",
-                              }}
-                              data={inputList.slice(0, 2)}
-                            >
-                              <Column
-                                field="firstName"
-                                title="List of Customer Face"
-                                width="420px"
-                              />
-                            </Grid>
-                          </div>
-                        </div>
-                      </div> */}
+
+
                       </div>
                     </div>
                     <div style={{ marginTop: 30 }}></div>
@@ -1967,6 +1550,57 @@ export default function Form(props) {
                 </div>
               </div>
             </div>
+
+
+            {/* List Of Customers  */}
+            <div className="container-fluid">
+              <div className="row clearfix">
+                <div className="col-lg-12 col-md-12 col-sm-12">
+                  <div className="card">
+                    <div>
+                      <div id="divToPrint" className="mt4 pdfBody">
+                        <div className="row clearfix">
+                          <div className="col-md-12">
+                            <div
+                              className="pdfHeader"
+                            >
+                              List Of Customer Face
+                            </div>
+
+                          </div>
+                        </div>
+                        <div className="row clearfix">
+                          <div className="col-md-12">
+                            <div className="table-responsive m-2">
+                              <Grid
+                                style={{
+                                  maxHeight: "400px",
+                                }}
+                                data={inputList.slice(0, 100)}
+
+                              >
+                                <Column
+                                  field="customer_face"
+                                  title="List of Customer Face"
+                                  width="420px"
+
+                                />
+
+                              </Grid>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                    </div>
+                    <div style={{ marginTop: 30 }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
             {/* playground business model */}
 
@@ -2053,24 +1687,7 @@ export default function Form(props) {
                         </div>
                       </div> */}
 
-                        {/* <div className="row clearfix">
-                        <div className="col-md-12">
-                          <div className="table-responsive">
-                            <Grid
-                              style={{
-                                maxHeight: "400px",
-                              }}
-                              data={inputList.slice(0, 2)}
-                            >
-                              <Column
-                                field="firstName"
-                                title="List of Customer Face"
-                                width="420px"
-                              />
-                            </Grid>
-                          </div>
-                        </div>
-                      </div> */}
+
                       </div>
                     </div>
                     <div style={{ marginTop: 30 }}></div>
@@ -2089,114 +1706,49 @@ export default function Form(props) {
                   <div className="card ">
                     <div id="divToPrint" className="mt4 pdfBody ">
 
-                      <div
-                        className="pdfHeader"
-                      >
-                        Value Proposition
+                      <div id="divToPrint" className="mt4 pdfBody" className="page-break">
+                        <div className="row clearfix" >
+                          <div className="col-md-12 m-2">
+                            <div
+                              className="pdfHeader"
+                            >
+                              Value Proposition
 
-                      </div>
+                            </div>
+                            <div className="header">
+                              <small>
+                                <strong>Possible Combination  :{PossibleCombination}
+                                </strong>
+                              </small>
+                            </div>
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Features</th>
+                                  <th scope="col">No Of Possiblities </th>
+                                  <th scope="col">Possiblities</th>
+                                  <th scope="col">Choice Made</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {inputList2.map((item, key) => (
+                                  <tr>
+                                    <td className="text-center"><small>{item.featues}</small></td>
+                                    <td className="text-center"><small>{item.noofpossiblity}</small></td>
+                                    <td className="text-center"><small>{item.possiblity}</small></td>
+                                    <td className="text-center"><small>{item.choicemade}</small></td>
 
-                      {inputList2 ? (
-                        <div className="body" style={{ overflowX: "scroll" }}>
-                          <div className="header">
-                            <h2>
-                              <strong>Possible Combination  :{PossibleCombination}
-                              </strong>
-                            </h2>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
                           </div>
-                          <div style={{ marginTop: 20 }}>
-                          </div>
-                          <div className="row clearfix" >
-                            <div className="col-md-3">
-                              <h2 className="card-inside-title">
-                                <strong>Features</strong>
-                              </h2>
-                            </div>
-                            <div className="col-md-2">
-                              <h2 className="card-inside-title">
-                                <strong>No of Possiblities</strong>
-                              </h2>
-                            </div>
-                            <div className="col-md-2">
-                              <h2 className="card-inside-title">
-                                <strong>Possiblities</strong>
-                              </h2>
-                            </div>
-                            <div className="col-md-2">
-                              <h2 className="card-inside-title">
-                                <strong>Choice Made</strong>
-                              </h2>
-                            </div>
-                          </div>
-                          {inputList2.map((x, i) => {
-                            return (
-                              <div className="row clearfix">
-                                <div className="col-md-3">
-                                  <div className="form-group">
-                                    <span>{x.featues}</span>
-                                    {/* <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Features"
-                                  name="featues"
-                                  value={x.featues}
-                                  onChange={(e) => handleInputChange(e, i)}
-                                /> */}
-                                  </div>
-                                </div>
-                                <div className="col-md-2">
-                                  <div className="form-group">
-                                    <span>{x.noofpossiblity}</span>
-                                    {/* <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="No of Possiblities"
-                                  name="noofpossiblity"
-                                  value={x.noofpossiblity}
-                                  onChange={(e) => handleInputChange(e, i)}
-                                /> */}
-                                  </div>
-                                </div>
-                                <div className="col-md-2">
-                                  <div className="form-group">
-                                    <span>{x.possiblity}</span>
 
-                                    {/* <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Possiblities"
-                                  name="possiblity"
-                                  value={x.possiblity}
-                                  onChange={(e) => handleInputChange(e, i)}
-                                /> */}
-                                  </div>
-                                </div>
-                                <div className="col-md-2">
-                                  <div className="form-group">
-                                    <span>{x.choicemade}</span>
 
-                                    {/* <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Choice Made"
-                                  name="choicemade"
-                                  value={x.choicemade}
-                                  onChange={(e) => handleInputChange(e, i)}
-                                /> */}
-                                  </div>
-                                </div>
-
-                                {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList2)}</div> */}
-                              </div>
-                            );
-                          })}
-
-                          {/* <span>{text_stmt}</span> */}
-
-                          <div style={{ marginTop: 30 }}></div>
 
                         </div>
-                      ) : null}
+                      </div>
+
                     </div>
                   </div>
 
@@ -2219,133 +1771,54 @@ export default function Form(props) {
 
                       <div
                         className="pdfHeader"
+                        style={{marginLeft:"-355px",marginBottom:"35px"}}
                       >
                         Competition Sheet
 
                       </div>
                       <div style={{ marginTop: 20 }}></div>
-                      <div className="row clearfix">
-                        <div className="col">
-                          <div className="form-group">
-                            <span>{org_name}</span>
+                      <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th scope="col">{org_name}</th>
+                            {inputListFeature.map((x, i) => {
+                              return (
+                                <th>{x.featues}</th>
+                              );
+                            })}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {inputListFinal.map((x, i) => {
+                            return (
+                              <tr>
+                                {Array.from({ length: 1 }, (item, index) => {
+                                  return (
+                                    <>
+                                      {console.log(x[`value${index}`])}
+                                      {console.log(x)}
+                                      <td>{x[`competition`]}</td>
 
-                            {/* <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Features"
-                              name="featue"
-                              value={org_name}
-                              // onChange={(e) => handleInputChange(e, i)}
-                              disabled
-                            /> */}
-                          </div>
+                                    </>
+                                  )
+                                })}
 
-                        </div>
-                        {inputListFeature.map((x, i) => {
-                          return (
-                            <div className="col">
-                              <div className="form-group">
-                                <span>{x.featues}</span>
+                                {Array.from({ length: total }, (item, index) => {
+                                  return (
+                                    <>
+                                      {console.log(x[`value${index}`])}
+                                      {console.log(x)}
+                                      <td>{x[`value${index}`]}</td>
+                                    </>
+                                  )
+                                })}
+                              </tr>
+                            )
+                          })}
 
-                                {/* <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Features"
-                                  name="featue"
-                                  value={x.featues}
-                                  onChange={(e) => handleInputChange(e, i)}
-                                  disabled
-                                /> */}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                      {inputListFinal.map((x, i) => {
-                        if (i === 0) {
-                          return (
-                            <div className="row clearfix">
-                              <div className="col">
-                                <div className="form-group">
-                                  <span>{x.competition}</span>
+                        </tbody>
+                      </table>
 
-                                  {/* <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Competition"
-                                    name="competition"
-                                    value={x.competition}
-                                    onChange={(e) => handleInputChange(e, i)}
-                                  /> */}
-                                </div>
-                              </div>
-                              {Array.from({ length: total }, (item, index) => {
-                                return (
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <span>{x[`value${index}`]}</span>
-
-                                      {/* <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="value"
-                                        name={`value${index}`}
-                                        //   name={`value`}
-                                        value={x[`value${index}`]}
-                                        onChange={(e) => handleInputChange(e, i)}
-                                      /> */}
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          );
-                        }
-                      })}
-                      {inputListFinal.map((x, i) => {
-                        if (i === limit) {
-                          return (
-                            <div className="row clearfix">
-                              <div className="col">
-                                <div className="form-group">
-                                  {/* <Autocomplete
-                                    id="controllable-states-demo"
-                                    defaultValue={Finalizationddl}
-                                    options={competition}
-                                    // onChange={}
-                                    // style={{ width: 0 }}
-                                    onChange={(event, value) => {
-                                      ChangeFinalization(event, value);
-                                    }}
-                                    renderInput={(params) => (
-                                      <TextField {...params} variant="outlined" />
-                                    )}
-                                  />{" "} */}
-                                </div>
-                              </div>
-                              {Array.from({ length: total }, (item, index) => {
-                                return (
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <span>{`value${index}`}</span>
-
-                                      {/* <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="value"
-                                        name={`value${index}`}
-                                        //   name={`value`}
-                                        value={x[`value${index}`]}
-                                        onChange={(e) => handleInputChange(e, i)}
-                                      /> */}
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          );
-                        }
-                      })}
                     </div>
 
                   </div>

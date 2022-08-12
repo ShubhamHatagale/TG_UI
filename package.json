@@ -61,6 +61,7 @@
     "react-summernote": "^2.0.2",
     "react-swipeable-views": "^0.13.9",
     "react-table-view": "^1.1.1",
+    "react-to-print": "^2.14.7",
     "suneditor": "^2.39.0",
     "suneditor-react": "^3.1.1",
     "web-vitals": "^1.1.0",

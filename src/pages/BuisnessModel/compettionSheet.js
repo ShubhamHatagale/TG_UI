@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StickyTable, Row, Cell } from "react-sticky-table";
 import { useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import { CircularProgress } from "@material-ui/core";
 // const OnSubmitHandle = () => {
 //   GetallRecords();
 //   props.OnValidateStrategy(true);
@@ -13,7 +14,7 @@ export default function Form(props) {
   var s_id = localStorage.getItem('tr_id')
   const [inputListFeature, setInputListFeature] = useState([{ featues: "" }]);
   const [inputListFeature2, setInputListFeature2] = useState([{ featues2: "" }]);
-
+  const [loading, setloading] = useState(false);
   const [inputList, setInputList] = useState([{ competition: "" }]);
   const [inputListFinal, setInputListFinal] = useState([{ competition: "" }]);
   const [inputListFinal2, setInputListFinal2] = useState([{}]);
@@ -35,6 +36,7 @@ export default function Form(props) {
   let no = holdValue.length;
   const inputs = [];
   useEffect(() => {
+    setloading(true)
 
     if (!s_id) {
       history.push("Not_support");
@@ -75,6 +77,7 @@ export default function Form(props) {
           setPossibleCombination(item.possible_combination);
           setInputListFeature(Feature);
           setInputListFeature2(Feature2);
+          // setloading(false)
 
         });
       });
@@ -344,7 +347,10 @@ export default function Form(props) {
   };
 
   return (
+
     <div className="container-fluid">
+
+
       <Modal
         size="sm"
         show={Madd}
