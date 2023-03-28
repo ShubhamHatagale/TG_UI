@@ -236,6 +236,7 @@ export default function Form(props) {
     for (let i = 1; i <= total; i++) {
       key.push([`${i}`])
     }
+    
     var pack = function (arr) {
       var length = arr.length,
         result = {},
